@@ -5,13 +5,13 @@
 
 class drawable {
 private:
-    sf::Renderwindow & window;
+    sf::RenderWindow & window;
     sf::Vector2f position;
     sf::Vector2f size; 
     //sf::Sprite image; 
 public:
-    drawable(sf::Renderwindow & window, sf::Vector2f position, sf::Vector2f size):
-        window(window), position(position), size(size)
+    drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
+        window(window), position(position), size(size){}
     virtual bool overlaps() = 0; 
     virtual void draw() = 0; 
     sf::Vector2f get_position(){return position;}
