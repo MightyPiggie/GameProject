@@ -5,14 +5,14 @@
 
 class player : public drawable {
 protected:
-    std::string filename;
+    const std::string filename;
     sf::Texture texture;
     sf::Sprite sprite;
     float movement_speed = 60;
     unsigned int window_width;
     unsigned int window_height;
 public:
-    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string filename , unsigned int window_width, unsigned int window_height):
+    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
             drawable(window , position , size) , filename(filename) , window_width(window_width), window_height(window_height)
     {}
 

@@ -12,7 +12,7 @@
 SOURCES := player.cpp
 
 # header files in this project
-HEADERS :=  drawable.hpp game_screen.hpp simplefunction.hpp player.hpp
+HEADERS :=  drawable.hpp game_screen.hpp simplefunction.hpp player.hpp menu.hpp gamestates.hpp
 
 # other places to look for files for this project
 SEARCH  := 

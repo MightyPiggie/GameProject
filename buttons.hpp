@@ -2,7 +2,7 @@
 #define BUTTONS_HPP
 
 class buttons : public drawable{
-private:
+protected:
     sf::RectangleShape rect;
     sf::Color kleur;
     sf::Color hover;
@@ -37,4 +37,5 @@ public:
         }
     }
 };
+
 #endif
