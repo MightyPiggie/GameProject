@@ -11,4 +11,5 @@ public:
     virtual void draw()=0;
     sf::Vector2f get_position(){return position;}
     sf::Vector2f get_size(){return size;}
+    virtual void update(){}
 };
