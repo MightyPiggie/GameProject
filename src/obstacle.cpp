@@ -8,6 +8,12 @@ obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2
 
 }
 
-bool obstacle::overlaps(sf::FloatRect global_bound) const {
-    return obs.getGlobalBounds().intersects(global_bound);
+void obstacle::draw() {
+	window.draw(obs);
 }
+
+sf::FloatRect obstacle::getbounds() {
+    return obs.getGlobalBounds();
+}
+
+

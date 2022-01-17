@@ -9,7 +9,8 @@ private:
 
 public:
     obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
-    bool overlaps(sf::FloatRect global_bounds) const override;
+    void draw() override;
+    sf::FloatRect getbounds() override;
 };
 
 #endif
