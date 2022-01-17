@@ -3,7 +3,7 @@
 
 #include "drawable.hpp"
 #include <SFML/Graphics.hpp>
-class obstacle : public drawable {
+class obstacle : public game_drawable {
 private:
     sf::RectangleShape obs;
 

@@ -33,3 +33,6 @@ unsigned int drawable::Unsinged_int_from_Vector2f(sf::Vector2f rhs){
 unsigned int drawable::unsinged_int_from_float(float rhs){
     return static_cast<unsigned int>(rhs);
 }
+void game_drawable::lower(float y){
+    position.y += y;
+}

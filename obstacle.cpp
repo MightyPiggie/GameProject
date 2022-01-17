@@ -1,7 +1,7 @@
 #include "obstacle.hpp"
 
 obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
-    drawable(window, position, size)
+    game_drawable(window, position, size)
 {
     obs.setSize(size);
     obs.setPosition(position);
@@ -9,6 +9,7 @@ obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2
 }
 
 void obstacle::draw() {
+    obs.setPosition(position);
 	window.draw(obs);
 }
 

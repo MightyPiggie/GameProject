@@ -3,7 +3,7 @@
 
 #include "drawable.hpp"
 
-class player : public drawable {
+class player : public game_drawable {
 protected:
     const std::string filename;
     sf::Texture texture;
@@ -13,7 +13,7 @@ protected:
     unsigned int window_height;
 public:
     player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
-            drawable(window , position , size) , filename(filename) , window_width(window_width), window_height(window_height)
+            game_drawable(window , position , size) , filename(filename) , window_width(window_width), window_height(window_height)
     {}
 
     void draw() override;

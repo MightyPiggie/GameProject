@@ -76,11 +76,15 @@ public:
 
         //lijst van objecten
         std::vector<drawable *> objects = {};
+         std::vector<game_drawable *> gameobjects = {&player1, &test1};
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
-                    objects = {&left, &right, &game_window, &quit, &back, &player1};
+                    objects = {&left, &right, &game_window, &quit, &back, &player1, &test1};
+                    for(auto object : gameobjects){
+                        object->lower(1);
+                    }
                 }
                     break;
                 case MENU: {

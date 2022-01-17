@@ -21,5 +21,10 @@ public:
     unsigned int Unsinged_int_from_Vector2f(sf::Vector2f rhs);
     unsigned int unsinged_int_from_float(float rhs);
 };
+class game_drawable : public drawable{
+public:
+    game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size): drawable(window, position, size){}
+    void lower(float y);
+};
 
 #endif
