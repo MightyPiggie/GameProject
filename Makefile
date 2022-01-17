@@ -9,15 +9,15 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := drawable.cpp player.cpp buttons.cpp
+SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp
 
 # header files in this project
-HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp
+HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp
 
 # other places to look for files for this project
 SEARCH  := 
 
 # set REATIVE to the next higher directory 
 # and defer to the Makefile.due there
-RELATIVE := $(RELATIVE)./
+RELATIVE := $(RELATIVE)../
 include $(RELATIVE)Makefile.native
