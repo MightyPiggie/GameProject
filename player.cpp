@@ -6,10 +6,17 @@ void player::draw() {
     window.draw(sprite);
 }
 
-void player::move() {
+void player::move(std::vector<game_drawable *> &gameobjects) {
 
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
+        for(auto &object : gameobjects) {
+            if(object != this) {
+                if(this-> overlaps(object)) {
+                    position += sf::Vector2f{+movement_speed, 0};
+                }
+            }
+        }
     }
     else if (position.x != float(window_width)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         position += sf::Vector2f{movement_speed, 0};

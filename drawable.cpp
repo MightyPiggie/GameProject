@@ -6,7 +6,9 @@
 
 drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
 window(window), position(position), size(size){}
-//virtual bool overlaps() = 0;
+bool drawable::overlaps(drawable* other) {
+    return getbounds().intersects(other->getbounds()); 
+}
 //virtual void drawable::draw()=0;
 
 sf::Vector2f drawable::get_position(){return position;}

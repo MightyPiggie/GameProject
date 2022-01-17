@@ -70,13 +70,13 @@ public:
         rightwindow right(window,width, height);
         game game_window(window, width, height);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
-        obstacle test1 {window, sf::Vector2f{1000.0, 1000.0}, sf::Vector2f{10.0, 10.0}};
+        obstacle test1 {window, sf::Vector2f{1000.0, 0.0}, sf::Vector2f{10.0, 10.0}, "res/sprites/Tree.png"};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
         //lijst van objecten
         std::vector<drawable *> objects = {};
-         std::vector<game_drawable *> gameobjects = {&player1, &test1};
+        std::vector<game_drawable *> gameobjects = {&player1, &test1};
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
@@ -84,8 +84,8 @@ public:
                     objects = {&left, &right, &game_window, &quit, &back, &player1, &test1};
                     for(auto object : gameobjects){
                         object->lower(1);
+                        }
                     }
-                }
                     break;
                 case MENU: {
                     objects = {&Menu, &start_game};
@@ -99,10 +99,10 @@ public:
             while (window.pollEvent(event)) {
                 if (event.type == sf::Event::KeyPressed) {
                     if(state_t == GAME){
-                         player1.move();
+                        player1.move(gameobjects);
+                        }
                     }
 
-                }
                 if (event.type == sf::Event::Closed) {
                     window.close();
                 }
