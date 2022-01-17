@@ -9,7 +9,7 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp
+SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp menu.cpp
 
 # header files in this project
 HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp

@@ -19,9 +19,13 @@ public:
         //start state
         state_t = MENU;
         //knoppen plus wat de knop moet doen
-        buttons quit(window,  {30,30}, {120,60},[this](){window.close();},"Quit", sf::Color::Green);
+        ///Knoppen voor de game window.
+        buttons quit_gamewindow(window,  {30,30}, {120,60},[this](){window.close();},"Quit", sf::Color::Green);
+        buttons back_to_menu_from_gamewindow(window, {30, 120}, {120, 60},[this](){state_t = MENU;},"Menu", sf::Color::Green);
+
+        ///Knoppen voor de menu window
         buttons start_game(window, Vector2f_from_unsigned_ints(width/2 - 60, height - height/5), {120,60},[this](){state_t = GAME;},"Start", sf::Color::Green);
-        buttons back(window, {30, 120}, {120, 60},[this](){state_t = MENU;},"Menu", sf::Color::Green);
+
         //initialisatie game
         window_part left(window,{0,0}, {float(width)/4.f, float(height)});
         window_part right(window,{float(width)/4.f, 0}, {float(width)/2.f, float(height)}, sf::Color::Cyan);
@@ -39,7 +43,7 @@ public:
             switch (state_t) {
                 case GAME: {
                     //
-                    objects = {&left,&right, &quit, &back, &game_window, &player1, &test1};
+                    objects = {&left,&right, &quit_gamewindow, &back_to_menu_from_gamewindow, &game_window, &player1, &test1};
                     for(auto object : gameobjects){
                         object->lower(1);
                     }
