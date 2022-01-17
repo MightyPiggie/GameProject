@@ -10,10 +10,11 @@ protected:
     //sf::Sprite image;
 public:
     drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
-    //virtual bool overlaps() = 0;
+    bool overlaps(drawable* other);
     virtual void draw()=0;
     sf::Vector2f get_position();
     sf::Vector2f get_size();
+    virtual sf::FloatRect getbounds() {return sf::FloatRect{};};
     virtual void update(){}
     sf::Vector2f Vector2f_from_Vector2i( sf::Vector2i rhs );
     sf::Vector2f Vector2f_from_unsigned_ints(unsigned int x, unsigned int y);

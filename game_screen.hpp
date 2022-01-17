@@ -1,5 +1,6 @@
 #ifndef GAME_SCREEN_HPP
-#define GAME_SCREEN_HPP
+#define GAME_SCREEN_HPP 
+#include "obstacle.hpp"
 
 class leftwindow : public drawable{
 protected:
@@ -69,7 +70,7 @@ public:
         rightwindow right(window,width, height);
         game game_window(window, width, height);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
-
+        obstacle test1 {window, sf::Vector2f{1000.0, 1000.0}, sf::Vector2f{10.0, 10.0}};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
