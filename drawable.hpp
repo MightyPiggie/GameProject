@@ -1,3 +1,8 @@
+
+#ifndef DRAWABLE_HPP
+#define DRAWABLE_HPP
+
+#include <SFML/Graphics.hpp>
 class drawable {
 protected:
     sf::RenderWindow & window;
@@ -5,11 +10,22 @@ protected:
     sf::Vector2f size;
     //sf::Sprite image;
 public:
-    drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
-        window(window), position(position), size(size){}
-    //virtual bool overlaps() = 0;
+    drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
+    bool overlaps(drawable* other);
     virtual void draw()=0;
-    sf::Vector2f get_position(){return position;}
-    sf::Vector2f get_size(){return size;}
+    sf::Vector2f get_position();
+    sf::Vector2f get_size();
+    virtual sf::FloatRect getbounds() {return sf::FloatRect{};};
     virtual void update(){}
+    sf::Vector2f Vector2f_from_Vector2i( sf::Vector2i rhs );
+    sf::Vector2f Vector2f_from_unsigned_ints(unsigned int x, unsigned int y);
+    unsigned int Unsinged_int_from_Vector2f(sf::Vector2f rhs);
+    unsigned int unsinged_int_from_float(float rhs);
 };
+class game_drawable : public drawable{
+public:
+    game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size): drawable(window, position, size){}
+    void lower(float y);
+};
+
+#endif
