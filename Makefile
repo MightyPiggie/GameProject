@@ -12,7 +12,7 @@
 SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp
 
 # header files in this project
-HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp
+HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp
 
 # other places to look for files for this project
 SEARCH  := 
