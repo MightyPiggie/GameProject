@@ -13,5 +13,5 @@
 #include "buttons.hpp"
 #include "menu.hpp"
 #include "game_screen.hpp"
-//#include "shop.hpp"
+#include "init_game.hpp"
 #include "obstacle.hpp"
