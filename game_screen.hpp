@@ -1,6 +1,5 @@
 #ifndef GAME_SCREEN_HPP
-#define GAME_SCREEN_HPP 
-
+#define GAME_SCREEN_HPP
 
 class gamewindow{
 private:
@@ -16,6 +15,11 @@ public:
         window.setKeyRepeatEnabled(false);
         window.setFramerateLimit(60);
 
+        //sprite factory
+        std::ifstream sprite_file("sprite_file.txt");
+        sprite_factory sprite_reader;
+        std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
+
         //start state
         state_t = MENU;
         //knoppen plus wat de knop moet doen
@@ -29,21 +33,22 @@ public:
         //initialisatie game
         window_part left(window,{0,0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168));
         window_part right(window, {float(width)*3/4, 0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168));
-        window_part game_window(window,{float(width)/4.f, 0}, {float(width)/2.f, float(height)}, sf::Color(24 , 165 , 88));
-        player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
+        window_part game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]);
+        player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["beta_player_sprite"], width , height};
         obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{60.0, 60.0}};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
         //lijst van objecten
         std::vector<drawable *> objects = {};
-         std::vector<game_drawable *> gameobjects = {&player1, &test1};
+        std::vector<game_drawable *> gameobjects = {&player1, &test1};
+
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
                     //
-                    objects = {&left,&right, &quit_gamewindow, &back_to_menu_from_gamewindow, &player1, &test1};
+                    objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1};
                     for(auto object : gameobjects){
                         object->lower(1);
                     }
@@ -73,7 +78,6 @@ public:
             for (auto &object: objects) {
                 object->update();
             }
-            game_window.spritedraw("res/sprites/background.png");
             for (auto &object: objects) {
                 object->draw();
             }
