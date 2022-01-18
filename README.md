@@ -8,9 +8,9 @@ De volgende groepsleden hebben gewerkt aan dit project:
 
 Naam|Studentnummer|GitHub username|
 | ------------- |:-------------:| ---------:|
-|Ray |||
+|Ray ||Rayax10|
 |Daan Smienk|1777127|MightyPiggie|
-|Rick|||
-|Isaak van Luijk|studentnummer|gitnaam|
-|Rogier|||
+|Rick||rick2003|
+|Isaak van Luijk|1776211|SjaakyNewton|
+|Rogier||RogiervR|
 
