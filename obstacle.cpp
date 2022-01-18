@@ -1,4 +1,5 @@
 #include "obstacle.hpp"
+#include <iostream>
 
 obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string filename):
     game_drawable(window, position, size), filename(filename)
@@ -15,6 +16,7 @@ void obstacle::draw() {
 }
 
 sf::FloatRect obstacle::getbounds() {
+    std::cout << "obstacle: " << sprite.getGlobalBounds().left << " : " << sprite.getGlobalBounds().top << std::endl;
     return obs.getGlobalBounds();
 }
 

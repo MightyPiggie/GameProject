@@ -3,12 +3,42 @@
 //
 
 #include "drawable.hpp"
+#include <iostream>
 
 drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
 window(window), position(position), size(size){}
-bool drawable::overlaps(drawable* other) {
-    return getbounds().intersects(other->getbounds()); 
+
+bool drawable::within( int x, int a, int b ){
+    //std::cout << "x: " << x << "a: " << a << "b: " << b << "\n";
+   return ( x >= a ) && ( x <= b );
 }
+
+bool drawable::overlaps(drawable* other) {
+    //return getbounds().intersects(other->getbounds()); 
+    std::cout << position.x << "\n";
+    std::cout << other->position.x << "\n";
+    bool x_overlap = within( 
+      position.x, 
+      other->position.x, 
+      other->position.x + other->size.x
+   ) || within( 
+      other->position.x, 
+      position.x, 
+      position.x + size.x
+   );
+    bool y_overlap = within( 
+      position.y, 
+      other->position.y, 
+      other->position.y + other->size.y
+   ) || within( 
+      other->position.y, 
+      position.y, 
+      position.y + size.y
+   );
+   std::cout << "x: " << x_overlap << "y: " << y_overlap << "\n";
+   return x_overlap && y_overlap;
+}
+
 //virtual void drawable::draw()=0;
 
 sf::Vector2f drawable::get_position(){return position;}

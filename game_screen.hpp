@@ -70,7 +70,7 @@ public:
         rightwindow right(window,width, height);
         game game_window(window, width, height);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
-        obstacle test1 {window, sf::Vector2f{1000.0, 0.0}, sf::Vector2f{10.0, 10.0}, "res/sprites/Tree.png"};
+        obstacle test1 {window, sf::Vector2f{1020.0, 0.0}, sf::Vector2f{59.0, 59.0}, "res/sprites/Tree.png"};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
