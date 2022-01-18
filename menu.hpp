@@ -1,6 +1,7 @@
 #ifndef MENU_HPP
 #define MENU_HPP
 
+<<<<<<< Updated upstream
 class startbutton : public buttons{
     state & state_t;
 public:
@@ -41,6 +42,8 @@ public:
         }
     }
 };
+=======
+>>>>>>> Stashed changes
 class menu : public drawable{
 private:
     sf::RectangleShape rect;

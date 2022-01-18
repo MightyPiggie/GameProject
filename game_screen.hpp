@@ -62,6 +62,7 @@ public:
         //start state
         state_t = MENU;
         //knoppen plus wat de knop moet doen
+<<<<<<< Updated upstream
         buttons quit(window, {30,30}, {120,60}, sf::Color::Green);
         startbutton start_game(window, Vector2f_from_unsigned_ints(width/2 - 60, height - height/5), {120,60},state_t, sf::Color::Green);
         back_to_menu_button back(window, {30, 120}, {120, 60}, state_t, sf::Color::Green);
@@ -71,17 +72,32 @@ public:
         game game_window(window, width, height);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
         obstacle test1 {window, sf::Vector2f{1000.0, 1000.0}, sf::Vector2f{10.0, 10.0}};
+=======
+        buttons quit(window,  {30,30}, {120,60},[this](){window.close();},"Quit", sf::Color::Green);
+        buttons start_game(window, Vector2f_from_unsigned_ints(width/2 - 60, height - height/5), {120,60},[this](){state_t = GAME;},"Start", sf::Color::Green);
+        buttons back(window, {30, 120}, {120, 60},[this](){state_t = MENU;},"Menu", sf::Color::Green);
+        //initialisatie game
+        window_part left(window,{0,0}, {float(width)/4.f, float(height)});
+        window_part game_window(window,{float(width)/4.f, 0}, {float(width)/2.f, float(height)}, sf::Color::Cyan);
+        window_part right(window, {float(width)*3/4, 0}, {float(width)/4.f, float(height)});
+        player player1 {window , sf::Vector2f{ float(width)/2, float(height)*3/5 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
+        obstacle obstacle1 {window, sf::Vector2f{1000.0, 1000.0}, sf::Vector2f{10.0, 10.0}};
+>>>>>>> Stashed changes
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
         //lijst van objecten
         std::vector<drawable *> objects = {};
-         std::vector<game_drawable *> gameobjects = {&player1, &test1};
+        std::vector<game_drawable *> gameobjects = {&player1, &obstacle1};
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
+<<<<<<< Updated upstream
                     objects = {&left, &right, &game_window, &quit, &back, &player1, &test1};
+=======
+                    objects = {&left,&right, &quit, &back, &game_window, &player1, &obstacle1};
+>>>>>>> Stashed changes
                     for(auto object : gameobjects){
                         object->lower(1);
                     }
