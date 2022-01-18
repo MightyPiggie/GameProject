@@ -22,7 +22,7 @@ buttons::buttons(sf::RenderWindow &window,
     rect.setFillColor(kleur);
     if(!font.loadFromFile("res/fonts/lato/Lato-Black.ttf")){std::cout << "geen lato" << std::endl; }
         txt.setFont(font);
-        txt.setPosition({position.x + 5, position.y});
+        txt.setPosition({position.x, position.y});
         txt.setFillColor(hover);
         txt.setString(name);
         txt.setCharacterSize(Unsinged_int_from_Vector2f(size)/2 - Unsinged_int_from_Vector2f(size)/16);
