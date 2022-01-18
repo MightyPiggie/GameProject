@@ -33,9 +33,6 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         position += sf::Vector2f{0, -movement_speed};
         for(auto &object : gameobjects) {
             if(object != this) {
-                // std::cout << "y: "<< (this-> overlaps_y(object)) << "\n";
-                // std::cout << "x: " <<(this-> overlaps_x(object)) << "\n";
-                
                 if(this-> overlaps(object)) {
                     position += sf::Vector2f{0, movement_speed};
                 }
@@ -55,7 +52,6 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
 }
 
 sf::FloatRect player::getbounds() {
-    std::cout << "Player: " << sprite.getGlobalBounds().left << " : " << sprite.getGlobalBounds().top << std::endl;
     return sprite.getGlobalBounds();
 }
 

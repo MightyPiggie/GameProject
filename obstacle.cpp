@@ -16,7 +16,6 @@ void obstacle::draw() {
 }
 
 sf::FloatRect obstacle::getbounds() {
-    std::cout << "obstacle: " << sprite.getGlobalBounds().left << " : " << sprite.getGlobalBounds().top << std::endl;
     return obs.getGlobalBounds();
 }
 

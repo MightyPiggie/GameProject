@@ -51,6 +51,7 @@ class gamewindow{
 private:
     unsigned int width = sf::VideoMode::getDesktopMode().width;
     unsigned int  height =  sf::VideoMode::getDesktopMode().height;
+    unsigned int ticks = 0;
     sf::RenderWindow window{ sf::VideoMode( width,height,32), "SFML window" , sf::Style::Fullscreen};
     state state_t;
 public:
@@ -84,6 +85,11 @@ public:
                     objects = {&left, &right, &game_window, &quit, &back, &player1, &test1};
                     for(auto object : gameobjects){
                         object->lower(1);
+                        }
+                    ticks +=1;
+                    if(ticks == 60) {
+                        std::cout << random_int_between_range(0,5) << std::endl;
+                        ticks = 0;
                         }
                     }
                     break;
