@@ -51,13 +51,12 @@ public:
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
         //lijst van objecten
-        std::vector<drawable *> objects = {};
+        std::vector<drawable *> objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins, &builder1};
         std::vector<game_drawable *> gameobjects = {&player1, &test1};
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
-                    objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins, &builder1};
                     for(auto object : gameobjects){
                         object->lower(1);
                         }
