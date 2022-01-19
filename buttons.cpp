@@ -36,15 +36,9 @@ void buttons::update(){
     if(rect.getGlobalBounds().contains(Vector2f_from_Vector2i(sf::Mouse::getPosition()))){
         rect.setFillColor(hover);
         txt.setFillColor(kleur);
-<<<<<<< HEAD
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-        function();
-    }
-=======
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             function();
         }
->>>>>>> origin/scherm-loop-grid
     }else{
         rect.setFillColor(kleur);
         txt.setFillColor(hover);

@@ -12,7 +12,7 @@
 SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp menu.cpp sprite_factory.cpp
 
 # header files in this project
-HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp sprite_factory.hpp
+HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp sprite_factory.hpp list_includes.hpp
 
 # other places to look for files for this project
 SEARCH  := 
