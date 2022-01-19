@@ -5,8 +5,9 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 #include "gamestates.hpp"
-#include "drawable.hpp"
 #include "simplefunction.hpp"
+#include "drawable.hpp"
+#include "builder.hpp"
 #include "player.hpp"
 #include "window_part.hpp"
 #include "obstacle.hpp"

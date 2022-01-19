@@ -2,6 +2,7 @@
 #define GAME_SCREEN_HPP
 
 #include "obstacle.hpp"
+#include "builder.hpp"
 
 class gamewindow{
 private:
@@ -45,6 +46,7 @@ public:
         window_part game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["beta_player_sprite"], width , height};
         obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0} , sprite_files_map["tree_sprite"]};
+        builder builder1 {window, sf::Vector2f{0.0, 0.0}, sf::Vector2f{0.0, 0.0}, sprite_reader.spritefile_read(sprite_file)};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
@@ -55,14 +57,9 @@ public:
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
-                    objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins};
+                    objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins, &builder1};
                     for(auto object : gameobjects){
                         object->lower(1);
-                        }
-                    ticks +=1;
-                    if(ticks == 60) {
-                        std::cout << random_int_between_range(0,5) << std::endl;
-                        ticks = 0;
                         }
                     }
                     display_coins.update_coins(coins);
