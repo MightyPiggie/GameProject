@@ -1,16 +1,18 @@
 #include "obstacle.hpp"
 
-obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
-    game_drawable(window, position, size)
-{
-    obs.setSize(size);
-    obs.setPosition(position);
 
+obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f size, object_states object_state , std::string filename ):
+    game_drawable(window, position, size , object_state), filename(filename)
+{
+    texture.loadFromFile(filename);
+    sprite.setTexture(texture);
+    sprite.setPosition(position);
+    window.draw(sprite);
 }
 
 void obstacle::draw() {
-    obs.setPosition(position);
-	window.draw(obs);
+    sprite.setPosition(position);
+    window.draw(sprite);
 }
 
 sf::FloatRect obstacle::getbounds() {

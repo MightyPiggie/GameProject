@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include "drawable.hpp"
+#include <iostream>
 
 class player : public game_drawable {
 protected:
@@ -13,11 +14,12 @@ protected:
     unsigned int window_height;
 public:
     player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
-            game_drawable(window , position , size) , filename(filename) , window_width(window_width), window_height(window_height)
+            game_drawable(window , position , size , NON_OBSTACLE) , filename(filename) , window_width(window_width), window_height(window_height)
     {}
 
     void draw() override;
-    void move();
+    void move(std::vector<game_drawable *> &gameobjects);
+    sf::FloatRect getbounds() override;
 
 };
 
