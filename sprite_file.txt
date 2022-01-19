@@ -5,3 +5,4 @@ rock_sprite             res/sprites/rock.png
 tree_sprite             res/sprites/tree.png
 water_sprite            res/sprites/water.png
 beta_player_sprite      res/sprites/beta_player.png
+chicken_sprite          res/sprites/chicken.png

@@ -29,9 +29,4 @@ public:
     }
 
 };
-<<<<<<< HEAD
-=======
-
-
->>>>>>> origin/scherm-loop-grid
 #endif
