@@ -1,4 +1,5 @@
 #include "player.hpp"
+
 void player::draw() {
     texture.loadFromFile(filename);
     sprite.setTexture(texture);

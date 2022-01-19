@@ -9,10 +9,10 @@
 #############################################################################
 
 # source files in this project (main.cpp is automatically assumed)
-SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp menu.cpp label.cpp
+SOURCES := drawable.cpp player.cpp buttons.cpp obstacle.cpp menu.cpp label.cpp sprite_factory.cpp draw_sprite.cpp
 
 # header files in this project
-HEADERS :=  drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp label.hpp
+HEADERS := drawable.hpp game_screen.hpp player.hpp menu.hpp gamestates.hpp buttons.hpp obstacle.hpp window_part.hpp label.hpp sprite_factory.hpp draw_sprite.cpp
 
 # other places to look for files for this project
 SEARCH  := 

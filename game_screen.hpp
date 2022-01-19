@@ -17,6 +17,11 @@ public:
         window.setKeyRepeatEnabled(false);
         window.setFramerateLimit(60);
 
+        //sprite factory
+        std::ifstream sprite_file("sprite_file.txt");
+        sprite_factory sprite_reader;
+        std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
+
         //start state
         state_t = MENU;
         //knoppen plus wat de knop moet doen
@@ -40,6 +45,7 @@ public:
 //                                         sf::Color(163 , 235 , 177));
         buttons test_button(window,  Vector2f_from_unsigned_ints(width/2, height/2 - 350), {120,60},[this](){state_t = SHOP;},"Testtest", sf::Color(163 , 235 , 177));
         label title_in_menu_window(window,Vector2f_from_unsigned_ints(width/2 - 150,height/2),{300,40},"Levensmoedige vogel",30,sf::Color(163 , 235 , 177));
+        draw_sprite player_icon_menu_window(window, Vector2f_from_unsigned_ints(width/2 -30,height/2 + 80),{60,60},sprite_files_map["chicken_sprite"]);
 
         //initialisatie game
         window_part left(window,{0,0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168));
@@ -65,7 +71,7 @@ public:
                 }
                     break;
                 case MENU: {
-                    objects = {&Menu, &start_game,&quit_in_menu_window,&shop_button_in_menu_window, &title_in_menu_window, &test_button};
+                    objects = {&Menu, &start_game,&quit_in_menu_window,&shop_button_in_menu_window, &title_in_menu_window, &test_button, &player_icon_menu_window};
                 }
                     break;
                 case DEAD : case SHOP:
