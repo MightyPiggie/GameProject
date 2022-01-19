@@ -52,11 +52,14 @@ public:
         window_part game_window(window,{float(width)/4.f, 0}, {float(width)/2.f, float(height)}, sf::Color(24 , 165 , 88));
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, "res/sprites/player_sprite.png" , width , height};
         obstacle test1 {window, sf::Vector2f{1020.0, 0.0}, sf::Vector2f{59.0, 59.0}, "res/sprites/Tree.png"};
+<<<<<<< HEAD
 =======
         window_part game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["beta_player_sprite"], width , height};
         obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{60.0, 60.0}};
 >>>>>>> origin/spritefactory
+=======
+>>>>>>> obstakles
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
@@ -64,9 +67,12 @@ public:
         std::vector<drawable *> objects = {};
         std::vector<game_drawable *> gameobjects = {&player1, &test1};
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> origin/spritefactory
+=======
+>>>>>>> obstakles
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
@@ -86,7 +92,10 @@ public:
                         ticks = 0;
                         }
                     }
+<<<<<<< HEAD
                     display_coins.update_coins(coins);
+=======
+>>>>>>> obstakles
                     break;
                 case MENU: {
                     objects = {&Menu, &start_game};
