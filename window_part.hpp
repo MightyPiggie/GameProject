@@ -12,16 +12,22 @@ public:
         rect.setSize(size);
         rect.setFillColor(color);
     }
-    void draw() override{
-        window.draw(rect);
-    }
-
-    void spritedraw(std::string  filename){
+    window_part(sf::RenderWindow & window, sf::Vector2f position,std::string filename):
+            drawable(window, position, {0,0}){
+        rect.setSize(sf::Vector2f(0,0));
         texture.loadFromFile(filename);
         sprite.setTexture(texture);
         sprite.setPosition(position);
-        window.draw(sprite);
     }
+    void draw() override{
+        if(rect.getSize() == sf::Vector2f(0,0)) {
+            window.draw(sprite);
+        }
+        else {
+            window.draw(rect);
+        }
+    }
+
 };
 <<<<<<< HEAD
 =======
