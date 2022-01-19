@@ -44,7 +44,7 @@ public:
         window_part right(window, {float(width)*3/4, 0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168));
         window_part game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["beta_player_sprite"], width , height};
-        obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0}};
+        obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0} , sprite_files_map["tree_sprite"]};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 

@@ -12,11 +12,7 @@
 #include "obstacle.hpp"
 #include "buttons.hpp"
 #include "menu.hpp"
-<<<<<<< HEAD
-#include "game_screen.hpp"
-#include "init_game.hpp"
-=======
+#include "sprite_factory.hpp"
 #include "init_game.hpp"
 #include "game_screen.hpp"
->>>>>>> origin/scherm-loop-grid
-#include "obstacle.hpp"
+
