@@ -44,18 +44,19 @@ public:
         window_part right(window, {float(width)*3/4, 0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168));
         window_part game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]);
         player player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["chicken_sprite"], width , height};
-        obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0} , sprite_files_map["tree_sprite"]};
+        obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0} ,OBSTACLE, sprite_files_map["tree_sprite"]};
+        obstacle road1 {window, sf::Vector2f{float(width)/4.f, 120.0}, sf::Vector2f{59.0, 59.0} ,NON_OBSTACLE, sprite_files_map["roads_sprite"]};
         //initialistie menu
         menu Menu(window, {0,0}, Vector2f_from_unsigned_ints(width, height));
 
         //lijst van objecten
         std::vector<drawable *> objects = {};
-        std::vector<game_drawable *> gameobjects = {&player1, &test1};
+        std::vector<game_drawable *> gameobjects = {&player1, &test1 , &road1};
         //gameloop
         while (window.isOpen()) {
             switch (state_t) {
                 case GAME: {
-                    objects = {&left,&game_window, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins};
+                    objects = {&left,&game_window,&road1, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins };
                     for(auto object : gameobjects){
                         object->lower(1);
                         }
