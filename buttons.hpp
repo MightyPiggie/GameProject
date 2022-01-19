@@ -1,8 +1,12 @@
 #ifndef BUTTONS_HPP
 #define BUTTONS_HPP
 
-#include "drawable.hpp"
 #include <functional>
+#include <string>
+#include <SFML/Graphics.hpp>
+
+#include "drawable.hpp"
+
 class buttons : public drawable{
 protected:
     std::function<void(void)> function;
@@ -27,9 +31,7 @@ public:
 
     void update() override;
 
-    void update_coins(uint16_t coins){
-        txt.setString(std::to_string(coins) + " C");
-    }
+    void update_coins(uint16_t coins);
 };
 
 #endif

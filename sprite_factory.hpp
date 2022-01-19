@@ -1,9 +1,9 @@
 #ifndef SPRITE_FACTORY_HPP
 #define SPRITE_FACTORY_HPP
 
-#include <iostream>
 #include <fstream>
 #include <map>
+#include <string>
 
 class sprite_factory{
 protected:

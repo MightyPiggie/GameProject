@@ -3,7 +3,10 @@
 //
 
 #include "buttons.hpp"
-#include "iostream"
+
+#include <iostream>
+
+#include "simple_functions.hpp"
 
 buttons::buttons(sf::RenderWindow &window,
                  sf::Vector2f position,
@@ -25,7 +28,7 @@ buttons::buttons(sf::RenderWindow &window,
         txt.setPosition({position.x, position.y});
         txt.setFillColor(hover);
         txt.setString(name);
-        txt.setCharacterSize(Unsinged_int_from_Vector2f(size)/2 - Unsinged_int_from_Vector2f(size)/16);
+        txt.setCharacterSize(unsinged_int_from_vector2f(size)/2 - unsinged_int_from_vector2f(size)/16);
 }
 void buttons::draw(){
     window.draw(rect);
@@ -33,7 +36,7 @@ void buttons::draw(){
 }
 
 void buttons::update(){
-    if(rect.getGlobalBounds().contains(Vector2f_from_Vector2i(sf::Mouse::getPosition()))){
+    if(rect.getGlobalBounds().contains(vector2f_from_vector2i(sf::Mouse::getPosition()))){
         rect.setFillColor(hover);
         txt.setFillColor(kleur);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
@@ -43,4 +46,8 @@ void buttons::update(){
         rect.setFillColor(kleur);
         txt.setFillColor(hover);
     }
+}
+
+void buttons::update_coins(uint16_t coins){
+    txt.setString(std::to_string(coins) + " C");
 }

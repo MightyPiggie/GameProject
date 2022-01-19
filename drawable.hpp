@@ -1,9 +1,11 @@
-
 #ifndef DRAWABLE_HPP
 #define DRAWABLE_HPP
 
 #include <SFML/Graphics.hpp>
-class drawable {
+
+#include "game_object.hpp"
+
+class drawable : public game_object {
 protected:
     sf::RenderWindow & window;
     sf::Vector2f position;
@@ -18,18 +20,12 @@ public:
     sf::Vector2f get_size();
     virtual sf::FloatRect getbounds() {return sf::FloatRect{};};
 
-    virtual void update(){}
-    sf::Vector2f Vector2f_from_Vector2i( sf::Vector2i rhs );
-    sf::Vector2f Vector2f_from_unsigned_ints(unsigned int x, unsigned int y);
-    unsigned int Unsinged_int_from_Vector2f(sf::Vector2f rhs);
-    unsigned int unsinged_int_from_float(float rhs);
 };
+
 class game_drawable : public drawable{
 public:
     game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size): drawable(window, position, size){}
     void lower(float y);
 };
-
-
 
 #endif

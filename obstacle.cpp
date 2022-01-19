@@ -1,7 +1,6 @@
 #include "obstacle.hpp"
-#include <iostream>
 
-obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string filename):
+obstacle::obstacle(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, std::string filename):
     game_drawable(window, position, size), filename(filename)
 {
     texture.loadFromFile(filename);

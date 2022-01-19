@@ -1,6 +1,9 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
+#include <SFML/Graphics.hpp>
+#include <string>
+
 #include "drawable.hpp"
 
 class player : public game_drawable {
@@ -12,12 +15,15 @@ protected:
     unsigned int window_width;
     unsigned int window_height;
 public:
-    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
-            game_drawable(window , position , size) , filename(filename) , window_width(window_width), window_height(window_height)
+    player(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
+            game_drawable(window, position, size),
+            filename(filename),
+            window_width(window_width),
+            window_height(window_height)
     {}
 
     void draw() override;
-    void move(std::vector<game_drawable *> &gameobjects);
+    void move(std::vector<game_drawable*> &gameobjects);
     sf::FloatRect getbounds() override;
 
 };

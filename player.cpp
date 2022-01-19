@@ -1,5 +1,5 @@
 #include "player.hpp"
-#include <iostream>
+
 void player::draw() {
     texture.loadFromFile(filename);
     sprite.setTexture(texture);
@@ -54,22 +54,3 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
 sf::FloatRect player::getbounds() {
     return sprite.getGlobalBounds();
 }
-
-
-
-
-//class action {
-//private:
-//    std::function< bool() > condition;
-//    std::function< void() > work;
-//public:
-//    action(
-//            sf::Keyboard::Key key,
-//            std::function< void() > work
-//    ) :
-//            condition(
-//                    [ key ]()->bool { return sf::Keyboard::isKeyPressed( key ); }
-//            ),
-//            work(work)
-//    {}
-//};
