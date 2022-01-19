@@ -14,4 +14,3 @@ std::map<std::string, std::string> sprite_factory::spritefile_read(std::ifstream
     }
     return filenames;
 }
-

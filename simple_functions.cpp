@@ -14,6 +14,11 @@ sf::Vector2f vector2f_from_unsigned_ints(unsigned int x, unsigned int y){
             static_cast< float >( y )
     );
 }
+
+float float_from_double(double x){
+    return static_cast<float>(x);
+}
+
 unsigned int unsinged_int_from_vector2f(sf::Vector2f rhs){
     return static_cast<unsigned int>(rhs.x);
 }

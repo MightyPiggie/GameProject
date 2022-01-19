@@ -14,14 +14,14 @@ protected:
     sf::RectangleShape rect;
     sf::Color kleur;
     sf::Color hover;
-
+    int char_size;
     sf::Font font;
     sf::Text txt;
 
 public:
     buttons(sf::RenderWindow &window,
+             int char_size,
             sf::Vector2f position,
-            sf::Vector2f size,
             std::function<void(void)> function,
             std::string name,
             sf::Color kleur,

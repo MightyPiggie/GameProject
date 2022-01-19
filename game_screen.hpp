@@ -4,14 +4,16 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <map>
 
 #include "game_states.hpp"
+#include "label.hpp"
 
 class game_screen{
 private:
     unsigned int width = sf::VideoMode::getDesktopMode().width;
     unsigned int  height =  sf::VideoMode::getDesktopMode().height;
-    unsigned int ticks = 0;
+    //unsigned int ticks = 0;
     sf::RenderWindow window{ sf::VideoMode( width,height,32), "SFML window" , sf::Style::Fullscreen};
     state state_t;
     //uint16_t score = 0;

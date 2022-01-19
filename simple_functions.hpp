@@ -6,6 +6,8 @@
 sf::Vector2f vector2f_from_vector2i( sf::Vector2i rhs );
 sf::Vector2f vector2f_from_unsigned_ints(unsigned int x, unsigned int y);
 
+float float_from_double(double x);
+
 unsigned int unsinged_int_from_vector2f(sf::Vector2f rhs);
 unsigned int unsinged_int_from_float(float rhs);
 

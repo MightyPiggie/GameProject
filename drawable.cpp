@@ -12,6 +12,7 @@ drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2
     size(size)
 {}
 
+//TODO Try without the =
 bool drawable::within( int x, int a, int b ){
    return ( x >= a ) && ( x <= b );
 }
@@ -46,6 +47,11 @@ sf::Vector2f drawable::get_size(){return size;}
 
 //virtual void drawable::update(){}
 
-void game_drawable::lower(float y){
-    position.y += y;
+game_drawable::game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state):
+   drawable(window, position, size),
+   object_state(object_state)
+{}
+
+void game_drawable::lower(){
+    position.y += 1;
 }
