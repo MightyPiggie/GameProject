@@ -17,7 +17,8 @@ public:
     {}
 
     void draw() override;
-    void move();
+    void move(std::vector<game_drawable *> &gameobjects);
+    sf::FloatRect getbounds() override;
 
 };
 

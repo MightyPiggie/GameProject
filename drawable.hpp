@@ -1,3 +1,4 @@
+
 #ifndef DRAWABLE_HPP
 #define DRAWABLE_HPP
 
@@ -10,11 +11,13 @@ protected:
     //sf::Sprite image;
 public:
     drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
+    bool within( int x, int a, int b );
     bool overlaps(drawable* other);
     virtual void draw()=0;
     sf::Vector2f get_position();
     sf::Vector2f get_size();
     virtual sf::FloatRect getbounds() {return sf::FloatRect{};};
+
     virtual void update(){}
     sf::Vector2f Vector2f_from_Vector2i( sf::Vector2i rhs );
     sf::Vector2f Vector2f_from_unsigned_ints(unsigned int x, unsigned int y);
@@ -24,7 +27,7 @@ public:
 class game_drawable : public drawable{
 public:
     game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size): drawable(window, position, size){}
-    void lower(float y);
+    void lower();
 };
 
 #endif

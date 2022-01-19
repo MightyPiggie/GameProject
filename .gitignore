@@ -31,7 +31,12 @@
 *.out
 *.app
 
+# Linker files
+_cpp_*
+_linker_*
+
 # Makefiles
 Makefile.*
 Makefile
 README.md
+Makefile
