@@ -4,10 +4,11 @@
 #include <functional>
 #include <map>
 #include <SFML/Graphics.hpp>
+#include "simplefunction.hpp"
 #include "gamestates.hpp"
 #include "drawable.hpp"
-#include "simplefunction.hpp"
 #include "player.hpp"
+#include "label.hpp"
 #include "window_part.hpp"
 #include "obstacle.hpp"
 #include "buttons.hpp"

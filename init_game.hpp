@@ -12,6 +12,7 @@ std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore){
                 input >> name;
                 if (name == "MUNTEN") {
                     input >> attr;
+                    std::cout << attr << std::endl;
                     munten = stoi(attr);
                 } else if (name == "HIGH") {
                     input >> attr;

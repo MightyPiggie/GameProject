@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include "drawable.hpp"
+#include <iostream>
 
 class player : public game_drawable {
 protected:
