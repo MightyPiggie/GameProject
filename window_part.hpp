@@ -23,4 +23,9 @@ public:
         window.draw(sprite);
     }
 };
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/scherm-loop-grid
 #endif

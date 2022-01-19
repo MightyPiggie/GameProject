@@ -26,6 +26,10 @@ public:
     void draw() override;
 
     void update() override;
+
+    void update_coins(uint16_t coins){
+        txt.setString(std::to_string(coins) + " C");
+    }
 };
 
 #endif

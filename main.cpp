@@ -4,6 +4,7 @@ int main( int argc, char *argv[] ){
 	gamewindow game;
 	game.run();
 }
+<<<<<<< HEAD
 <<<<<<< .merge_file_tWF6Aq
 =======
 // int main() {
@@ -15,3 +16,5 @@ int main( int argc, char *argv[] ){
 //     std::cout << stone.overlaps(stone2.getGlobalBounds());
 // }
 >>>>>>> .merge_file_ctDunB
+=======
+>>>>>>> origin/scherm-loop-grid
