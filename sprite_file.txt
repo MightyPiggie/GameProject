@@ -1,4 +1,5 @@
 background_sprite       res/sprites/background.png
+grass_sprite            res/sprites/grass.png
 rails_sprite            res/sprites/rails.png
 roads_sprite            res/sprites/roads.png
 rock_sprite             res/sprites/rock.png

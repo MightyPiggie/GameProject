@@ -1,9 +1,6 @@
 #include "game_screen.hpp"
 
 #include <fstream>
-#include <map>
-#include <string>
-#include <vector>
 
 #include "sprite_factory.hpp"
 #include "init_game.hpp"
@@ -66,6 +63,7 @@ void game_screen::run(){
     obstacle test1 {window, sf::Vector2f{960.0, 0.0}, sf::Vector2f{59.0, 59.0} ,OBSTACLE, sprite_files_map["tree_sprite"]};
     obstacle road1 {window, sf::Vector2f{float(width)/4.f, 120.0}, sf::Vector2f{59.0, 59.0} ,NON_OBSTACLE, sprite_files_map["roads_sprite"]};
     label display_coins(window, sf::Vector2f(float(width) - 200.f, 200), std::to_string(coins), 25, sf::Color::Green);
+    builder builder1(window, sprite_reader.spritefile_read(sprite_file));
     //initialistie menu
     menu Menu(window, {0,0}, vector2f_from_unsigned_ints(width, height));
 
@@ -78,8 +76,10 @@ void game_screen::run(){
         switch (state_t) {
             case GAME: {
                 drawables = {&left,&game_window, &road1, &right, &quit_gamewindow, &back_to_menu_from_gamewindow,&player1, &test1, &display_coins};
-                updateables = {&back_to_menu_from_gamewindow, &quit_gamewindow};
-
+                updateables = {&back_to_menu_from_gamewindow, &quit_gamewindow, &builder1};
+                gameobjects = {&player1, &test1 , &road1};
+                std::vector<obstacle*> undergrounds = builder1.return_underground();
+                gameobjects.insert(gameobjects.begin(), undergrounds.begin(), undergrounds.begin()+undergrounds.size());
                 for(auto object : gameobjects){
                     object->lower();
                 }
@@ -113,6 +113,8 @@ void game_screen::run(){
         for (auto &object: updateables) {
             object->update();
         }
+        std::vector<obstacle*> undergrounds1 = builder1.return_underground();
+        drawables.insert(drawables.begin()+2, undergrounds1.begin(),  undergrounds1.begin()+undergrounds1.size());
         for (auto &object: drawables) {
             object->draw();
         }
