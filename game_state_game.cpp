@@ -46,7 +46,7 @@ void game_state_game::update() {
     for( auto & object : game_drawables){
         object->lower();
     }
-    display_coins.update("Coins" + std::to_string(coins));
+    display_coins.update("Coins: " + std::to_string(coins));
     display_score.update("Score: " + std::to_string(score));
 
     sf::Event event{};
