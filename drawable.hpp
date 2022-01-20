@@ -19,7 +19,6 @@ public:
     sf::Vector2f get_position();
     sf::Vector2f get_size();
     virtual sf::FloatRect getbounds() {return sf::FloatRect{};};
-
 };
 
 class game_drawable : public drawable{
