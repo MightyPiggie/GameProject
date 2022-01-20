@@ -8,7 +8,8 @@ window_part::window_part(sf::RenderWindow& window, sf::Vector2f position, sf::Ve
     rect.setFillColor(color);
 }
 
-window_part::window_part(sf::RenderWindow& window, sf::Vector2f position,std::string filename):
+window_part::window_part(
+        sf::RenderWindow& window, sf::Vector2f position,std::string filename):
     drawable(window, position, {0,0})
 {
     rect.setSize(sf::Vector2f(0,0));

@@ -8,7 +8,6 @@ void player::draw() {
 }
 
 void player::move(std::vector<game_drawable *> &gameobjects) {
-
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
@@ -40,6 +39,9 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                 if(object->object_state != NON_OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, movement_speed};
+                    }else{
+                        std::cout << highscore << std::endl;
+                        highscore++;
                     }
                 }
             }
@@ -52,6 +54,8 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                 if(object->object_state != NON_OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, -movement_speed};
+                    }else{
+                        if(highscore >= 1){highscore--; }
                     }
                 }
             }

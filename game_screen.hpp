@@ -16,7 +16,7 @@ private:
     //unsigned int ticks = 0;
     sf::RenderWindow window{ sf::VideoMode( width,height,32), "SFML window" , sf::Style::Fullscreen};
     state state_t;
-    //uint16_t score = 0;
+    uint16_t score = 0;
     uint16_t highscore;
     uint16_t coins;
     std::vector<std::string> unlocked_players = {};

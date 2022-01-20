@@ -26,7 +26,6 @@ void builder::update() {
 
 void builder::build_underground(float height, bool force_underground_grass) {
     unsigned int underground_type = random_int_between_range(0,4);
-    std::cout << underground_type << std::endl;
     if(underground_type == 0 && force_underground_grass == false) {
         obstacle* tmp = new obstacle {window, sf::Vector2f{float(sf::VideoMode::getDesktopMode().width)/4.f, height},  sf::Vector2f{59.0, 59.0} ,NON_OBSTACLE, sprite_factory["rails_sprite"]};
         sprite_builds.push_back(tmp);
@@ -60,6 +59,5 @@ void builder::start_playground() {
     }
     for(int i = sf::VideoMode::getDesktopMode().height-5*60; i >= -60; i-=60) {
         build_underground(i);
-        std::cout << i << std::endl;
     }
 }

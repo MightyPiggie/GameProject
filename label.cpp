@@ -6,7 +6,6 @@
 
 label::label(sf::RenderWindow &window,
         sf::Vector2f position,
-        //sf::Vector2f size_rect,
         std::string text_string,
         int size_char,
         sf::Color hover_color,
@@ -27,7 +26,7 @@ label::label(sf::RenderWindow &window,
     text_SFML.setString(text_string);
     text_SFML.setCharacterSize(size_char);
     rect_SFML.setPosition(position - sf::Vector2f(text_SFML.getGlobalBounds().width*0.5, 0));
-    size = {text_SFML.getGlobalBounds().width*2, static_cast<float>(text_SFML.getGlobalBounds().height*1.5)};
+    size = {text_SFML.getGlobalBounds().width*2, float_from_double(text_SFML.getGlobalBounds().height*1.5)};
     rect_SFML.setSize(size);
     rect_SFML.setFillColor(hover_color);
 }
@@ -46,4 +45,10 @@ void label::update() {
         rect_SFML.setFillColor(hover_color);
         text_SFML.setFillColor(text_color);
     }
+}
+void label::update(std::string new_value) {
+    text_SFML.setString(new_value);
+    rect_SFML.setPosition(position - sf::Vector2f(text_SFML.getGlobalBounds().width*0.5, 0));
+    size = {text_SFML.getGlobalBounds().width*2, float_from_double(text_SFML.getGlobalBounds().height*1.5)};
+    rect_SFML.setSize(size);
 }
