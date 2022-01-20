@@ -1,2 +1,3 @@
 PLAYER koe
+HIGH 15
 MUNTEN 10

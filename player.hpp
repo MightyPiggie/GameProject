@@ -15,12 +15,14 @@ protected:
     float movement_speed = 60;
     unsigned int window_width;
     unsigned int window_height;
+    uint16_t & highscore;
 public:
-    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height):
+    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size , std::string  filename , unsigned int window_width, unsigned int window_height, uint16_t & highscore):
             game_drawable(window, position, size, NON_OBSTACLE),
             filename(filename),
             window_width(window_width),
-            window_height(window_height)
+            window_height(window_height),
+            highscore(highscore)
     {}
 
     void draw() override;

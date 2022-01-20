@@ -23,7 +23,6 @@ protected:
 public:
     label(sf::RenderWindow &window,
         sf::Vector2f position,
-        //sf::Vector2f size_rect,
         std::string text_string,
         int size_char,
         sf::Color hover_color,
@@ -32,6 +31,7 @@ public:
     void draw() override;
 
     void update() override;
+    void update(std::string new_value);
 };
 
 #endif

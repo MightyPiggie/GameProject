@@ -7,14 +7,6 @@
 #include "init_game.hpp"
 
 #include "game_state_game.hpp"
-
-#include "buttons.hpp"
-#include "simple_functions.hpp"
-#include "window_part.hpp"
-#include "player.hpp"
-#include "builder.hpp"
-#include "menu.hpp"
-#include "obstacle.hpp"
 #include "shop.hpp"
 
 
@@ -35,10 +27,9 @@ void game_screen::run(){
 
     //start state
 
-    state_t = SHOP;
+    state_t = GAME;
     //initialisatie game
-    game_state_game game(window, width, height, sprite_files_map, coins, state_t);
-
+    game_state_game game(window, width, height, sprite_files_map, coins, score,  state_t);
     //Shop
     shop Shop(window, state_t, width, height);
 
@@ -47,7 +38,6 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
-
                 game.draw();
                 game.update();
                 break;

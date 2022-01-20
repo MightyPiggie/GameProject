@@ -15,6 +15,7 @@ class game_state_game : public drawable{
 private:
     std::map<std::string , std::string> & sprite_files_map;
     uint16_t & coins;
+    uint16_t & score;
     state & state_t;
     window_part left;
     window_part right;
@@ -23,12 +24,13 @@ private:
     obstacle test1;
     obstacle road1;
     label display_coins;
+    label display_score;
     buttons quit_gamewindow;
     buttons back_to_menu_gamewindow;
     std::vector<drawable *> drawables;
     std::vector<game_drawable *> game_drawables;
 public:
-    game_state_game(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string , std::string> & sprite_files_map, uint16_t & coins, state & state_t);
+    game_state_game(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string , std::string> & sprite_files_map, uint16_t & coins, uint16_t &score, state & state_t);
     void draw() override;
     void update() override;
 };
