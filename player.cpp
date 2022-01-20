@@ -40,8 +40,8 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, movement_speed};
                     }else{
-                        std::cout << highscore << std::endl;
-                        highscore++;
+                        std::cout << score << std::endl;
+                        score++;
                     }
                 }
             }
@@ -55,7 +55,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, -movement_speed};
                     }else{
-                        if(highscore >= 1){highscore--; }
+                        if(score >= 1){score--; }
                     }
                 }
             }
