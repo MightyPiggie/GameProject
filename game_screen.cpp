@@ -35,13 +35,15 @@ void game_screen::run(){
 
     //start state
 
-    state_t = SHOP;
+    state_t = MENU;
     //initialisatie game
     game_state_game game(window, width, height, sprite_files_map, coins, state_t);
 
     //Shop
     shop Shop(window, state_t, width, height);
 
+    //Menu
+    game_state_menu menu_state(window, width, height,state_t,sprite_files_map);
 
     while (window.isOpen()) {
         window.clear();
@@ -53,8 +55,8 @@ void game_screen::run(){
                 break;
             }
             case MENU: { // TODO Check updateables
-                drawables = {&menu_state};
-                updateables = {&menu_state};
+                menu_state.draw();
+                menu_state.update();
                 break;
             }
             case DEAD: {
