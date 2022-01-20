@@ -35,7 +35,7 @@ void game_screen::run(){
 
     //start state
 
-    state_t = GAME;
+    state_t = SHOP;
     //initialisatie game
     game_state_game game(window, width, height, sprite_files_map, coins, state_t);
 

@@ -22,4 +22,7 @@ void shop::update() {
     for(auto &object: objects){
         object->update();
     }
+    sf::Event event{};
+    while (window.pollEvent(event)) {}
+
 }
