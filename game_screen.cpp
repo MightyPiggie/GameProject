@@ -42,6 +42,7 @@ void game_screen::run(){
             case GAME: {
                 game.draw();
                 game.update();
+
                 break;
             }
             case MENU: { // TODO Check updateables
