@@ -59,4 +59,6 @@ void game_state_menu::update(){
     for(auto &object : objects){
         object->update();
     }
+    sf::Event event{};
+    while (window.pollEvent(event)){}
 }
