@@ -28,3 +28,13 @@ std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore){
     }
     return list;
 }
+void save(std::vector<std::string> player_list, uint16_t & coins, uint16_t & highscore){
+    std::ofstream output("player.txt");
+    while(output.is_open()){
+//        "MUNTEN " >> std::to_string(coins) >> "\n" >> output;
+//        "HIGH " >> std::to_string(highscore)  >> "\n" >> output;
+//        for(auto player : player_list){
+//            "PLAYER " >> player >> "\n" >> output
+//        }output.close();
+    }
+}
