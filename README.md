@@ -12,5 +12,5 @@ Naam|Studentnummer|GitHub username|
 |Daan Smienk|1777127|MightyPiggie|
 |Rick||rick2003|
 |Isaak van Luijk|1776211|SjaakyNewton|
-|Rogier||RogiervR|
+|Rogier|1786347|RogiervR|
 

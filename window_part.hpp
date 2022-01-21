@@ -17,6 +17,7 @@ public:
     window_part(sf::RenderWindow& window, sf::Vector2f position,std::string filename);
 
     void draw() override;
+    void rescale(sf::Vector2f new_scale);
 };
 
 #endif
