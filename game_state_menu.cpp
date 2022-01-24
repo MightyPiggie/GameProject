@@ -13,25 +13,33 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  state & state_t,
-                                 std::map<std::string , std::string> & sprite_files_map
+                                 std::map<std::string , std::string> & sprite_files_map,
+                                 uint16_t highscore,
+                                uint16_t coins
+
                                 ):
                                 drawable(window, {0,0}, vector2f_from_unsigned_ints(width,height)),
                                 state_t(state_t),
                                 sprite_files_map(sprite_files_map),
+                                highscore(highscore),
+                                coins(coins),
 
-                                background_menu_window(window, vector2f_from_unsigned_ints(0,0),sprite_files_map["menu_background_sprite"]),
+//                                background_menu_window(window, vector2f_from_unsigned_ints(0,0),sprite_files_map["menu_background_sprite"]),
+                                background_menu_window(window, vector2f_from_unsigned_ints(0,0),"res/sprites/menu_background_river.png"),
                                 quit_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 - 550, height/2 + 350),[&](){window.close();},"Quit", sf::Color(163 , 235 , 177)),
                                 start_game(window, 50,  vector2f_from_unsigned_ints(width/2 - 140, height/2 + 350), [&](){state_t = GAME;},"Start", sf::Color(163 , 235 , 177)),
                                 shop_button_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 + 350, height/2 + 350),[&](){state_t = SHOP;},"Shop", sf::Color(163 , 235 , 177)),
 
 
                                 title_in_menu_window(window,vector2f_from_unsigned_ints(width/2-500, height/2 - 300),"Levensmoedige vogel",60,sf::Color(163 , 235 , 177)),
-                                player_icon_menu_window(window, vector2f_from_unsigned_ints(width/2 -180,height/2 - 100),sprite_files_map["chicken_sprite"])
+                                //player_icon_menu_window(window, vector2f_from_unsigned_ints(width/2 -180,height/2 - 100),sprite_files_map["chicken_sprite"]),
+                                player_icon_menu_window(window, vector2f_from_unsigned_ints(width/2 -200,height/2 - 100),"res/sprites/chicken_menu.png"),
+
+                                display_coins_menu(window, sf::Vector2f(float(width) - 250.f, 50), "Coins " + std::to_string(coins), 25, sf::Color(163 , 235 , 177)),
+                                display_score_menu(window, sf::Vector2f(float(width) - 250.f, 100), "HighS " + std::to_string(highscore), 25, sf::Color(163 , 235 , 177))
+
 
                                 {
-                                    player_icon_menu_window.rescale(sf::Vector2f {5,5});
-
-
                                 //TODO FIX THIS
                                 objects = {
                                         &background_menu_window,
@@ -40,7 +48,8 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                         &shop_button_in_menu_window,
                                         &title_in_menu_window,
                                         &player_icon_menu_window,
-                                        &title_in_menu_window_sound_test
+                                        &display_coins_menu,
+                                        &display_score_menu
                                     };
                                 }
 
