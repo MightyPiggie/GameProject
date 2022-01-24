@@ -28,14 +28,14 @@ game_state_game::game_state_game(sf::RenderWindow & window,
                                 car {window, sf::Vector2f{900.0, 300.0}, sf::Vector2f{59.0, 59.0} ,OBSTACLE, sprite_files_map["car_cool_sprite"]}
 //                                screenshot_gamescreen{}
 {
-    drawables = {&left, &game_window, &tree, &tree_trunk, &right, &display_coins, &display_score, & quit_gamewindow, &back_to_menu_gamewindow, &player1 , &train , &car};
-    updatables = {&left,&right, &game_window, &display_coins, &display_score, & quit_gamewindow, &back_to_menu_gamewindow, &player1, &builder1, &tree , &tree_trunk, &train, &car};
+    drawables = {&left, &game_window, &tree, &tree_trunk, &right, &display_coins, &display_score, &display_highscore, & quit_gamewindow, &back_to_menu_gamewindow, &player1 , &train , &car};
+    updatables = {&left,&right, &game_window, &display_coins, &display_score,&display_highscore, & quit_gamewindow, &back_to_menu_gamewindow, &player1, &tree , &tree_trunk, &train, &car};
     game_drawables = {&player1, &tree , &tree_trunk, &train, &car};
 //    screenshot_gamescreen.update(window);
 }
 void game_state_game::draw(){
-    drawables = {&left, &game_window, &tree, &tree_trunk,  &right, &display_coins, &display_score, & quit_gamewindow, &back_to_menu_gamewindow, &player1, &train, &car};
-    std::vector<obstacle*> undergrounds1 = builder1.return_underground();
+    drawables = {&left, &game_window, &tree, &tree_trunk,  &right, &display_coins, &display_score,&display_highscore, & quit_gamewindow, &back_to_menu_gamewindow, &player1, &train, &car};
+    std::vector<obstacle*> undergrounds1 = builder1.return_underground_obstacles();
     drawables.insert(drawables.begin()+2, undergrounds1.begin(),  undergrounds1.begin()+undergrounds1.size());
     for( auto & object : drawables){
         object->draw();
