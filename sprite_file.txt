@@ -14,3 +14,4 @@ menu_background_river   res/sprites/menu_background_river.png
 player_icon_menu        res/sprites/chicken_menu.png
 background_barn_test    res/sprites/menu_background_test.png
 background_barn_test2   res/sprites/menu_background_test_nochicken.png
+icon                    res/sprites/chicken_icon.png

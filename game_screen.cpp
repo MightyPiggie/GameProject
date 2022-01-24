@@ -21,17 +21,16 @@ void game_screen::run(){
     window.setFramerateLimit(60);
     unlocked_players = init();
 
-
-    /// Zet een icon neer voor in de taakbalk.
-    auto image = sf::Image{};
-    image.loadFromFile("res/sprites/chicken.png");
-    window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
-
-
     //sprite factory
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader;
     std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
+
+
+    /// Zet een icon neer voor in de taakbalk.
+    auto image = sf::Image{};
+    image.loadFromFile(sprite_files_map["icon"]);
+    window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
 
     //start state
     state_t = MENU;
