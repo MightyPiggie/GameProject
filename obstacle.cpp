@@ -1,7 +1,9 @@
 #include "obstacle.hpp"
 
-obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f size, object_states object_state , std::string filename ):
-    game_drawable(window, position, size , object_state), filename(filename)
+#include <iostream>
+
+obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f size, shitty_fix_enum state_t, object_states object_state , std::string filename):
+    game_drawable(window, position, size, state_t, object_state), filename(filename)
 {
     texture.loadFromFile(filename);
     sprite.setTexture(texture);

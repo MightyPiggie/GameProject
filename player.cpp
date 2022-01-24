@@ -6,7 +6,7 @@ void player::draw() {
     sprite.setPosition(position);
     window.draw(sprite);
 }
-
+//TODO check if this can be renamed to update
 void player::move(std::vector<game_drawable *> &gameobjects) {
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};

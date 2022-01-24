@@ -40,8 +40,8 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
-                game.draw();
                 game.update();
+                game.draw();
 
                 break;
             }

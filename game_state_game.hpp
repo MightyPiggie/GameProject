@@ -28,7 +28,6 @@ private:
     buttons quit_gamewindow;
     buttons back_to_menu_gamewindow;
     builder builder1;
-    obstacle tree;
     std::vector<drawable*> drawables;
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;
