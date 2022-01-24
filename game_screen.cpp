@@ -53,8 +53,8 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
-                game_state.draw();
                 game_state.update();
+                game_state.draw();
                 break;
             }
             case MENU: { // TODO Check updateables

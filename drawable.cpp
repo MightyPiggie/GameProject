@@ -18,7 +18,7 @@ bool drawable::within( int x, int a, int b ){
 }
 
 bool drawable::overlaps(drawable* other) {
-    bool x_overlap = within( 
+   bool x_overlap = within( 
       position.x, 
       other->position.x, 
       other->position.x + other->size.x
@@ -27,7 +27,7 @@ bool drawable::overlaps(drawable* other) {
       position.x, 
       position.x + size.x
    );
-    bool y_overlap = within( 
+   bool y_overlap = within( 
       position.y, 
       other->position.y, 
       other->position.y + other->size.y
@@ -53,5 +53,5 @@ game_drawable::game_drawable(sf::RenderWindow & window, sf::Vector2f position, s
 {}
 
 void game_drawable::lower(){
-    position.y += 1;
+   position.y += 1;
 }

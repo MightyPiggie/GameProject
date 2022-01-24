@@ -46,9 +46,10 @@ void game_state_game::update() {
         object->update();
     }
     game_drawables = {&player1, &tree , &tree_trunk, &train , &car};
-    std::vector<obstacle*> undergrounds = builder1.return_underground();
+    std::vector<obstacle*> undergrounds = builder1.return_underground_obstacles();
     game_drawables.insert(game_drawables.begin(), undergrounds.begin(), undergrounds.begin()+undergrounds.size());
     if(gameSettings.started){
+        builder1.update();
         for( auto & object : game_drawables){
         object->lower();
         }

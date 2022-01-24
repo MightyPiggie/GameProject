@@ -13,7 +13,7 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
 public:
-    obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename );
+    obstacle(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename);
     void draw() override;
     sf::FloatRect getbounds() override;
 };
