@@ -14,7 +14,7 @@ lilypad_sprite          res/sprites/lilypad.png
 tree_sprite             res/sprites/tree.png
 tree_trunk_sprite       res/sprites/tree_trunk_3t.png
 train_sprite            res/sprites/train.png
-beta_player_sprite      res/sprites/beta_player.png
+beta_player_sprite     res/sprites/beta_player.png
 chicken_sprite          res/sprites/chicken.png
 game_bg_forrest_left    res/sprites/game_background_left_forest.png
 game_bg_forrest_right   res/sprites/game_background_right_forest.png
@@ -23,3 +23,10 @@ player_icon_menu        res/sprites/chicken_menu.png
 background_barn_test    res/sprites/menu_background_test.png
 background_barn_test2   res/sprites/menu_background_test_nochicken.png
 icon                    res/sprites/chicken_icon.png
+
+pacman_player_sprite    res/sprites/pacman_player.png
+slime_player            res/sprites/slime_player.png
+
+chicken_shop            res/sprites/chicken_menu.png
+slime_shop              res/sprites/slime_shop.png
+pacman_shop             res/sprites/pacman_shop.png
