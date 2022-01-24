@@ -12,12 +12,12 @@
 #include "sprite_factory.hpp"
 #include "buttons.hpp"
 #include "builder.hpp"
+#include "game_settings.hpp"
 
 class game_state_game : public drawable{
 private:
     std::map<std::string , std::string> & sprite_files_map;
-    uint16_t & coins;
-    uint16_t & score;
+    game_settings & gameSettings;
     state & state_t;
     window_part left;
     window_part right;
@@ -33,7 +33,12 @@ private:
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;
 public:
-    game_state_game(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string , std::string> & sprite_files_map, uint16_t & coins, uint16_t &score, state & state_t);
+    game_state_game(sf::RenderWindow & window,
+                    unsigned int width,
+                    unsigned int height,
+                    std::map<std::string , std::string> & sprite_files_map,
+                    game_settings & gameSettings,
+                    state & state_t);
     void draw() override;
     void update() override;
 };

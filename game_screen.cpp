@@ -12,7 +12,7 @@
 
 
 std::vector<std::string> game_screen::init(){
-    return read_values(coins, highscore);
+    return read_values(game_setting);
 }
 
 void game_screen::run(){
@@ -36,7 +36,7 @@ void game_screen::run(){
     //start state
     state_t = MENU;
     //initialisatie game
-    game_state_game game(window, width, height, sprite_files_map, coins, score,  state_t);
+    game_state_game game(window, width, height, sprite_files_map, game_setting,  state_t);
     //Shop
     shop Shop(window, state_t, width, height);
 
