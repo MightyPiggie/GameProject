@@ -24,6 +24,7 @@ private:
     window_part game_window;
     player player1;
     label display_coins;
+    label display_highscore;
     label display_score;
     buttons quit_gamewindow;
     buttons back_to_menu_gamewindow;

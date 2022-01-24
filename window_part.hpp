@@ -18,6 +18,7 @@ public:
 
     void draw() override;
     void rescale(sf::Vector2f new_scale);
+    void new_sprite(std::string path);
 };
 
 #endif

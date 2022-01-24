@@ -20,7 +20,6 @@ void game_screen::run(){
     window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     unlocked_players = init();
-
     //sprite factory
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader;
@@ -31,7 +30,7 @@ void game_screen::run(){
     //initialisatie game
     game_state_game game(window, width, height, sprite_files_map, game_setting,  state_t);
     //Shop
-    shop Shop(window, state_t, width, height);
+    shop Shop(window, state_t, width, height, unlocked_players, sprite_files_map);
 
     //Menu
     game_state_menu menu_state(window, width, height,state_t,sprite_files_map);

@@ -1,3 +1,5 @@
-PLAYER koe
 HIGH 15
 MUNTEN 10
+PLAYER chicken_sprite
+PLAYER beta_player_sprite
+
