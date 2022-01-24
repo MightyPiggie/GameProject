@@ -29,11 +29,15 @@ private:
     buttons back_to_menu_gamewindow;
     builder builder1;
     obstacle tree;
+    obstacle tree_trunk;
+    obstacle train;
+    obstacle car;
     std::vector<drawable*> drawables;
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;
 public:
     game_state_game(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string , std::string> & sprite_files_map, uint16_t & coins, uint16_t &score, state & state_t);
+    sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
 };

@@ -39,12 +39,12 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                 if(object->object_state != NON_OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, movement_speed};
-                    }else{
-                        score++;
                     }
                 }
             }
         }
+        //todo score ivm met objecten moet elke keer maar 1 omhoog gaan en niet hoevaak er objecten zijn
+        score++;
     }
     else if(position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         position += sf::Vector2f{0, +movement_speed};

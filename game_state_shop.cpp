@@ -1,6 +1,6 @@
-#include "shop.hpp"
+#include "game_state_shop.hpp"
 
-shop::shop(sf::RenderWindow& window,state & state_t, unsigned int width,unsigned int height): drawable(window,
+game_state_shop::game_state_shop(sf::RenderWindow& window,state & state_t, unsigned int width,unsigned int height): drawable(window,
                                                                                                                              {0,0}, {0,0}),
                                                                                                                              state_t(state_t),
                                                                                                                              shop_window(window, {0,0}, {float(width), float(height)}, sf::Color(33,182,168)),
@@ -12,13 +12,13 @@ shop::shop(sf::RenderWindow& window,state & state_t, unsigned int width,unsigned
     objects = {&shop_window,&quit_gamewindow,&back_to_menu_from_gamewindow, &shop_buy_button};
 }
 
-void shop::draw() {
+void game_state_shop::draw() {
     for(auto &object : objects){
         object->draw();
     }
 }
 
-void shop::update() {
+void game_state_shop::update() {
     for(auto &object: objects){
         object->update();
     }

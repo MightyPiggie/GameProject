@@ -1,5 +1,5 @@
-#ifndef SHOP_HPP
-#define SHOP_HPP
+#ifndef GAME_STATE_SHOP_HPP
+#define GAME_STATE_SHOP_HPP
 #include <SFML/Graphics.hpp>
 
 #include "drawable.hpp"
@@ -8,7 +8,7 @@
 #include "window_part.hpp"
 
 //initialisatie shop
-class shop : public drawable{
+class game_state_shop : public drawable{
 private:
     state & state_t;
     std::vector<drawable*> objects;
@@ -18,7 +18,7 @@ private:
     buttons shop_buy_button;
 
 public:
-    shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height);
+    game_state_shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height);
     void draw() override;
     void update() override;
 
