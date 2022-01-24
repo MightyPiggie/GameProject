@@ -45,7 +45,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
             }
         }
         //todo score ivm met objecten moet elke keer maar 1 omhoog gaan en niet hoevaak er objecten zijn
-        gamesetting.score++;
+        game_setting.score++;
     }
     else if(position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
         position += sf::Vector2f{0, +movement_speed};

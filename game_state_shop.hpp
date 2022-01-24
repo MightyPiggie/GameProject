@@ -25,7 +25,7 @@ private:
     window_part third;
     std::string chosen_player;
 public:
-    game_state_shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height, std::vector<std::string> & unlocked_players, std::map<std::string, std::string> & path);
+    game_state_shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height, std::vector<std::string> & unlocked_players, std::map<std::string, std::string> & sprite_files_map);
     void draw() override;
     void update() override;
 

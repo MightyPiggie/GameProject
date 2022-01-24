@@ -1,8 +1,8 @@
 #include "game_state_shop.hpp"
 
-game_state_shop::game_state_shop(sf::RenderWindow& window,state & state_t, unsigned int width,unsigned int height): drawable(window,
+game_state_shop::game_state_shop(sf::RenderWindow& window,state & state_t, unsigned int width,unsigned int height, std::vector<std::string> & unlocked_players, std::map<std::string, std::string> & sprite_files_map): drawable(window,
                                                                                                                              {0,0}, {0,0}),
-                                                                                                                             state_t(state_t),
+                                                                                                                             state_t(state_t), unlocked_players(unlocked_players), sprite_files_map(sprite_files_map),
                                                                                                                              shop_window(window, {0,0}, {float(width), float(height)}, sf::Color(33,182,168)),
                                                                                                                     quit_gamewindow(window, 50,  {40,30},  [&](){window.close();},"Quit", sf::Color(163 , 235 , 177)),
                                                                                                                     back_to_menu_from_gamewindow(window, 50,  {40, 120}, [&](){state_t = MENU;},"Menu", sf::Color(163 , 235 , 177)),

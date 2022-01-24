@@ -36,16 +36,16 @@ void game_screen::run(){
     //start state
     state_t = MENU;
     //Game State
-    game_state_game game_state(window, width, height, sprite_files_map, coins, score,  state_t);
+    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
 
     //Menu State
-    game_state_menu menu_state(window, width, height,state_t,sprite_files_map);
+    game_state_menu menu_state(window, width, height,state_t,sprite_files_map , game_setting);
 
     //Dead State
     game_state_dead dead_state(window, width, height, sprite_files_map,  state_t);
 
     //Shop State
-    game_state_shop shop_state(window, state_t, width, height);
+    game_state_shop shop_state(window, state_t, width, height , unlocked_players , sprite_files_map);
 
 
 
