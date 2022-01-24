@@ -30,3 +30,7 @@ void window_part::draw(){
 void window_part::rescale(sf::Vector2f new_scale){
     sprite.setScale(new_scale);
 }
+void window_part::new_sprite(std::string path) {
+    texture.loadFromFile(path);
+    sprite.setTexture(texture);
+}

@@ -52,10 +52,10 @@ bool drawable::overlaps(drawable* other) {
       );
       bool y_overlap = within( 
          position.y, 
-         other->position.y-60, 
-         other->position.y-60 + other->size.y
+         other->position.y, 
+         other->position.y + other->size.y
       ) || within( 
-         other->position.y-60, 
+         other->position.y, 
          position.y, 
          position.y + size.y
       );

@@ -33,6 +33,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         }
     }
     else if(position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        game_setting.started = true;
         position += sf::Vector2f{0, -movement_speed};
         for(auto &object : gameobjects) {
             if (object != this || gameobjects.size() == 1) {
@@ -40,7 +41,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, movement_speed};
                     }else{
-                        score++;
+                        game_setting.score++;
                     }
                 }
             }
@@ -54,7 +55,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, -movement_speed};
                     }else{
-                        if(score >= 1){score--; }
+                        if(game_setting.score >= 1){game_setting.score--; }
                     }
                 }
             }

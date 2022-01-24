@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-
-std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore);
+#include "game_settings.hpp"
+std::vector<std::string> read_values(game_settings & game);
 void save(std::vector<std::string> player_list, uint16_t & coins, uint16_t & highscore);
 #endif
