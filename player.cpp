@@ -54,12 +54,10 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
                 if(object->object_state != NON_OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, -movement_speed};
-                    }else{
-                        if(game_setting.score >= 1){game_setting.score--; }
                     }
                 }
             }
-        }
+        }if(game_setting.score >= 1){game_setting.score--; }
     }
 }
 
