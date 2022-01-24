@@ -14,6 +14,7 @@ class label : public drawable{
 protected:
     std::string text_string;
     int size_char;
+    bool rectangle_display;
     sf::Color text_color;
     sf::Color background_text_color;
 
@@ -26,6 +27,7 @@ public:
         std::string text_string,
         int size_char,
         sf::Color background_text_color,
+        bool rectangle_display = true,
         sf::Color text_color = sf::Color::Black);
 
     void draw() override;

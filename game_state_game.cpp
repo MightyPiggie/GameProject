@@ -6,19 +6,19 @@ game_state_game::game_state_game(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  std::map<std::string , std::string> & sprite_files_map,
-                                 uint16_t & coins,
-                                 uint16_t & score,
+                                 game_settings & gameSettings,
                                  state & state_t
 ):
                                 drawable(window,{0,0},{0,0}),
                                 sprite_files_map(sprite_files_map),
-                                coins(coins), score(score),  state_t(state_t),
-                                left(window,{0,0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168)),
-                                right(window, {float(width)*3/4, 0}, {float(width)/4.f, float(height)} , sf::Color(33 , 182 , 168)),
+                                gameSettings(gameSettings),   state_t(state_t),
+                                left(window,{0,0}, sprite_files_map["game_bg_forrest_left"]),
+                                right(window, {float(width)*3/4, 0},sprite_files_map["game_bg_forrest_right"]),
                                 game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]),
-                                player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["chicken_sprite"], width , height, score},
-                                display_coins(window, sf::Vector2f(float(width) - 175.f, 50), std::to_string(coins), 25, sf::Color(163 , 235 , 177)),
-                                display_score(window, sf::Vector2f(float(width) - 175.f, 150), std::to_string(score), 25, sf::Color(163 , 235 , 177)),
+                                player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["chicken_sprite"], width , height, gameSettings},
+                                display_coins(window, sf::Vector2f(float(width) - 250.f, 50), std::to_string(gameSettings.coins), 25, sf::Color(163 , 235 , 177), false),
+                                display_highscore(window, sf::Vector2f(float(width) - 250.f, 100), "highs: " + std::to_string(gameSettings.highscore), 25, sf::Color(163 , 235 , 177), false),
+                                display_score(window, sf::Vector2f(float(width) - 250.f, 150), std::to_string(gameSettings.score), 25, sf::Color(163 , 235 , 177), false),
                                 quit_gamewindow(window, 50,  {40,30},  [&](){window.close();},"Quit", sf::Color(163 , 235 , 177)),
                                 back_to_menu_gamewindow(window, 50,  {40, 120}, [&](){state_t = MENU;},"Menu", sf::Color(163 , 235 , 177)),
                                 builder1(window, sprite_files_map),
@@ -48,12 +48,13 @@ void game_state_game::update() {
     game_drawables = {&player1, &tree , &tree_trunk, &train , &car};
     std::vector<obstacle*> undergrounds = builder1.return_underground();
     game_drawables.insert(game_drawables.begin(), undergrounds.begin(), undergrounds.begin()+undergrounds.size());
-    for( auto & object : game_drawables){
+    if(gameSettings.started){
+        for( auto & object : game_drawables){
         object->lower();
+        }
     }
-
-    display_coins.update_text("Coins  " + std::to_string(coins));
-    display_score.update_text("Score  " + std::to_string(score));
+    display_coins.update_text("Coins  " + std::to_string(gameSettings.coins));
+    display_score.update_text("Score  " + std::to_string(gameSettings.score));
 
     sf::Event event{};
         while (window.pollEvent(event)) {

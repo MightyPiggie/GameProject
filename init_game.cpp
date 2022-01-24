@@ -2,7 +2,7 @@
 
 #include <fstream>
 
-std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore){
+std::vector<std::string> read_values(game_settings & game){
     std::vector<std::string> list;
     //read file
     std::ifstream input("player.txt");
@@ -14,10 +14,10 @@ std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore){
                 input >> name;
                 if (name == "MUNTEN") {
                     input >> attr;
-                    munten = stoi(attr);
+                    game.coins = stoi(attr);
                 } else if (name == "HIGH") {
                     input >> attr;
-                    highscore = stoi(attr);
+                    game.highscore = stoi(attr);
                 } else if (name == "PLAYER") {
                     input >> attr;
                     list.push_back(attr);
@@ -28,11 +28,11 @@ std::vector<std::string> read_values(uint16_t & munten, uint16_t & highscore){
     }
     return list;
 }
-void save(std::vector<std::string> player_list, uint16_t & coins, uint16_t & highscore){
+void save(std::vector<std::string> player_list, game_settings & game){
     std::ofstream output("player.txt");
     while(output.is_open()){
-//        "MUNTEN " >> std::to_string(coins) >> "\n" >> output;
-//        "HIGH " >> std::to_string(highscore)  >> "\n" >> output;
+//        "MUNTEN " >> std::to_string(game.coins) >> "\n" >> output;
+//        "HIGH " >> std::to_string(game.highscore)  >> "\n" >> output;
 //        for(auto player : player_list){
 //            "PLAYER " >> player >> "\n" >> output
 //        }output.close();

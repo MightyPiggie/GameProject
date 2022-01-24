@@ -11,14 +11,21 @@
 class game_state_shop : public drawable{
 private:
     state & state_t;
+    std::vector<std::string> all_players = {"chicken_sprite", "beta_player_sprite", "chicken_sprite"};
+    std::vector<std::string> & unlocked_players;
+    std::map<std::string, std::string> & sprite_files_map;
+    std::vector<window_part> sprites;
     std::vector<drawable*> objects;
     window_part shop_window;
     buttons quit_gamewindow;
     buttons back_to_menu_from_gamewindow;
-    buttons shop_buy_button;
-
+    buttons first_buy_button;
+    window_part first;
+    window_part second;
+    window_part third;
+    std::string chosen_player;
 public:
-    game_state_shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height);
+    game_state_shop(sf::RenderWindow& window, state & state_t,unsigned int width,unsigned int height, std::vector<std::string> & unlocked_players, std::map<std::string, std::string> & path);
     void draw() override;
     void update() override;
 

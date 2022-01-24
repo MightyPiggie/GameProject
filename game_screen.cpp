@@ -13,7 +13,7 @@
 
 
 std::vector<std::string> game_screen::init(){
-    return read_values(coins, highscore);
+    return read_values(game_setting);
 }
 
 void game_screen::run(){
@@ -27,8 +27,14 @@ void game_screen::run(){
     sprite_factory sprite_reader;
     std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
 
+
+    /// Zet een icon neer voor in de taakbalk.
+    auto image = sf::Image{};
+    image.loadFromFile(sprite_files_map["icon"]);
+    window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
+
     //start state
-    state_t = GAME;
+    state_t = MENU;
     //Game State
     game_state_game game_state(window, width, height, sprite_files_map, coins, score,  state_t);
 
