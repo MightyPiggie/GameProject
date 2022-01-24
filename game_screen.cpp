@@ -41,7 +41,7 @@ void game_screen::run(){
     shop Shop(window, state_t, width, height);
 
     //Menu
-    game_state_menu menu_state(window, width, height,state_t,sprite_files_map,highscore, coins);
+    game_state_menu menu_state(window, width, height,state_t,sprite_files_map,game_setting);
 
     while (window.isOpen()) {
         window.clear();

@@ -12,6 +12,7 @@
 #include "buttons.hpp"
 #include "window_part.hpp"
 #include "sprite_factory.hpp"
+#include "game_settings.hpp"
 
 class game_state_menu : public drawable{
 private:
@@ -20,8 +21,7 @@ private:
     unsigned int height;
     state & state_t;
     std::map<std::string , std::string> & sprite_files_map;
-    uint16_t highscore;
-    uint16_t coins;
+    game_settings & gameSettings;
 
     window_part background_menu_window;
 
@@ -42,8 +42,7 @@ public:
                     unsigned int height,
                     state & state_t,
                     std::map<std::string,std::string> & sprite_files_map,
-                    uint16_t highscore,
-                    uint16_t coins);
+                    game_settings & gameSettings);
     void draw() override;
     void update() override;
 };

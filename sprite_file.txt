@@ -8,3 +8,9 @@ tree_sprite             res/sprites/tree.png
 water_sprite            res/sprites/water.png
 beta_player_sprite      res/sprites/beta_player.png
 chicken_sprite          res/sprites/chicken.png
+game_bg_forrest_left    res/sprites/game_background_left_forest.png
+game_bg_forrest_right   res/sprites/game_background_right_forest.png
+menu_background_river   res/sprites/menu_background_river.png
+player_icon_menu        res/sprites/chicken_menu.png
+background_barn_test    res/sprites/menu_background_test.png
+background_barn_test2   res/sprites/menu_background_test_nochicken.png
