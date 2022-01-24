@@ -15,7 +15,7 @@ protected:
     std::string text_string;
     int size_char;
     sf::Color text_color;
-    sf::Color hover_color;
+    sf::Color background_text_color;
 
     sf::RectangleShape rect_SFML;
     sf::Font font_text;
@@ -25,13 +25,11 @@ public:
         sf::Vector2f position,
         std::string text_string,
         int size_char,
-        sf::Color hover_color,
+        sf::Color background_text_color,
         sf::Color text_color = sf::Color::Black);
 
     void draw() override;
-
-    void update() override;
-    void update(std::string new_value);
+    void update_text(std::string new_value);
 };
 
 #endif

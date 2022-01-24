@@ -18,16 +18,19 @@ private:
     sf::RectangleShape rect;
     unsigned int width;
     unsigned int height;
-    std::map<std::string , std::string> & sprite_files_map;
     state & state_t;
+    std::map<std::string , std::string> & sprite_files_map;
+
+
+    window_part background_menu_window;
 
     buttons quit_in_menu_window;
     buttons start_game;
     buttons shop_button_in_menu_window;
 
     label title_in_menu_window;
-
     window_part player_icon_menu_window;
+
 
     std::vector<drawable*> objects = {};
 public:

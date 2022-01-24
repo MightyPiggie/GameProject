@@ -26,3 +26,7 @@ void window_part::draw(){
         window.draw(rect);
     }
 }
+
+void window_part::rescale(sf::Vector2f new_scale){
+    sprite.setScale(new_scale);
+}

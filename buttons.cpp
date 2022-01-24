@@ -21,7 +21,7 @@ buttons::buttons(sf::RenderWindow &window,
                  kleur(kleur),
                  hover(hover), char_size(char_size){
 
-    if(!font.loadFromFile("res/fonts/lato/Lato-Black.ttf")){std::cout << "geen lato" << std::endl; }
+    if(!font.loadFromFile("res/fonts/arcade_font.ttf")){std::cout << "geen lato" << std::endl; }
     txt.setFont(font);
     txt.setPosition(position);
     txt.setFillColor(hover);

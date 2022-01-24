@@ -16,36 +16,25 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  std::map<std::string , std::string> & sprite_files_map
                                 ):
                                 drawable(window, {0,0}, vector2f_from_unsigned_ints(width,height)),
-                                sprite_files_map(sprite_files_map),
                                 state_t(state_t),
-                                quit_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 - 250, height/2 + 350),[&](){window.close();},"Quit", sf::Color(163 , 235 , 177)),
-                                start_game(window, 50,  vector2f_from_unsigned_ints(width/2 - 60, height/2 + 350), [&](){state_t = GAME;},"Start", sf::Color(163 , 235 , 177)),
-                                shop_button_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 + 150, height/2 + 350),[&](){state_t = SHOP;},"Shop", sf::Color(163 , 235 , 177)),
+                                sprite_files_map(sprite_files_map),
 
-                                title_in_menu_window(window,vector2f_from_unsigned_ints(width/2-250, height/2 - 100),"Levensmoedige vogel",60,sf::Color(163 , 235 , 177)),
-                                player_icon_menu_window(window, vector2f_from_unsigned_ints(width/2 -30,height/2 + 80),sprite_files_map["chicken_sprite"]),
-                                title_in_menu_window_sound_test(window, 50,vector2f_from_unsigned_ints(width/2-250,height/2),
-                                                     [](){
-                                                         sf::SoundBuffer buffer;
-                                                         sf::Sound sound;
-                                                         if(!buffer.loadFromFile("res/sounds/menu-window-title.wav")){
-                                                             std::cout << "Error\n";
-                                                         }
-                                                         sound.setBuffer(buffer);
-                                                         std::cout << "speel geluid\n";
-                                                         sound.play();
-                                                         /// Door hem hier even te laten slapen komt die wel door. Alleen stopt die nu wel met de rest laten werken...
-                                                         sf::sleep(sf::seconds(3));
-                                                         },
-                                                     "Test geluid",
-                                                     sf::Color(163 , 235 , 177))
+                                background_menu_window(window, vector2f_from_unsigned_ints(0,0),sprite_files_map["menu_background_sprite"]),
+                                quit_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 - 550, height/2 + 350),[&](){window.close();},"Quit", sf::Color(163 , 235 , 177)),
+                                start_game(window, 50,  vector2f_from_unsigned_ints(width/2 - 140, height/2 + 350), [&](){state_t = GAME;},"Start", sf::Color(163 , 235 , 177)),
+                                shop_button_in_menu_window(window,  50, vector2f_from_unsigned_ints(width/2 + 350, height/2 + 350),[&](){state_t = SHOP;},"Shop", sf::Color(163 , 235 , 177)),
+
+
+                                title_in_menu_window(window,vector2f_from_unsigned_ints(width/2-500, height/2 - 300),"Levensmoedige vogel",60,sf::Color(163 , 235 , 177)),
+                                player_icon_menu_window(window, vector2f_from_unsigned_ints(width/2 -180,height/2 - 100),sprite_files_map["chicken_sprite"])
+
                                 {
-                                rect.setSize(size);
-                                rect.setPosition(0,0);
-                                rect.setFillColor(sf::Color(17 , 101 , 48));
+                                    player_icon_menu_window.rescale(sf::Vector2f {5,5});
+
 
                                 //TODO FIX THIS
                                 objects = {
+                                        &background_menu_window,
                                         &quit_in_menu_window,
                                         &start_game,
                                         &shop_button_in_menu_window,
@@ -56,7 +45,6 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 }
 
 void game_state_menu::draw(){
-    window.draw(rect);
     for(auto &object : objects){
         object->draw();
     }
