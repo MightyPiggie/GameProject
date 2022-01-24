@@ -15,7 +15,7 @@ game_state_game::game_state_game(sf::RenderWindow & window,
                                 left(window,{0,0}, sprite_files_map["game_bg_forrest_left"]),
                                 right(window, {float(width)*3/4, 0},sprite_files_map["game_bg_forrest_right"]),
                                 game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]),
-                                player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, start_ob, sprite_files_map["chicken_sprite"], width , height, gameSettings},
+                                player1 {window , sf::Vector2f{ 960.0, 960.0 }, sf::Vector2f{ 0.0, 0.0 }, sprite_files_map["chicken_sprite"], width , height, gameSettings},
                                 display_coins(window, sf::Vector2f(float(width) - 250.f, 50), std::to_string(gameSettings.coins), 25, sf::Color(163 , 235 , 177), false),
                                 display_highscore(window, sf::Vector2f(float(width) - 250.f, 100), "highs: " + std::to_string(gameSettings.highscore), 25, sf::Color(163 , 235 , 177), false),
                                 display_score(window, sf::Vector2f(float(width) - 250.f, 150), std::to_string(gameSettings.score), 25, sf::Color(163 , 235 , 177), false),
@@ -24,7 +24,7 @@ game_state_game::game_state_game(sf::RenderWindow & window,
                                 builder1(window, sprite_files_map)
 {
     drawables = {&left, &game_window, &right, &display_coins, &display_score, &display_highscore ,& quit_gamewindow, &back_to_menu_gamewindow, &player1};
-    updatables = {&left,&right, &game_window, &display_coins, &display_score, &display_highscore, & quit_gamewindow, &back_to_menu_gamewindow, &player1, &builder1};
+    updatables = {&left,&right, &game_window, &display_coins, &display_score, &display_highscore, & quit_gamewindow, &back_to_menu_gamewindow, &player1};
     game_drawables = {&player1};
 }
 void game_state_game::draw(){
@@ -43,7 +43,7 @@ void game_state_game::update() {
     std::vector<obstacle*> undergrounds = builder1.return_underground_obstacles();
     game_drawables.insert(game_drawables.begin(), undergrounds.begin(), undergrounds.begin()+undergrounds.size());
     if(gameSettings.started){
-        //builder1.update();
+        builder1.update();
         for( auto & object : game_drawables){
         object->lower();
         }

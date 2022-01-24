@@ -11,9 +11,8 @@ protected:
     sf::RenderWindow & window;
     sf::Vector2f position;
     sf::Vector2f size;
-    shitty_fix_enum state_t = start_ob;
 public:
-    drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, shitty_fix_enum state_t = start_ob);
+    drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
     bool within( int x, int a, int b );
     bool overlaps(drawable* other);
     virtual void draw()=0;
@@ -24,7 +23,7 @@ public:
 
 class game_drawable : public drawable{
 public:
-    game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, shitty_fix_enum state_t, object_states object_state);
+    game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state);
     object_states object_state;
     void lower();
 };

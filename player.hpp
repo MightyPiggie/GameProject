@@ -18,8 +18,8 @@ protected:
     unsigned int window_height;
     game_settings & game_setting;
 public:
-    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, shitty_fix_enum state_t, std::string  filename , unsigned int window_width, unsigned int window_height, game_settings & game_setting):
-            game_drawable(window, position, size, state_t, NON_OBSTACLE),
+    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string  filename , unsigned int window_width, unsigned int window_height, game_settings & game_setting):
+            game_drawable(window, position, size, NON_OBSTACLE),
             filename(filename),
             window_width(window_width),
             window_height(window_height),

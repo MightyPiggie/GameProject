@@ -24,7 +24,13 @@ std::vector<unsigned int> builder::random_int_between_range_multiple(int min, in
     for(unsigned int i = 0; i <= amount; i++) {
         tmp_vector.push_back(uni(rng));
     }
+    //TODO fix spawning on each other
+    for (auto &tmp : tmp_vector) {
+        tmp = int(tmp/60)*60;
+        std::cout << tmp << std::endl;
+    }
     tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
+
     return tmp_vector;
 }
 
@@ -39,22 +45,22 @@ void builder::update() {
 void builder::build_underground(float height, bool force_underground_grass) {
     unsigned int underground_type = random_int_between_range(0,4);
     if(underground_type == 0 && force_underground_grass == false) {
-        obstacle* tmp = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, start_ob, NON_OBSTACLE, sprite_factory["rails_sprite"]};
+        obstacle* tmp = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["rails_sprite"]};
         sprite_builds.push_back(tmp);
         return;
     }
     else if(underground_type == 2 && force_underground_grass == false) {
-        obstacle* tmp1 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, start_ob, NON_OBSTACLE, sprite_factory["roads_sprite"]};
+        obstacle* tmp1 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["roads_sprite"]};
         sprite_builds.push_back(tmp1);
         return;
     }
     else if(underground_type == 3 && force_underground_grass == false) {
-        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, start_ob, NON_OBSTACLE, sprite_factory["water_sprite"]};
+        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["water_sprite"]};
         sprite_builds.push_back(tmp2);
         return;
     }
     else if((underground_type == 1 || 4) || force_underground_grass == true) {
-        obstacle* tmp3 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, start_ob, NON_OBSTACLE, sprite_factory["grass_sprite"]};
+        obstacle* tmp3 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["grass_sprite"]};
         sprite_builds.push_back(tmp3);
         if(force_underground_grass == false) {
             generate_obstacle_grass(height);
@@ -82,24 +88,12 @@ void builder::generate_obstacle_grass(float height) {
     for(unsigned int i = 0; i <= amount_obstacles; i++) {
         unsigned int obstacle_type = random_int_between_range(0, 1);
         if(obstacle_type == 0) {
-            if(height == -60) {
-                obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, new_ob, OBSTACLE, sprite_factory["tree_sprite"]};
-                sprite_builds.push_back(tmp);
+             obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["tree_sprite"]};
+             sprite_builds.push_back(tmp);
             }
-            else {
-                obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, start_ob, OBSTACLE, sprite_factory["tree_sprite"]};
-                sprite_builds.push_back(tmp);
-            }
-        }
         else if(obstacle_type == 1) {
-            if(height == -60) {
-                obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, new_ob, OBSTACLE, sprite_factory["rock_sprite"]};
-                sprite_builds.push_back(tmp);
-            }
-            else {
-                obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, start_ob, OBSTACLE, sprite_factory["rock_sprite"]};
-                sprite_builds.push_back(tmp);
-            }
+            obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["rock_sprite"]};
+            sprite_builds.push_back(tmp);
         }
     }
 }
