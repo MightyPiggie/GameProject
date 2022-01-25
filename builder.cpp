@@ -118,56 +118,12 @@ void builder::generate_obstacle_train(float height) {
 void builder::generate_obstacle_car(float height) {
     bool direction = random_int_between_range(0, 1);
     int car_type = random_int_between_range(0, 4);
-
-    if(car_type == 0) {
-        if(direction == 0) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_cool_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-        else if(direction == 1) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_cool_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
+    if(direction == 0) {
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2]], 5, direction};
+        sprite_builds.push_back(tmp);
     }
-    if(car_type == 1) {
-        if(direction == 0) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_camper_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-        else if(direction == 1) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_camper_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
+    else if(direction == 1) {
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2+1]], 5, direction};
+        sprite_builds.push_back(tmp);
     }
-    if(car_type == 2) {
-        if(direction == 0) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_orange_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-        else if(direction == 1) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_orange_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-    }
-    if(car_type == 3) {
-        if(direction == 0) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_pink_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-        else if(direction == 1) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_pink_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-    }
-    if(car_type == 4) {
-        if(direction == 0) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_police_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-        else if(direction == 1) {
-            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["car_police_sprite"], 5, direction};
-            sprite_builds.push_back(tmp);
-        }
-    }
-
 }
