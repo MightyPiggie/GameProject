@@ -11,7 +11,7 @@ game_state_game::game_state_game(sf::RenderWindow & window,
 ):
                                 drawable(window,{0,0},{0,0}),
                                 sprite_files_map(sprite_files_map),
-                                gameSettings(gameSettings),   state_t(state_t),
+                                gameSettings(gameSettings),   state_t(state_t), width(width),  height(height),
                                 left(window,{0,0}, sprite_files_map["game_bg_forrest_left"]),
                                 right(window, {float(width)*3/4, 0},sprite_files_map["game_bg_forrest_right"]),
                                 game_window(window,{float(width)/4.f, 0}, sprite_files_map["background_sprite"]),
@@ -49,6 +49,7 @@ void game_state_game::update() {
     std::vector<obstacle*> undergrounds = builder1.return_underground_obstacles();
     game_drawables.insert(game_drawables.begin(), undergrounds.begin(), undergrounds.begin()+undergrounds.size());
     if(gameSettings.started){
+        destructor();
         builder1.update();
         for( auto & object : game_drawables){
         object->lower();
@@ -68,3 +69,14 @@ void game_state_game::update() {
 }
 
 
+void game_state_game::destructor(){
+    for(unsigned int i =0; i < drawables.size(); i++){
+        if(drawables[i]->get_position().y >= height){
+            drawables.erase(drawables.begin()+i);
+        }else if(drawables[i]->get_position().x >= width){
+            drawables.erase(drawables.begin()+i);
+        }else if(drawables[i]->get_position().x + drawables[i]->get_size().x <= 0){
+            drawables.erase(drawables.erase(drawables.begin() + i));
+        }
+    }
+}

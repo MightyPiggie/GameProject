@@ -1,7 +1,6 @@
 #include "game_screen.hpp"
 
 #include <map>
-#include <string>
 #include <vector>
 #include "sprite_factory.hpp"
 #include "init_game.hpp"

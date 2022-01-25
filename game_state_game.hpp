@@ -19,6 +19,8 @@ private:
     std::map<std::string , std::string> & sprite_files_map;
     game_settings & gameSettings;
     state & state_t;
+    unsigned int width;
+    unsigned int height;
     window_part left;
     window_part right;
     window_part game_window;
@@ -46,5 +48,6 @@ public:
     sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
+    void destructor();
 };
 #endif
