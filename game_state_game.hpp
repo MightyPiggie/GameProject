@@ -19,6 +19,8 @@ private:
     std::map<std::string , std::string> & sprite_files_map;
     game_settings & gameSettings;
     state & state_t;
+    unsigned int width;
+    unsigned int height;
     window_part left;
     window_part right;
     window_part game_window;
@@ -29,10 +31,6 @@ private:
     buttons quit_gamewindow;
     buttons back_to_menu_gamewindow;
     builder builder1;
-    obstacle tree;
-    obstacle tree_trunk;
-    obstacle train;
-    obstacle car;
     std::vector<drawable*> drawables;
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;
@@ -43,8 +41,10 @@ public:
                     std::map<std::string , std::string> & sprite_files_map,
                     game_settings & gameSettings,
                     state & state_t);
+//    ~game_state_game();
     sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
+    void destructor();
 };
 #endif
