@@ -23,7 +23,7 @@ class obstacle_moving : public obstacle {
 private:
     int change;
     bool direction;
-    bool moving;
+    bool moving = false;
     std::random_device rd;
     std::mt19937 rng;
 public:

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <random>
 #include <vector>
+#include <chrono>
 
 #include "game_object.hpp"
 #include "obstacle.hpp"
@@ -23,6 +24,7 @@ private:
     std::map<std::string , std::string> sprite_factory;
     std::vector<std::string> sprites = {"rails_sprite", "grass_sprite", "roads_sprite", "water_sprite", "grass_sprite"};
     std::vector<std::string> sprites_car = {"car_cool_sprite", "car_cool_sprite", "car_camper_sprite", "car_camper_sprite", "car_orange_sprite", "car_orange_sprite", "car_pink_sprite", "car_pink_sprite", "car_police_sprite", "car_police_sprite"};
+    std::vector<std::string> sprites_log = {"tree_trunk_sprite", "tree_trunk_sprite"};
     std::vector<obstacle*> sprite_builds;
     std::vector<obstacle_moving*> moving_sprite_builds;
     std::random_device rd;
@@ -34,6 +36,7 @@ private:
     void generate_obstacle_grass(float height);
     void generate_obstacle_train(float height);
     void generate_obstacle_car(float height);
+    void generate_obstacle_logs(float height);
     
 public:
     builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory);

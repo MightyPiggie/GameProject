@@ -31,11 +31,13 @@ unsigned int obstacle_moving::random_int_between_range(int min, int max) {
 }
 void obstacle_moving::update() {
     if(moving == false) {
-         if(random_int_between_range(0, change) == 0) {
-             moving = true;
+        int tmp = random_int_between_range(0, change);
+        if(tmp == 0) {
+            std::cout << tmp << std::endl;
+            moving = true;
         }
     }
-    else {
+    else if(moving == true) {
         if(direction == 1) {
             position.x += 2;
         }

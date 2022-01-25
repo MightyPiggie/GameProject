@@ -27,7 +27,6 @@ std::vector<unsigned int> builder::random_int_between_range_multiple(int min, in
     //TODO fix spawning on each other
     for (auto &tmp : tmp_vector) {
         tmp = int(tmp/60)*60;
-        std::cout << tmp << std::endl;
     }
     sort( tmp_vector.begin(), tmp_vector.end() );
     tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
@@ -58,6 +57,7 @@ void builder::build_underground(float height, bool force_underground_grass) {
     else if(underground_type == 3 && force_underground_grass == false) {
         obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["water_sprite"]};
         sprite_builds.push_back(tmp2);
+        generate_obstacle_logs(height);
         return;
     }
     else if((underground_type == 1 || 4) || force_underground_grass == true) {
@@ -106,11 +106,11 @@ void builder::generate_obstacle_grass(float height) {
 void builder::generate_obstacle_train(float height) {
     bool direction = random_int_between_range(0, 1);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
         sprite_builds.push_back(tmp);
     }
 }
@@ -119,11 +119,24 @@ void builder::generate_obstacle_car(float height) {
     bool direction = random_int_between_range(0, 1);
     int car_type = random_int_between_range(0, 4);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2]], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2]], 300, direction};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2+1]], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_car[car_type*2+1]], 300, direction};
+        sprite_builds.push_back(tmp);
+    }
+}
+
+void builder::generate_obstacle_logs(float height) {
+    bool direction = random_int_between_range(0, 1);
+    bool log_length = random_int_between_range(0, 1);
+    if(direction == 0) {
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_log[log_length]], 300, direction};
+        sprite_builds.push_back(tmp);
+    }
+    else if(direction == 1) {
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory[sprites_log[log_length]], 300, direction};
         sprite_builds.push_back(tmp);
     }
 }
