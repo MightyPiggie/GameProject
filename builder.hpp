@@ -22,7 +22,7 @@ private:
     sf::RenderWindow& window;
     std::map<std::string , std::string> sprite_factory;
     std::vector<std::string> sprites = {"rails_sprite", "grass_sprite", "roads_sprite", "water_sprite", "grass_sprite"};
-    std::vector<std::string> sprites_car = {"car_cool_sprite", "car_cool_sprite", "car_camper_sprite", "car_camper_sprite", "car_orange_sprite", "car_orange_sprite", "car_pink_sprite", "car_pink_sprite", "car_police_sprite", "car_police_sprite"};
+    std::vector<std::string> sprites_car = {"car_cool_left_sprite", "car_cool_right_sprite", "car_camper_left_sprite", "car_camper_right_sprite", "car_orange_left_sprite", "car_orange_right_sprite", "car_pink_left_sprite", "car_pink_right_sprite", "car_police_left_sprite", "car_police_right_sprite"};
     std::vector<obstacle*> sprite_builds;
     std::vector<obstacle_moving*> moving_sprite_builds;
     std::random_device rd;
