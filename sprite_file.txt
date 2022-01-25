@@ -13,7 +13,8 @@ car_police_sprite       res/sprites/car_police.png
 lilypad_sprite          res/sprites/lilypad.png
 tree_sprite             res/sprites/tree.png
 tree_trunk_sprite       res/sprites/tree_trunk_3t.png
-train_sprite            res/sprites/train.png
+train_right_sprite      res/sprites/train_right.png
+train_left_sprite       res/sprites/train_left.png
 beta_player_sprite      res/sprites/beta_player.png
 chicken_sprite          res/sprites/chicken.png
 game_bg_forrest_left    res/sprites/game_background_left_forest.png

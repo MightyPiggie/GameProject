@@ -105,11 +105,11 @@ void builder::generate_obstacle_grass(float height) {
 void builder::generate_obstacle_train(float height) {
     bool direction = random_int_between_range(0, 1);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_left_sprite"], 5, direction};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["train_sprite"], 5, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_right_sprite"], 5, direction};
         sprite_builds.push_back(tmp);
     }
 }

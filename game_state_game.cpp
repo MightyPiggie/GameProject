@@ -61,6 +61,7 @@ void game_state_game::update() {
     }
     display_coins.update_text("Coins  " + std::to_string(gameSettings.coins));
     display_score.update_text("Score  " + std::to_string(gameSettings.score));
+    player1.check_dead(game_drawables);
 
     sf::Event event{};
         while (window.pollEvent(event)) {
