@@ -32,6 +32,7 @@ private:
     void start_playground();
     void generate_obstacle_grass(float height);
     void generate_obstacle_train(float height);
+    void generate_obstacle_car(float height);
     
 public:
     builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory);
