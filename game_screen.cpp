@@ -33,7 +33,7 @@ void game_screen::run(){
     window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
 
     //start state
-    state_t = GAME;
+    state_t = MENU;
     //Game State
 //    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
     game_state_game * game_state = new game_state_game(window, width, height, sprite_files_map, game_setting,  state_t);
