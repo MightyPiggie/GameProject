@@ -20,7 +20,14 @@ protected:
     game_settings & game_setting;
     state & state_t;
 public:
-    player(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, std::string  filename , unsigned int window_width, unsigned int window_height, game_settings & game_setting, state & state_t):
+    player(sf::RenderWindow & window,
+           sf::Vector2f position,
+           sf::Vector2f size,
+           std::string  filename ,
+           unsigned int window_width,
+           unsigned int window_height,
+           game_settings & game_setting,
+           state & state_t):
             game_drawable(window, position, size, NON_OBSTACLE),
             filename(filename),
             window_width(window_width),

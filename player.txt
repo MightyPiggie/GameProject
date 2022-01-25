@@ -3,3 +3,4 @@ MUNTEN 10
 EQUIPPED slime_player
 PLAYER beta_player
 PLAYER slime_player
+PLAYER chicken_player

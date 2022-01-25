@@ -39,8 +39,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> buy_button = std::make_shared<buttons>(window,
                                                                                                     50,
                                                                                                     vector2f_from_unsigned_ints(width/2-100, height - 200),
-                                                                                                    [&](){std::cout << "buy button ";
-                                                                                                        unlocked_players.push_back(all_players[player_scrolling_int]);
+                                                                                                    [&](){unlocked_players.push_back(all_players[player_scrolling_int]);
                                                                                                         sf::sleep(sf::milliseconds(100));
                                                                                                         },
                                                                                                         "Buy",
