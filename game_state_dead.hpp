@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-
+#include <memory>
 #include "simple_functions.hpp"
 #include "game_state_game.hpp"
 #include "drawable.hpp"
@@ -16,13 +16,13 @@ class game_state_dead : public drawable{
 private:
     std::map<std::string , std::string> & sprite_files_map;
     state & state_t;
-    window_part dead_window;
+    //window_part dead_window;
 //    sf::Texture & screenshot_gamescreen;
-    buttons quit_game_button;
-    buttons back_to_menu_button;
-    buttons restart_button;
-    label dead_message;
-    std::vector<drawable*> objects;
+//    buttons quit_game_button;
+//    buttons back_to_menu_button;
+//    buttons restart_button;
+//    label dead_message;
+    std::vector<std::shared_ptr<drawable>> objects;
 public:
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string,std::string> & sprite_files_map, state & state_t);
     void draw() override;

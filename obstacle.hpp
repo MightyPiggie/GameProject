@@ -5,7 +5,8 @@
 #include <random>
 
 #include "drawable.hpp"
-#include "game_states.hpp"
+#include "game_screen.hpp"
+#include "player.hpp"
 
 class obstacle : public game_drawable {
 private:
@@ -20,7 +21,7 @@ public:
 };
 
 class obstacle_moving : public obstacle {
-private:
+protected:
     int change;
     bool direction;
     bool moving = false;
@@ -30,7 +31,6 @@ public:
     obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction);
     unsigned int random_int_between_range(int min, int max);
     void update() override;
-
 };
 
 #endif

@@ -44,7 +44,7 @@ void obstacle_moving::update() {
         else if(direction == 0) {
             position.x -= 2;
         }
-    }  
+    }
 }
 
 
