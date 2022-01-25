@@ -31,8 +31,6 @@ private:
     builder builder1;
     obstacle tree;
     obstacle tree_trunk;
-    obstacle train;
-    obstacle car;
     std::vector<drawable*> drawables;
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;
@@ -43,6 +41,7 @@ public:
                     std::map<std::string , std::string> & sprite_files_map,
                     game_settings & gameSettings,
                     state & state_t);
+//    ~game_state_game();
     sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
