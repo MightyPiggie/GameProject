@@ -31,8 +31,6 @@ private:
     builder builder1;
     obstacle tree;
     obstacle tree_trunk;
-    obstacle train;
-    obstacle car;
     std::vector<drawable*> drawables;
     std::vector<game_object*> updatables;
     std::vector<game_drawable*> game_drawables;

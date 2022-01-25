@@ -14,7 +14,7 @@ car_orange_right_sprite res/sprites/car_orange_right.png
 car_pink_left_sprite    res/sprites/car_pink_left.png
 car_pink_right_sprite   res/sprites/car_pink_right.png
 car_police_left_sprite  res/sprites/car_police_left.png
-car_police_left_sprite  res/sprites/car_police_left.png
+car_police_right_sprite res/sprites/car_police_right.png
 lilypad_sprite          res/sprites/lilypad.png
 tree_sprite             res/sprites/tree.png
 tree_trunk_sprite       res/sprites/tree_trunk_3t.png
