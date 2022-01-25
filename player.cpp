@@ -71,6 +71,10 @@ void player::check_dead(std::vector<game_drawable *> &gameobjects) {
             if (object->object_state == DEADLY) {
                 if (this->overlaps(object)) {
                     state_t = DEAD;
+                    if(game_setting.score > game_setting.highscore) {
+                        game_setting.highscore = game_setting.score;
+                        save(unlocked_players, game_setting);
+                    }
                     break;
                 }
             }

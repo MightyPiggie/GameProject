@@ -1,6 +1,6 @@
-HIGH 15
-MUNTEN 10
-EQUIPPED slime_player
+MUNTEN 100
+HIGH 19
+EQUIPPED chicken_player
 PLAYER beta_player
 PLAYER slime_player
 PLAYER chicken_player
