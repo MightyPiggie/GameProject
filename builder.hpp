@@ -22,6 +22,7 @@ private:
     sf::RenderWindow& window;
     std::map<std::string , std::string> sprite_factory;
     std::vector<std::string> sprites = {"rails_sprite", "grass_sprite", "roads_sprite", "water_sprite", "grass_sprite"};
+    std::vector<std::string> sprites_car = {"car_cool_sprite", "car_cool_sprite", "car_camper_sprite", "car_camper_sprite", "car_orange_sprite", "car_orange_sprite", "car_pink_sprite", "car_pink_sprite", "car_police_sprite", "car_police_sprite"};
     std::vector<obstacle*> sprite_builds;
     std::vector<obstacle_moving*> moving_sprite_builds;
     std::random_device rd;
@@ -32,6 +33,7 @@ private:
     void start_playground();
     void generate_obstacle_grass(float height);
     void generate_obstacle_train(float height);
+    void generate_obstacle_car(float height);
     
 public:
     builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory);
