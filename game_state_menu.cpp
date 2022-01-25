@@ -45,7 +45,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                                                                                       sf::Color(163 , 235 , 177));
                                 std::shared_ptr<window_part> player_icon_menu_window = std::make_shared<window_part>(window,
                                                                                                                      vector2f_from_unsigned_ints(width/2 -200,height/2 - 100),
-                                                                                                                     sprite_files_map["player_icon_menu"]);
+                                                                                                                     sprite_files_map[gameSettings.player+"_shop"]);
                                 std::shared_ptr<label> display_coins_menu = std::make_shared<label>(window,
                                                                                                     sf::Vector2f(float(width) - 250.f, 50),
                                                                                                     "Coins " + std::to_string(gameSettings.coins),
