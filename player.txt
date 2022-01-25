@@ -1,5 +1,5 @@
 HIGH 15
-MUNTEN 10
+MUNTEN 100
 PLAYER chicken_sprite
 PLAYER beta_player_sprite
 

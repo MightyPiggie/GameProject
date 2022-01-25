@@ -27,7 +27,6 @@ std::vector<unsigned int> builder::random_int_between_range_multiple(int min, in
     //TODO fix spawning on each other
     for (auto &tmp : tmp_vector) {
         tmp = int(tmp/60)*60;
-        std::cout << tmp << std::endl;
     }
     tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
 
