@@ -12,9 +12,15 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
             if (object != this) {
-                if(object->object_state != NON_OBSTACLE){
+                if(object->object_state == OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{movement_speed, 0};
+                    }
+                }
+                else if(object->object_state == DEADLY){
+                    if (this->overlaps(object)) {
+                        state_t = DEAD;
+                        break;
                     }
                 }
             }
@@ -24,9 +30,15 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         position += sf::Vector2f{movement_speed, 0};
         for(auto &object : gameobjects) {
             if (object != this) {
-                if(object->object_state != NON_OBSTACLE){
+                if(object->object_state == OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{-movement_speed, 0};
+                    }
+                }
+                else if(object->object_state == DEADLY){
+                    if (this->overlaps(object)) {
+                        state_t = DEAD;
+                        break;
                     }
                 }
             }
@@ -37,9 +49,15 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         position += sf::Vector2f{0, -movement_speed};
         for(auto &object : gameobjects) {
             if (object != this || gameobjects.size() == 1) {
-                if(object->object_state != NON_OBSTACLE){
+                if(object->object_state == OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, movement_speed};
+                    }
+                }
+                else if(object->object_state == DEADLY){
+                    if (this->overlaps(object)) {
+                        state_t = DEAD;
+                        break;
                     }
                 }
             }
@@ -51,9 +69,15 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
         position += sf::Vector2f{0, +movement_speed};
         for(auto &object : gameobjects) {
             if (object != this) {
-                if(object->object_state != NON_OBSTACLE){
+                if(object->object_state == OBSTACLE){
                     if (this->overlaps(object)) {
                         position += sf::Vector2f{0, -movement_speed};
+                    }
+                }
+                else if(object->object_state == DEADLY){
+                    if (this->overlaps(object)) {
+                        state_t = DEAD;
+                        break;
                     }
                 }
             }

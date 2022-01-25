@@ -36,8 +36,8 @@ void game_screen::run(){
     //start state
     state_t = MENU;
     //Game State
-    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-
+//    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
+    game_state_game * game_state = new game_state_game(window, width, height, sprite_files_map, game_setting,  state_t);
     //Menu State
     game_state_menu menu_state(window, width, height,state_t,sprite_files_map , game_setting);
 
@@ -53,8 +53,8 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
-                game_state.update();
-                game_state.draw();
+                game_state->update();
+                game_state->draw();
                 break;
             }
             case MENU: { // TODO Check updateables

@@ -5,6 +5,7 @@
 #include <unordered_set>
 
 #include "simple_functions.hpp"
+#include "game_screen.hpp"
 
 builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory):
     window(window),
@@ -44,22 +45,22 @@ void builder::update() {
 void builder::build_underground(float height, bool force_underground_grass) {
     unsigned int underground_type = random_int_between_range(0,4);
     if(underground_type == 0 && force_underground_grass == false) {
-        obstacle* tmp = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["rails_sprite"]};
+        obstacle* tmp = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, NON_OBSTACLE, sprite_factory["rails_sprite"]};
         sprite_builds.push_back(tmp);
         return;
     }
-    else if(underground_type == 2 && force_underground_grass == false) {
-        obstacle* tmp1 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["roads_sprite"]};
+    else if(underground_type == 2 && force_underground_grass == false) {  //todo WATER MUST BE CHANGED TO DEADLY
+        obstacle* tmp1 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, NON_OBSTACLE, sprite_factory["roads_sprite"]};
         sprite_builds.push_back(tmp1);
         return;
     }
     else if(underground_type == 3 && force_underground_grass == false) {
-        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["water_sprite"]};
+        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, NON_OBSTACLE, sprite_factory["water_sprite"]};
         sprite_builds.push_back(tmp2);
         return;
     }
     else if((underground_type == 1 || 4) || force_underground_grass == true) {
-        obstacle* tmp3 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, sprite_factory["grass_sprite"]};
+        obstacle* tmp3 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, NON_OBSTACLE, sprite_factory["grass_sprite"]};
         sprite_builds.push_back(tmp3);
         if(force_underground_grass == false) {
             generate_obstacle_grass(height);
