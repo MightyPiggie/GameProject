@@ -1,5 +1,5 @@
 HIGH 15
 MUNTEN 10
-PLAYER chicken_sprite
-PLAYER beta_player_sprite
-
+EQUIPPED slime_player
+PLAYER beta_player
+PLAYER slime_player

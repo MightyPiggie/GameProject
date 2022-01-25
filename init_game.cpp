@@ -18,6 +18,9 @@ std::vector<std::string> read_values(game_settings & game){
                 } else if (name == "HIGH") {
                     input >> attr;
                     game.highscore = stoi(attr);
+                } else if (name == "EQUIPPED") {
+                    input >> attr;
+                    game.player = attr;
                 } else if (name == "PLAYER") {
                     input >> attr;
                     list.push_back(attr);

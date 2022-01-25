@@ -22,7 +22,7 @@ void game_screen::run(){
     window.setFramerateLimit(60);
     unlocked_players = init();
 
-    //sprite factory
+    /// Sprite factory
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader;
     std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
@@ -45,7 +45,7 @@ void game_screen::run(){
     game_state_dead dead_state(window, width, height, sprite_files_map,  state_t);
 
     //Shop State
-    game_state_shop shop_state(window, state_t, width, height , unlocked_players , sprite_files_map);
+    game_state_shop shop_state(window, state_t, width, height , unlocked_players , sprite_files_map, game_setting);
 
 
 
