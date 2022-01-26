@@ -13,7 +13,7 @@ builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> s
 }
 
 unsigned int builder::random_int_between_range(int min, int max) {
-    return rand() % (max+1);
+    return min + (rand() % (max+1));
 }
 
 std::vector<unsigned int> builder::random_int_between_range_multiple(int min, int max, unsigned int amount) {
@@ -110,14 +110,20 @@ void builder::generate_obstacle_train(float height) {
 
 void builder::generate_obstacle_car(float height) {
     bool direction = random_int_between_range(0, 1);
-    int car_type = random_int_between_range(0, 4);
+    auto amount_car = random_int_between_range(1, 4);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2]], 500, direction};
-        sprite_builds.push_back(tmp);
+        for(unsigned int i = 0; i <= amount_car; i++) {
+            auto car_type = random_int_between_range(0, 4);
+            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2]], 500, direction};
+            sprite_builds.push_back(tmp);
+        }
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2+1]], 500, direction};
-        sprite_builds.push_back(tmp);
+        for(unsigned int i = 0; i <= amount_car; i++) {
+            auto car_type = random_int_between_range(0, 4);
+            obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2+1]], 500, direction};
+            sprite_builds.push_back(tmp);
+        }
     }
 }
 
