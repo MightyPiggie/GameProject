@@ -25,10 +25,11 @@ protected:
     int change;
     bool direction;
     bool moving = false;
+    unsigned int speed = 2;
     std::random_device rd;
     std::mt19937 rng;
 public:
-    obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction);
+    obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction , unsigned int speed = 2);
     unsigned int random_int_between_range(int min, int max);
     void update() override;
 };

@@ -1,5 +1,5 @@
 MUNTEN 100
-HIGH 19
+HIGH 5
 EQUIPPED chicken_player
 PLAYER beta_player
 PLAYER slime_player
