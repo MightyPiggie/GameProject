@@ -13,6 +13,7 @@
 #include "buttons.hpp"
 #include "builder.hpp"
 #include "game_settings.hpp"
+#include "label_player_settings.hpp"
 
 class game_state_game : public drawable{
 private:
@@ -25,9 +26,9 @@ private:
     window_part right;
     window_part game_window;
     player player1;
-    label display_coins;
-    label display_highscore;
-    label display_score;
+    label_player_settings_coins display_coins;
+    label_player_settings_highscore display_highscore;
+    label_player_settings_score display_score;
     buttons quit_gamewindow;
     buttons back_to_menu_gamewindow;
     builder builder1;

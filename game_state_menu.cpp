@@ -5,6 +5,7 @@
 #include "game_state_menu.hpp"
 #include <SFML/Audio.hpp>
 #include <iostream>
+#include "label_player_settings.hpp"
 
 game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
@@ -48,16 +49,18 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                                                                                                      vector2f_from_unsigned_ints(width/2 -200,height/2 - 100),
                                                                                                                      sprite_files_map[gameSettings.player+"_shop"],
                                                                                                                      gameSettings);
-                                std::shared_ptr<label> display_coins_menu = std::make_shared<label>(window,
+                                std::shared_ptr<label_player_settings_coins> display_coins_menu = std::make_shared<label_player_settings_coins>(window,
                                                                                                     sf::Vector2f(float(width) - 250.f, 50),
                                                                                                     "Coins " + std::to_string(gameSettings.coins),
                                                                                                     25,
-                                                                                                    sf::Color(163 , 235 , 177));
-                                std::shared_ptr<label> display_score_menu = std::make_shared<label>(window,
+                                                                                                    sf::Color(163 , 235 , 177),
+                                                                                                    gameSettings);
+                                std::shared_ptr<label_player_settings_highscore> display_score_menu = std::make_shared<label_player_settings_highscore>(window,
                                                                                                     sf::Vector2f(float(width) - 250.f, 100),
                                                                                                     "HighS " + std::to_string(gameSettings.highscore),
                                                                                                     25,
-                                                                                                    sf::Color(163 , 235 , 177));
+                                                                                                    sf::Color(163 , 235 , 177),
+                                                                                                    gameSettings);
                                 objects = {
                                         background_menu_window,
                                         quit_in_menu_window,

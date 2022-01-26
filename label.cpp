@@ -38,6 +38,7 @@ void label::draw() {
     if(rectangle_display){
          window.draw(rect_SFML);
     }
+    text_SFML.setString(text_string);
     window.draw(text_SFML);
 }
 
