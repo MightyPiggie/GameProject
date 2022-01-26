@@ -5,7 +5,6 @@
 #include <SFML/Graphics.hpp>
 #include <random>
 #include <vector>
-#include <chrono>
 
 #include "game_object.hpp"
 #include "obstacle.hpp"

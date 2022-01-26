@@ -1,8 +1,6 @@
 #include "builder.hpp"
 
-#include <iostream>
 #include <algorithm>
-#include <unordered_set>
 
 #include "simple_functions.hpp"
 #include "game_screen.hpp"
@@ -14,22 +12,18 @@ builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> s
 {start_playground();}
 
 unsigned int builder::random_int_between_range(int min, int max) {
-    std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
+    std::uniform_int_distribution<int> uni(min,max);
 
     return uni(rng);
 }
 
 std::vector<unsigned int> builder::random_int_between_range_multiple(int min, int max, unsigned int amount) {
-    std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
+    std::uniform_int_distribution<int> uni(min,max);
     std::vector<unsigned int> tmp_vector;
     for(unsigned int i = 0; i <= amount; i++) {
-        tmp_vector.push_back(uni(rng));
+        tmp_vector.push_back(((uni(rng))/60)*60);
     }
-    //TODO fix spawning on each other
-    for (auto &tmp : tmp_vector) {
-        tmp = int(tmp/60)*60;
-    }
-    sort( tmp_vector.begin(), tmp_vector.end() );
+    std::sort( tmp_vector.begin(), tmp_vector.end() );
     tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
     return tmp_vector;
 }
@@ -91,7 +85,7 @@ void builder::generate_obstacle_grass(float height) {
     unsigned int amount_obstacles = random_int_between_range(0, max_amount_obstacles_per_tile);
     std::vector<unsigned int> location_obstacles = random_int_between_range_multiple(width_screen/4, width_screen/4*3, amount_obstacles);
 
-    for(unsigned int i = 0; i <= amount_obstacles; i++) {
+    for(unsigned int i = 0; i <= location_obstacles.size(); i++) {
         unsigned int obstacle_type = random_int_between_range(0, 1);
         if(obstacle_type == 0) {
              obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["tree_sprite"]};
@@ -120,11 +114,11 @@ void builder::generate_obstacle_car(float height) {
     bool direction = random_int_between_range(0, 1);
     int car_type = random_int_between_range(0, 4);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2]], 300, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2]], 500, direction};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2+1]], 300, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{59.0, 59.0}, DEADLY, sprite_factory[sprites_car[car_type*2+1]], 500, direction};
         sprite_builds.push_back(tmp);
     }
 }

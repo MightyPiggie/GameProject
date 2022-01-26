@@ -1,6 +1,9 @@
 #include "obstacle.hpp"
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <chrono>
 
 obstacle::obstacle(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f size, object_states object_state , std::string filename):
     game_drawable(window, position, size, object_state), filename(filename)
@@ -26,14 +29,12 @@ obstacle_moving::obstacle_moving(sf::RenderWindow & window, sf::Vector2f positio
 
 unsigned int obstacle_moving::random_int_between_range(int min, int max) {
     std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
-
-    return uni(rng);
+    return uni(rng);;
 }
 void obstacle_moving::update() {
     if(moving == false) {
         int tmp = random_int_between_range(0, change);
         if(tmp == 0) {
-            std::cout << tmp << std::endl;
             moving = true;
         }
     }
