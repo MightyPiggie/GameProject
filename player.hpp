@@ -5,6 +5,7 @@
 #include <string>
 
 #include "drawable.hpp"
+#include "init_game.hpp"
 #include "game_settings.hpp"
 #include "game_states.hpp"
 #include <iostream>
@@ -20,6 +21,7 @@ protected:
     unsigned int window_height;
     game_settings & game_setting;
     state & state_t;
+    std::vector<std::string> unlocked_players = read_values(game_setting);
 public:
     player(sf::RenderWindow & window,
            sf::Vector2f position,

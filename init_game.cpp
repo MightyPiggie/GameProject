@@ -34,11 +34,11 @@ std::vector<std::string> read_values(game_settings & game){
 void save(std::vector<std::string> player_list, game_settings & game){
     std::ofstream output("player.txt");
     while(output.is_open()){
-        output << "MUNTEN " << std::to_string(game.coins) << "\n";
+        output <<"MUNTEN " << std::to_string(game.coins) << "\n";
         output << "HIGH " << std::to_string(game.highscore)  << "\n";
-        output << "EQUIPPED " << game.player << '\n';
+        output << "EQUIPPED " << game.player  << "\n";
         for(auto player : player_list){
-            output <<"PLAYER " << player << "\n";
+            output << "PLAYER " << player << "\n";
         }
         output.close();
     }
