@@ -4,6 +4,7 @@
 
 #include "game_state_menu.hpp"
 #include <SFML/Audio.hpp>
+#include <iostream>
 
 game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
@@ -43,9 +44,10 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                                                                                       "Levensmoedige vogel",
                                                                                                       60,
                                                                                                       sf::Color(163 , 235 , 177));
-                                std::shared_ptr<window_part> player_icon_menu_window = std::make_shared<window_part>(window,
+                                std::shared_ptr<window_part_player> player_icon_menu_window = std::make_shared<window_part_player>(window,
                                                                                                                      vector2f_from_unsigned_ints(width/2 -200,height/2 - 100),
-                                                                                                                     sprite_files_map[gameSettings.player+"_shop"]);
+                                                                                                                     sprite_files_map[gameSettings.player+"_shop"],
+                                                                                                                     gameSettings);
                                 std::shared_ptr<label> display_coins_menu = std::make_shared<label>(window,
                                                                                                     sf::Vector2f(float(width) - 250.f, 50),
                                                                                                     "Coins " + std::to_string(gameSettings.coins),

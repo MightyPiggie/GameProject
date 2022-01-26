@@ -9,6 +9,9 @@
 #include "window_part.hpp"
 #include "label.hpp"
 #include "game_settings.hpp"
+#include <iostream>
+#include "simple_functions.hpp"
+#include "init_game.hpp"
 
 //initialisatie shop
 class game_state_shop : public drawable{
