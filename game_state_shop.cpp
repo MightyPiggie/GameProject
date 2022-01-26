@@ -1,7 +1,5 @@
-//#include <memory>
 #include "game_state_shop.hpp"
-#include <iostream>
-#include "simple_functions.hpp"
+
 
 game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  state & state_t,
@@ -19,8 +17,8 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  gameSettings(gameSettings)
                                 {
                                     std::shared_ptr<window_part> shop_window = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(0,0),vector2f_from_unsigned_ints(width,height), sf::Color(33,182,168));
-                                    std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){window.close();},"Quit", sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<buttons> back_to_menu_from_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
+                                    std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){ save(unlocked_players, gameSettings) ;window.close();},"Quit", sf::Color(163 , 235 , 177));
+                                    std::shared_ptr<buttons> back_to_menu_from_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){save(unlocked_players, gameSettings); state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
 
                                             /// Shop buttons
                                             //Todo: Moet nog netjes neergezet worden.
@@ -47,7 +45,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> equip_button = std::make_shared<buttons>(window,
                                                                                                       50,
                                                                                                       vector2f_from_unsigned_ints(width/2-100, height - 200),
-                                                                                                      [&](){gameSettings.player = all_players[player_scrolling_int];
+                                                                                                      [&](){gameSettings.player = all_players[player_scrolling_int]; std::cout << gameSettings.player << std::endl;
                                                                                                         sf::sleep(sf::milliseconds(100));
                                                                                                         },
                                                                                                         "Equip",

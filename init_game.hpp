@@ -8,7 +8,6 @@
 std::vector<std::string> read_values(game_settings & game);
 
 void save(std::vector<std::string> player_list,
-          uint16_t & coins,
-          uint16_t & highscore);
+          game_settings & game);
 
 #endif

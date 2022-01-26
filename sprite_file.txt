@@ -35,11 +35,11 @@ icon                    res/sprites/chicken_icon.png
 
 player_icon_menu        res/sprites/chicken_menu.png
 
-chicken_player                  res/sprites/chicken.png
+chicken_player                  res/sprites/chicken_player.png
 pacman_player                   res/sprites/pacman_player.png
 slime_player                    res/sprites/slime_player.png
 beta_player                     res/sprites/beta_player.png
 
-chicken_player_shop             res/sprites/chicken_menu.png
-slime_player_shop               res/sprites/slime_shop.png
-pacman_player_shop              res/sprites/pacman_shop.png
+chicken_player_shop             res/sprites/chicken_player_shop.png
+slime_player_shop               res/sprites/slime_player_shop.png
+pacman_player_shop              res/sprites/pacman_player_shop.png

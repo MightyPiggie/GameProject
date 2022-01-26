@@ -47,7 +47,6 @@ void game_screen::run(){
     game_state_shop shop_state(window, state_t, width, height , unlocked_players , sprite_files_map, game_setting);
 
 
-
     while (window.isOpen()) {
         window.clear();
         switch (state_t) {
@@ -57,27 +56,22 @@ void game_screen::run(){
                 break;
             }
             case MENU: { // TODO Check updateables
-                menu_state.draw();
                 menu_state.update();
+                menu_state.draw();
                 break;
             }
             case DEAD: {
-                dead_state.draw();
                 dead_state.update();
+                dead_state.draw();
                 break;
             }
             case SHOP: {
-                shop_state.draw();
                 shop_state.update();
+                shop_state.draw();
                 break;
             }
         }
         window.display();
         sf::sleep(sf::milliseconds(20));
-
-
-
-
     }
-
 }
