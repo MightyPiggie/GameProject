@@ -28,8 +28,7 @@ obstacle_moving::obstacle_moving(sf::RenderWindow & window, sf::Vector2f positio
 {}
 
 unsigned int obstacle_moving::random_int_between_range(int min, int max) {
-    std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
-    return uni(rng);;
+    return rand() % (max+1);
 }
 void obstacle_moving::update() {
     if(moving == false) {
