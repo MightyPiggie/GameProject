@@ -1,28 +1,36 @@
 #include "player.hpp"
 
+player::player(sf::RenderWindow & window,
+        sf::Vector2f position,
+        sf::Vector2f size,
+        game_settings & game_setting,
+        state & state_t):
+    object(window, position, size, NON_OBSTACLE, "chicken_player"),
+    game_setting(game_setting),
+    state_t(state_t)
+{}
+
 void player::draw() {
-    texture.loadFromFile(filename);
-    sprite.setTexture(texture);
     sprite.setPosition(position);
     window.draw(sprite);
 }
 
 void player::update() {
-    if(filename != "res/sprites/"+game_setting.player+".png"){
-        filename = "res/sprites/"+game_setting.player+".png";
-    }
+    // if(filename != "res/sprites/"+game_setting.player+".png"){
+    //     filename = "res/sprites/"+game_setting.player+".png";
+    //     texture.loadFromFile(filename);
+    //     sprite.setTexture(texture);
+    // }
 }
-
+/*
 //TODO check if this can be renamed to update
-void player::move(std::vector<game_drawable*> &gameobjects) {
+void player::move(std::vector<std::shared_ptr<game_drawable>>& gameobjects) {
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
-            if (object != this) {
-                if(object->object_state == OBSTACLE){
-                    if (this->overlaps(object)) {
-                        position += sf::Vector2f{movement_speed, 0};
-                    }
+            if(object->object_state == OBSTACLE){
+                if (this->overlaps(object)) {
+                    position += sf::Vector2f{movement_speed, 0};
                 }
             }
         }
@@ -30,11 +38,9 @@ void player::move(std::vector<game_drawable*> &gameobjects) {
     else if (position.x != float(window_width)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         position += sf::Vector2f{movement_speed, 0};
         for(auto &object : gameobjects) {
-            if (object != this) {
-                if(object->object_state == OBSTACLE){
-                    if (this->overlaps(object)) {
-                        position += sf::Vector2f{-movement_speed, 0};
-                    }
+            if(object->object_state == OBSTACLE){
+                if (this->overlaps(object)) {
+                    position += sf::Vector2f{-movement_speed, 0};
                 }
             }
         }
@@ -44,12 +50,10 @@ void player::move(std::vector<game_drawable*> &gameobjects) {
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
         for(auto &object : gameobjects) {
-            if (object != this || gameobjects.size() == 1) {
-                if(object->object_state == OBSTACLE){
-                    if (this->overlaps(object)) {
-                        position += sf::Vector2f{0, movement_speed};
-                        score = false;
-                    }
+            if(object->object_state == OBSTACLE){
+                if (this->overlaps(object)) {
+                    position += sf::Vector2f{0, movement_speed};
+                    score = false;
                 }
             }
         }
@@ -60,35 +64,31 @@ void player::move(std::vector<game_drawable*> &gameobjects) {
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
         for(auto &object : gameobjects) {
-            if (object != this) {
-                if(object->object_state == OBSTACLE){
-                    if (this->overlaps(object)) {
-                        position += sf::Vector2f{0, -movement_speed};
-                        score = false;
-                    }
+            if(object->object_state == OBSTACLE){
+                if (this->overlaps(object)) {
+                    position += sf::Vector2f{0, -movement_speed};
+                    score = false;
                 }
             }
         }if(game_setting.score >= 1 && score){game_setting.score--; }
     }
 }
 
-void player::check_dead(std::vector<game_drawable*> &gameobjects) {
+void player::check_dead(const std::vector<std::shared_ptr<game_drawable>>& gameobjects) {
     for (auto &object: gameobjects) {
-        if (object != this) {
-            if (object->object_state == DEADLY) {
-                if (this->overlaps(object)) {
-                    state_t = DEAD;
-                    if(game_setting.score > game_setting.highscore) {
-                        game_setting.highscore = game_setting.score;
-                        save(unlocked_players, game_setting);
-                    }
-                    break;
+        if (object->object_state == DEADLY) {
+            if (this->overlaps(object)) {
+                state_t = DEAD;
+                if(game_setting.score > game_setting.highscore) {
+                    game_setting.highscore = game_setting.score;
+                    save(unlocked_players, game_setting);
                 }
+                break;
             }
         }
     }
 }
-
+*/
 
 
 sf::FloatRect player::getbounds() {

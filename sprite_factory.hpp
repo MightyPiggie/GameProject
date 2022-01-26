@@ -6,10 +6,16 @@
 #include <string>
 
 class sprite_factory{
-protected:
-    std::map<std::string, std::string> filenames = {};
+private:
+    sprite_factory();
+
 public:
-    std::map<std::string, std::string> spritefile_read(std::ifstream & myfile);
+    static sprite_factory& get_instance(){
+        static sprite_factory instance;
+        return instance;
+    }
+
+    std::map<std::string, std::string> filenames;
 };
 
 #endif

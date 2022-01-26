@@ -26,10 +26,24 @@ unsigned int unsinged_int_from_float(float rhs){
     return static_cast<unsigned int>(rhs);
 }
 
-unsigned int random_int_between_range(int min, int max) {
-    std::random_device rd;     // only used once to initialise (seed) engine
-    std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
-    std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
+// unsigned int random_int_between_range(int min, int max) {
+//     std::random_device rd;     // only used once to initialise (seed) engine
+//     std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
+//     std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
 
-    return uni(rng);
+//     return uni(rng);
+//}
+
+unsigned int random_int_between_range(int min, int max) {
+    return rand() % (max+1);
+}
+
+std::vector<unsigned int> random_int_between_range_multiple(int min, int max, unsigned int amount) {
+    std::vector<unsigned int> tmp_vector;
+    for(unsigned int i = 0; i <= amount; i++) {
+        tmp_vector.push_back(((rand() % (max+1))/60)*60);
+    }
+    std::sort( tmp_vector.begin(), tmp_vector.end() );
+    tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
+    return tmp_vector;
 }

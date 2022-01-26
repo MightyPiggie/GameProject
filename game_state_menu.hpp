@@ -18,7 +18,6 @@ private:
     unsigned int width;
     unsigned int height;
     state & state_t;
-    std::map<std::string , std::string> & sprite_files_map;
     game_settings & gameSettings;
     std::vector<std::shared_ptr<drawable>> objects = {};
 
@@ -27,7 +26,6 @@ public:
                     unsigned int width,
                     unsigned int height,
                     state & state_t,
-                    std::map<std::string,std::string> & sprite_files_map,
                     game_settings & gameSettings);
     void draw() override;
     void update() override;

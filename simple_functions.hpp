@@ -13,5 +13,8 @@ unsigned int unsinged_int_from_float(float rhs);
 
 // TODO: Check if needed
 unsigned int random_int_between_range(int min, int max);
+std::vector<unsigned int> random_int_between_range_multiple(int min, int max, unsigned int amount);
+
+
 
 #endif

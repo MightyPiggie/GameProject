@@ -1,21 +1,20 @@
 #include "game_state_shop.hpp"
 
+#include "sprite_factory.hpp"
 
 game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  state & state_t,
                                  unsigned int width,
                                  unsigned int height,
                                  std::vector<std::string> & unlocked_players,
-                                 std::map<std::string,
-                                 std::string> & sprite_files_map,
                                  game_settings & gameSettings
                                  ):
                                  drawable(window,{0,0}, {0,0}),
                                  state_t(state_t),
                                  unlocked_players(unlocked_players),
-                                 sprite_files_map(sprite_files_map),
                                  gameSettings(gameSettings)
                                 {
+                                    sprite_factory sprite_reader = sprite_factory::get_instance(); 
                                     std::shared_ptr<window_part> shop_window = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(0,0),vector2f_from_unsigned_ints(width,height), sf::Color(33,182,168));
                                     std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){ save(unlocked_players, gameSettings) ;window.close();},"Quit", sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> back_to_menu_from_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){save(unlocked_players, gameSettings); state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
@@ -66,9 +65,9 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
 
                                             ///Steeds players toevoegen aan deze lijst. Deze komen in een vector. Door deze loop je steeds
                                     sf::Vector2f player_layout_position = vector2f_from_unsigned_ints(width/2 - 180,  400);
-                                    std::shared_ptr<window_part> chicken = std::make_shared<window_part>(window, player_layout_position, sprite_files_map[all_players[0]+"_shop"]);
-                                    std::shared_ptr<window_part> slime = std::make_shared<window_part>(window, player_layout_position, sprite_files_map[all_players[1]+"_shop"]);
-                                    std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_files_map[all_players[2]+"_shop"]);
+                                    std::shared_ptr<window_part> chicken = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[0]+"_shop"]);
+                                    std::shared_ptr<window_part> slime = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[1]+"_shop"]);
+                                    std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[2]+"_shop"]);
 
                                     objects = {shop_window,quit_gamewindow,back_to_menu_from_gamewindow, previeus_player_button, next_player_button};
                                     /// Lijst van players die er zijn? Kan misschien anders

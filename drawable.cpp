@@ -4,8 +4,6 @@
 
 #include "drawable.hpp"
 
-#include <iostream>
-
 drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
     window(window),
     position(position),
@@ -17,7 +15,7 @@ bool drawable::within( int x, int a, int b ){
    return ( x >= a ) && ( x <= b );
 }
 
-bool drawable::overlaps(drawable* other) {
+bool drawable::overlaps(std::shared_ptr<drawable> other) {
    bool x_overlap = within( 
       position.x, 
       other->position.x, 
@@ -39,19 +37,6 @@ bool drawable::overlaps(drawable* other) {
    return x_overlap && y_overlap;
 }
 
-//virtual void drawable::draw()=0;
-
 sf::Vector2f drawable::get_position(){return position;}
 
 sf::Vector2f drawable::get_size(){return size;}
-
-//virtual void drawable::update(){}
-
-game_drawable::game_drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state):
-   drawable(window, position, size),
-   object_state(object_state)
-{}
-
-void game_drawable::lower(){
-   position.y += 1;
-}

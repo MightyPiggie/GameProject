@@ -1,6 +1,8 @@
 #ifndef GAME_SETTINGS_HPP
 #define GAME_SETTINGS_HPP
 
+#include <string>
+
 struct game_settings{
     uint16_t score = 0;
     uint16_t highscore = 0;
@@ -9,4 +11,5 @@ struct game_settings{
     bool sound = true;
     std::string player = "chicken_player";
 };
+
 #endif

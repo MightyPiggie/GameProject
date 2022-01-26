@@ -4,20 +4,19 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
-#include "simple_functions.hpp"
+#include <map>
+#include <string>
+
 #include "drawable.hpp"
 #include "window_part.hpp"
-#include "player.hpp"
-#include "obstacle.hpp"
 #include "label.hpp"
 #include "sprite_factory.hpp"
 #include "buttons.hpp"
-#include "builder.hpp"
 #include "game_settings.hpp"
+#include "level.hpp"
 
 class game_state_game : public drawable{
 private:
-    std::map<std::string , std::string> & sprite_files_map;
     game_settings & gameSettings;
     state & state_t;
     unsigned int width;
@@ -32,16 +31,14 @@ private:
 //    buttons quit_gamewindow;
 //    buttons back_to_menu_gamewindow;
 //    builder builder1;
-    std::vector<std::shared_ptr<drawable>> drawables;
-    std::vector<game_drawable*> game_drawables;
     std::vector<std::shared_ptr<label>> labels;
-    std::vector<std::shared_ptr<player>> player_list;
-    std::vector<std::shared_ptr<builder>> builder_list;
+    std::vector<std::shared_ptr<drawable>> drawables;
+    level level1;
+
 public:
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,
                     unsigned int height,
-                    std::map<std::string , std::string> & sprite_files_map,
                     game_settings & gameSettings,
                     state & state_t);
 //    ~game_state_game();
@@ -50,4 +47,5 @@ public:
     void update() override;
     void destructor();
 };
+
 #endif

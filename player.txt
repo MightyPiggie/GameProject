@@ -1,5 +1,6 @@
 MUNTEN 100
 HIGH 5
-EQUIPPED chicken_player
+EQUIPPED slime_player
 PLAYER chicken_player
 PLAYER pacman_player
+PLAYER slime_player

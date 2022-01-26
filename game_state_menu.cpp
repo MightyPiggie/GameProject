@@ -10,17 +10,16 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  state & state_t,
-                                 std::map<std::string , std::string> & sprite_files_map,
                                  game_settings & gameSettings
                                 ):
                                 drawable(window, {0,0}, vector2f_from_unsigned_ints(width,height)),
                                 state_t(state_t),
-                                sprite_files_map(sprite_files_map),
                                 gameSettings(gameSettings)
                                 {
+                                    sprite_factory sprite_reader = sprite_factory::get_instance();
                                 std::shared_ptr<window_part> background_menu_window = std::make_shared<window_part>(window,
                                                                                      vector2f_from_unsigned_ints(0, 0),
-                                                                                     sprite_files_map["menu_background_river"]);
+                                                                                     sprite_reader.filenames["menu_background_river"]);
                                 std::shared_ptr<buttons> quit_in_menu_window = std::make_shared<buttons>(window,
                                                                                                          50,
                                                                                                          vector2f_from_unsigned_ints(width/2 - 550,height/2 + 350),
@@ -46,7 +45,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                                                                                       sf::Color(163 , 235 , 177));
                                 std::shared_ptr<window_part_player> player_icon_menu_window = std::make_shared<window_part_player>(window,
                                                                                                                      vector2f_from_unsigned_ints(width/2 -200,height/2 - 100),
-                                                                                                                     sprite_files_map[gameSettings.player+"_shop"],
+                                                                                                                     sprite_reader.filenames[gameSettings.player+"_shop"],
                                                                                                                      gameSettings);
                                 std::shared_ptr<label> display_coins_menu = std::make_shared<label>(window,
                                                                                                     sf::Vector2f(float(width) - 250.f, 50),

@@ -14,7 +14,6 @@
 
 class game_state_dead : public drawable{
 private:
-    std::map<std::string , std::string> & sprite_files_map;
     state & state_t;
     //window_part dead_window;
 //    sf::Texture & screenshot_gamescreen;
@@ -24,7 +23,7 @@ private:
 //    label dead_message;
     std::vector<std::shared_ptr<drawable>> objects;
 public:
-    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, std::map<std::string,std::string> & sprite_files_map, state & state_t);
+    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t);
     void draw() override;
     void update() override;
 };

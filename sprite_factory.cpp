@@ -1,6 +1,7 @@
 #include "sprite_factory.hpp"
 
-std::map<std::string, std::string> sprite_factory::spritefile_read(std::ifstream & myfile) {
+sprite_factory::sprite_factory() {
+    std::ifstream myfile("sprite_file.txt");
     while (myfile.is_open()) {
         std::string sprite_name;
         std::string file_path;
@@ -12,5 +13,4 @@ std::map<std::string, std::string> sprite_factory::spritefile_read(std::ifstream
             break;
         }
     }
-    return filenames;
 }

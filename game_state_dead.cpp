@@ -4,11 +4,9 @@
 game_state_dead::game_state_dead(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
-                                 std::map<std::string , std::string> & sprite_files_map,
                                  state & state_t
 ):
         drawable(window,{0,0},{0,0}),
-        sprite_files_map(sprite_files_map),
         state_t(state_t){
         std::shared_ptr<window_part> dead_window = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(0,0),
                                                                                  vector2f_from_unsigned_ints(float(width), float(height)),

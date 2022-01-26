@@ -30,7 +30,6 @@ private:
 
 //    std::vector<std::shared_ptr<window_part>> unlocked_players_test;
     std::vector<std::shared_ptr<label>> player_equipped_test;
-    std::map<std::string, std::string> & sprite_files_map;
 
     /// Game settings die erzijn
     game_settings & gameSettings;
@@ -50,8 +49,6 @@ public:
                     unsigned int width,
                     unsigned int height,
                     std::vector<std::string> & unlocked_players,
-                    std::map<std::string,
-                    std::string> & sprite_files_map,
                     game_settings & gameSettings);
     void draw() override;
     void update() override;

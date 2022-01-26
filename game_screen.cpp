@@ -23,36 +23,34 @@ void game_screen::run(){
 
     /// Sprite factory
     std::ifstream sprite_file("sprite_file.txt");
-    sprite_factory sprite_reader;
-    std::map<std::string , std::string> sprite_files_map = sprite_reader.spritefile_read(sprite_file);
-
+    sprite_factory sprite_reader = sprite_factory::get_instance();
 
     /// Zet een icon neer voor in de taakbalk.
     auto image = sf::Image{};
-    image.loadFromFile(sprite_files_map["icon"]);
+    image.loadFromFile(sprite_reader.filenames["icon"]);
     window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
 
     //start state
     state_t = MENU;
     //Game State
 //    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-    game_state_game * game_state = new game_state_game(window, width, height, sprite_files_map, game_setting,  state_t);
+    game_state_game game_state(window, width, height, game_setting,  state_t);
     //Menu State
-    game_state_menu menu_state(window, width, height,state_t,sprite_files_map , game_setting);
+    game_state_menu menu_state(window, width, height,state_t, game_setting);
 
     //Dead State
-    game_state_dead dead_state(window, width, height, sprite_files_map,  state_t);
+    game_state_dead dead_state(window, width, height,  state_t);
 
     //Shop State
-    game_state_shop shop_state(window, state_t, width, height , unlocked_players , sprite_files_map, game_setting);
+    game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting);
 
 
     while (window.isOpen()) {
         window.clear();
         switch (state_t) {
             case GAME: {
-                game_state->update();
-                game_state->draw();
+                game_state.update();
+                game_state.draw();
                 break;
             }
             case MENU: { // TODO Check updateables
