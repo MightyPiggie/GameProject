@@ -28,6 +28,7 @@ obstacle_moving::obstacle_moving(sf::RenderWindow & window, sf::Vector2f positio
 {}
 
 unsigned int obstacle_moving::random_int_between_range(int min, int max) {
+    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     return rand() % (max+1);
 }
 void obstacle_moving::update() {

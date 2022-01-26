@@ -1,6 +1,8 @@
 #include "builder.hpp"
 
 #include <algorithm>
+#include <ctime>
+#include <chrono>
 
 #include "simple_functions.hpp"
 #include "game_screen.hpp"
@@ -13,10 +15,12 @@ builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> s
 }
 
 unsigned int builder::random_int_between_range(int min, int max) {
-    return min + (rand() % (max+1));
+    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+    return rand() % (max+1);
 }
 
 std::vector<unsigned int> builder::random_int_between_range_multiple(int min, int max, unsigned int amount) {
+    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     std::vector<unsigned int> tmp_vector;
     for(unsigned int i = 0; i <= amount; i++) {
         tmp_vector.push_back(((rand() % (max+1))/60)*60);
@@ -48,7 +52,7 @@ void builder::build_underground(float height, bool force_underground_grass) {
         return;
     }
     else if(underground_type == 3 && force_underground_grass == false) {
-        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, NON_OBSTACLE, sprite_factory["water_sprite"]};
+        obstacle* tmp2 = new obstacle {window, sf::Vector2f{width_screen/4.f, height},  sf::Vector2f{width_screen/2.f, 59.0}, DEADLY, sprite_factory["water_sprite"]};
         sprite_builds.push_back(tmp2);
         generate_obstacle_logs(height);
         return;
@@ -131,11 +135,11 @@ void builder::generate_obstacle_logs(float height) {
     bool direction = random_int_between_range(0, 1);
     bool log_length = random_int_between_range(0, 1);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprite_factory[sprites_log[log_length]], 300, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+60, height}, sf::Vector2f{119.0, 59.0}, FLOATING, sprite_factory[sprites_log[log_length]], 300, direction};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprite_factory[sprites_log[log_length]], 300, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{119.0, 59.0}, FLOATING, sprite_factory[sprites_log[log_length]], 300, direction};
         sprite_builds.push_back(tmp);
     }
 }
