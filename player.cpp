@@ -76,6 +76,13 @@ void player::check_dead(std::vector<game_drawable *> &gameobjects) {
     for (auto &object: gameobjects) {
         if (object != this) {
             if (object->object_state == DEADLY) {
+                for (auto &object1: gameobjects) {
+                    if (object1->object_state == FLOATING) {
+                        if(this->overlaps(object1)) {
+                            return;
+                        }
+                    }
+                }
                 if (this->overlaps(object)) {
                     state_t = DEAD;
                     if(game_setting.score > game_setting.highscore) {

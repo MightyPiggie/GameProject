@@ -23,11 +23,12 @@ sf::FloatRect obstacle::getbounds() {
     return obs.getGlobalBounds();
 }
 
-obstacle_moving::obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction):
-    obstacle(window, position, size, object_state, filename), change(change), direction(direction)
+obstacle_moving::obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction, unsigned int speed):
+    obstacle(window, position, size, object_state, filename), change(change), direction(direction), speed(speed)
 {}
 
 unsigned int obstacle_moving::random_int_between_range(int min, int max) {
+    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     return rand() % (max+1);
 }
 void obstacle_moving::update() {
@@ -39,10 +40,10 @@ void obstacle_moving::update() {
     }
     else if(moving == true) {
         if(direction == 1) {
-            position.x += 2;
+            position.x += speed;
         }
         else if(direction == 0) {
-            position.x -= 2;
+            position.x -= speed;
         }
     }
 }

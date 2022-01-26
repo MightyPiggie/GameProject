@@ -34,6 +34,7 @@ private:
     void generate_obstacle_train(float height);
     void generate_obstacle_car(float height);
     void generate_obstacle_logs(float height);
+    void generate_coins(float height);
     
 public:
     builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory);
