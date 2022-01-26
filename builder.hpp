@@ -26,8 +26,6 @@ private:
     std::vector<std::string> sprites_log = {"tree_trunk_2t_sprite", "tree_trunk_3t_sprite"};
     std::vector<obstacle*> sprite_builds;
     std::vector<obstacle_moving*> moving_sprite_builds;
-    std::random_device rd;
-    std::mt19937 rng;
     int height_screen = sf::VideoMode::getDesktopMode().height;
     int width_screen = sf::VideoMode::getDesktopMode().width;
     unsigned int max_amount_obstacles_per_tile = width_screen/60/4;

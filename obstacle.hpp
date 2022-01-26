@@ -25,8 +25,6 @@ protected:
     int change;
     bool direction;
     bool moving = false;
-    std::random_device rd;
-    std::mt19937 rng;
 public:
     obstacle_moving(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction);
     unsigned int random_int_between_range(int min, int max);

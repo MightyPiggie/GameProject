@@ -1,33 +1,25 @@
 #include "builder.hpp"
 
 #include <algorithm>
-#include <chrono>
-#include <sys/time.h>
-#include <ctime>
 
 #include "simple_functions.hpp"
 #include "game_screen.hpp"
 
 builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> sprite_factory):
     window(window),
-    sprite_factory(sprite_factory),
-    rng(rd())
+    sprite_factory(sprite_factory)
 {
     start_playground();
-    auto sec_since_epoch = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-    rng.seed(sec_since_epoch);
 }
 
 unsigned int builder::random_int_between_range(int min, int max) {
-    std::uniform_int_distribution<int> uni(min,max);
-    return uni(rng);
+    return rand() % (max+1);
 }
 
 std::vector<unsigned int> builder::random_int_between_range_multiple(int min, int max, unsigned int amount) {
-    std::uniform_int_distribution<int> uni(min,max);
     std::vector<unsigned int> tmp_vector;
     for(unsigned int i = 0; i <= amount; i++) {
-        tmp_vector.push_back(((uni(rng))/60)*60);
+        tmp_vector.push_back(((rand() % (max+1))/60)*60);
     }
     std::sort( tmp_vector.begin(), tmp_vector.end() );
     tmp_vector.erase( std::unique( tmp_vector.begin(), tmp_vector.end() ), tmp_vector.end() );
