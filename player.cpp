@@ -14,7 +14,7 @@ void player::update() {
 }
 
 //TODO check if this can be renamed to update
-void player::move(std::vector<game_drawable *> &gameobjects) {
+void player::move(std::vector<game_drawable*> &gameobjects) {
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
@@ -72,7 +72,7 @@ void player::move(std::vector<game_drawable *> &gameobjects) {
     }
 }
 
-void player::check_dead(std::vector<game_drawable *> &gameobjects) {
+void player::check_dead(std::vector<game_drawable*> &gameobjects) {
     for (auto &object: gameobjects) {
         if (object != this) {
             if (object->object_state == DEADLY) {
