@@ -9,10 +9,11 @@
 #include "game_settings.hpp"
 #include "game_states.hpp"
 #include <iostream>
+#include "sprite_factory.hpp"
 
 class player : public game_drawable {
 protected:
-    const std::string filename;
+    std::string filename;
     sf::Texture texture;
     sf::Sprite sprite;
     float movement_speed = 60;
@@ -42,6 +43,7 @@ public:
     void move(std::vector<game_drawable*> &gameobjects);
     void check_dead(std::vector<game_drawable*> &gameobjects);
     sf::FloatRect getbounds() override;
+    void update() override;
 
 };
 
