@@ -88,7 +88,7 @@ void builder::generate_obstacle_grass(float height) {
     unsigned int amount_obstacles = random_int_between_range(0, max_amount_obstacles_per_tile);
     std::vector<unsigned int> location_obstacles = random_int_between_range_multiple(width_screen/4, width_screen/4*3, amount_obstacles);
 
-    for(unsigned int i = 0; i <= location_obstacles.size(); i++) {
+    for(unsigned int i = 0; i < location_obstacles.size(); i++) {
         unsigned int obstacle_type = random_int_between_range(0, 1);
         if(obstacle_type == 0) {
              obstacle* tmp = new obstacle {window, sf::Vector2f{((int(location_obstacles[i]/60))*60.f), height}, sf::Vector2f{59.0, 59.0}, OBSTACLE, sprite_factory["tree_sprite"]};
