@@ -15,7 +15,7 @@ builder::builder(sf::RenderWindow& window, std::map<std::string , std::string> s
 }
 
 unsigned int builder::random_int_between_range(int min, int max) {
-    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+//    std::srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
     return rand() % (max+1);
 }
 
@@ -108,11 +108,11 @@ void builder::generate_obstacle_grass(float height) {
 void builder::generate_obstacle_train(float height) {
     bool direction = random_int_between_range(0, 1);
     if(direction == 0) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_left_sprite"], 100, direction , 4};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4*3.f+240, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_left_sprite"], 100, direction , 4};
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_right_sprite"], 100, direction , 4};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-240, height}, sf::Vector2f{240.0, 59.0}, DEADLY, sprite_factory["train_right_sprite"], 100, direction , 4};
         sprite_builds.push_back(tmp);
     }
 }
