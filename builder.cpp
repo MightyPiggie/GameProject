@@ -144,7 +144,7 @@ void builder::generate_obstacle_logs(float height) {
         sprite_builds.push_back(tmp);
     }
     else if(direction == 1) {
-        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-60, height}, sf::Vector2f{119.0, 59.0}, FLOATING, sprite_factory[sprites_log[log_length]], 300, direction};
+        obstacle_moving* tmp = new obstacle_moving {window, sf::Vector2f{width_screen/4.f-180, height}, sf::Vector2f{119.0, 59.0}, FLOATING, sprite_factory[sprites_log[log_length]], 300, direction};
         sprite_builds.push_back(tmp);
     }
 }
