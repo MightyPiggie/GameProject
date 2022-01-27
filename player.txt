@@ -1,4 +1,5 @@
-MUNTEN 200
-HIGH 29
-EQUIPPED chicken_player
+MUNTEN 100
+HIGH 35
+EQUIPPED pacman_player
 PLAYER chicken_player
+PLAYER pacman_player
