@@ -19,7 +19,6 @@ void player::draw() {
 
 void player::update() {
     if(spritename != sprite_factory::get_instance().filenames[game_setting.player]){
-        std::cout <<"opniuw ingeladen" << std::endl;
         spritename = sprite_factory::get_instance().filenames[game_setting.player];
         texture.loadFromFile(spritename);
         sprite.setTexture(texture);

@@ -9,13 +9,13 @@ level::level(sf::RenderWindow& window,
         game_setting(game_setting),
         state_t(state_t)
     {
-        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 59.0 }, game_setting, state_t));
+        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 0.0 }, game_setting, state_t));
 
         for(int i = 0; i <= int(window.getSize().y / 60); i++){
             build_line(window.getSize().y - (60 * i), i < 5);
         }
-    }
 
+    }
 
 
 void level::update(){
@@ -24,15 +24,18 @@ void level::update(){
         for(auto& player : players){
             player->lower();
             player->update();
-            for(auto& line : lines){
-                player->check_dead(line->get_objects());
+                for(auto& line : lines){
+                    player->check_dead(line->get_objects());
+                    }
             }
-        }
 
         for(auto& line : lines){
             line->lower();
             line->update();
         }
+
+        
+
         if(ticks % 60 == 0) {
             build_line();
         }
