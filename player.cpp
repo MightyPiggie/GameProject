@@ -20,7 +20,7 @@ void player::draw() {
 void player::update() {
     // if(filename != "res/sprites/"+game_setting.player+".png"){
        // spritename = ;
-        texture.loadFromFile("res/sprites/"+game_setting.player+".png");
+        texture.loadFromFile(sprite_factory::get_instance().filenames[game_setting.player]);
         sprite.setTexture(texture);
     // }
 }

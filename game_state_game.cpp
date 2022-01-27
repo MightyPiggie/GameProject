@@ -30,7 +30,6 @@ game_state_game::game_state_game(sf::RenderWindow & window,
     drawables = {left, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow};
     labels = {display_coins , display_score};
 //    screenshot_gamescreen.update(window);
-    gameSettings.started = true;
 }
 
 //game_state_game::~game_state_game() {delete[] ;}
@@ -45,12 +44,10 @@ void game_state_game::draw(){
     }
 }
 void game_state_game::update() {
-    if(gameSettings.started){
-        level1.update();
+    level1.update();
 
-        for( auto & object : drawables){
-            object->update();
-        }
+    for( auto & object : drawables){
+        object->update();
     }
     labels[0]->update_text("Coins  " + std::to_string(gameSettings.coins));
     labels[1]->update_text("Score  " + std::to_string(gameSettings.score));

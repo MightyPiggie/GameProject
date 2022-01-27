@@ -11,7 +11,10 @@ line::line(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, l
     switch (type)
     {
     case GRASS:
-        generate_obstacle_grass();
+        if(position.y <= window.getSize().y-5*60) {
+            generate_obstacle_grass();
+        }
+        
         break;
     
     case ROAD:
@@ -101,6 +104,6 @@ void line::generate_obstacle_logs() {
         objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4*3.f+60, position.y}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprites_log[log_length], 300, direction));
     }
     else if(direction == 1) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-60, position.y}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprites_log[log_length], 300, direction));
+        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-180, position.y}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprites_log[log_length], 300, direction));
     }
 }
