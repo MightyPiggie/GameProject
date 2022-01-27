@@ -79,20 +79,17 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             for (auto &object1: gameobjects) {
-                if (object1->object_state == FLOATING) {
-                    if(this->overlaps(object1)) {
-                        return;
+                if (object1->object_state == DEADLY) {
+
+                    if (this->overlaps(object1)) {
+                        state_t = DEAD;
+                        if(game_setting.score > game_setting.highscore) {
+                            game_setting.highscore = game_setting.score;
+                            save(unlocked_players, game_setting);
+                        }
+                        break;
                     }
-                }
-            }
-            if (this->overlaps(object)) {
-                state_t = DEAD;
-                if(game_setting.score > game_setting.highscore) {
-                    game_setting.highscore = game_setting.score;
-                    save(unlocked_players, game_setting);
-                }
-                break;
-            }
+                }}
             break;
         }
     }
