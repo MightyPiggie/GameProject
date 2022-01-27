@@ -30,7 +30,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 std::shared_ptr<buttons> start_game = std::make_shared<buttons>(window,
                                                                                                 50,
                                                                                                 vector2f_from_unsigned_ints(width/2 - 140, height/2 + 350),
-                                                                                                [&](){state_t = GAME;},
+                                                                                                [&](){state_t = RESTART;},
                                                                                                 "Start",
                                                                                                 sf::Color(163 , 235 , 177));
                                 std::shared_ptr<buttons> shop_button_in_menu_window = std::make_shared<buttons>(window,

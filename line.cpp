@@ -2,6 +2,8 @@
 
 #include "simple_functions.hpp"
 
+#include <iostream>
+
 line::line(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, line_type type, object_states object_state, std::string sprite_name):
     object(window, position, size, object_state, sprite_name),
     type(type),
@@ -69,11 +71,18 @@ void line::generate_coins(){
 void line::generate_obstacle_car() {
     bool direction = random_int_between_range(0, 1);
     int car_type = random_int_between_range(0, 4);
+    auto amount_cars = random_int_between_range(3, 5);
     if(direction == 0) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4*3.f+60, position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction));
+        for(unsigned int i = 0; i <= amount_cars; i++) {
+            bool side = random_int_between_range(0, 1);
+            objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction));
+        }
     }
     else if(direction == 1) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-60, position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction));
+        for(unsigned int i = 0; i <= amount_cars; i++) {
+            bool side = random_int_between_range(0, 1);
+            objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction));
+        }
     }
 }
 
@@ -100,10 +109,18 @@ void line::generate_obstacle_train() {
 void line::generate_obstacle_logs() {
     bool direction = random_int_between_range(0, 1);
     bool log_length = random_int_between_range(0, 1);
+    auto amount_logs = random_int_between_range(3, 5);
     if(direction == 0) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4*3.f+60, position.y}, sf::Vector2f{119.0, 59.0}, FLOATING, sprites_log[log_length], 300, direction));
-    }
+        for(unsigned int i = 0; i <= amount_logs; i++) {
+            bool side = random_int_between_range(0, 1);
+            std::cout << side << std::endl;
+            objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, log_length == 0 ? sf::Vector2f{119.0, 59.0} : sf::Vector2f{179.0, 59.0}, FLOATING, sprites_log[log_length], 200, direction));
+        }
+   }
     else if(direction == 1) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-180, position.y}, sf::Vector2f{119.0, 59.0}, FLOATING, sprites_log[log_length], 300, direction));
+        for(unsigned int i = 0; i <= amount_logs; i++) {
+            bool side = random_int_between_range(0, 1);
+            objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f-180, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)), position.y}, log_length == 0 ? sf::Vector2f{119.0, 59.0} : sf::Vector2f{179.0, 59.0}, FLOATING, sprites_log[log_length], 200, direction));
+        }
     }
 }

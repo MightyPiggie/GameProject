@@ -18,16 +18,15 @@ void player::draw() {
 }
 
 void player::update() {
-    // if(filename != "res/sprites/"+game_setting.player+".png"){
-       // spritename = ;
-        texture.loadFromFile(sprite_factory::get_instance().filenames[game_setting.player]);
+    if(spritename != sprite_factory::get_instance().filenames[game_setting.player]){
+        spritename = sprite_factory::get_instance().filenames[game_setting.player];
+        texture.loadFromFile(spritename);
         sprite.setTexture(texture);
-    // }
+    }
 }
-//TODO not checking line so won't die trough water
-//TODO check if this can be renamed to update
+
 void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
-    if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    if (position.x != float(window.getSize().x)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
             if(object->object_state == OBSTACLE){
@@ -37,7 +36,7 @@ void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
             }
         }
     }
-    else if (position.x != float(window_width)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+    else if (position.x != float(window.getSize().x)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         position += sf::Vector2f{movement_speed, 0};
         for(auto &object : gameobjects) {
             if(object->object_state == OBSTACLE){
@@ -97,23 +96,25 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
             break;
         }
     }
+    bool overlap = false;
     if (lineobjects->object_state == DEADLY) {
-            for (auto &object1: gameobjects) {
-                if (object1->object_state == FLOATING && this->overlaps(lineobjects)) {
-                    if(this->overlaps(object1)) {
-                        return;
-                    }
-                    else {
-                        state_t = DEAD;
-                        if(game_setting.score > game_setting.highscore) {
-                            game_setting.highscore = game_setting.score;
-                            save(unlocked_players, game_setting);
-                        }
-                    }
+        for (auto &object1: gameobjects) {
+            if (object1->object_state == FLOATING && this->overlaps(lineobjects)) {
+                if(this->overlaps(object1)) {
+                    overlap = true;
+                    break;
                 }
             }
         }
+        if (overlap == false && this->overlaps(lineobjects)) {
+            state_t = DEAD;
+            if(game_setting.score > game_setting.highscore) {
+                game_setting.highscore = game_setting.score;
+                save(unlocked_players, game_setting);
+            }
+        }
     }
+}
 
 
 

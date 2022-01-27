@@ -17,7 +17,6 @@ level::level(sf::RenderWindow& window,
 
     }
 
-    
 
 void level::update(){
     players[0]->update();
@@ -47,14 +46,13 @@ void level::update(){
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::KeyPressed) {
             if(state_t == GAME){
-               for(auto& player : players){
-                   std::vector<std::shared_ptr<object>> objects = {};
+                for(auto& player : players){
+                    std::vector<std::shared_ptr<object>> objects = {};
                     for(auto& line : lines){
                         std::vector<std::shared_ptr<object>> object = line->get_objects();
-                         objects.insert(objects.begin(), object.begin(), object.end());
+                        objects.insert(objects.begin(), object.begin(), object.end());
                     }
                     player->move(objects);
-                    //player->check_dead(objects);
                 }
             }
         }

@@ -58,7 +58,11 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                         },
                                                                                                         "Equip",
                                                                                                         sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<label> equipped_label = std::make_shared<label>(window,vector2f_from_unsigned_ints(width/2-100, height - 200), "Equipped",50,sf::Color(163 , 235 , 177));
+                                    std::shared_ptr<label> equipped = std::make_shared<label>(window,
+                                                                                                     vector2f_from_unsigned_ints(width/2-100, height - 200),
+                                                                                                     "Equipped",
+                                                                                                        50,
+                                                                                                     sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> next_player_button = std::make_shared<buttons>(window,
                                                                                                             50,
                                                                                                             vector2f_from_unsigned_ints(width/2+500,height - 200),
@@ -88,7 +92,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
 
                                     /// Deze wordt niet gebruikt
                                     //unlocked_players = {chicken};
-                                    player_equipped_test = {equipped_label};
+                                    player_equipped_test = {equipped};
                                 }
 
 bool game_state_shop::check_functie_unlocked(){
