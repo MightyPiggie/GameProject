@@ -17,7 +17,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 state_t(state_t),
                                 gameSettings(gameSettings)
                                 {
-                                    sprite_factory sprite_reader = sprite_factory::get_instance();
+                                sprite_factory sprite_reader = sprite_factory::get_instance();
                                 std::shared_ptr<window_part> background_menu_window = std::make_shared<window_part>(window,
                                                                                      vector2f_from_unsigned_ints(0, 0),
                                                                                      sprite_reader.filenames["menu_background_river"]);

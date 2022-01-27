@@ -20,7 +20,6 @@ void game_screen::run(){
     window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     unlocked_players = init();
-
     /// Sprite factory
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader = sprite_factory::get_instance();

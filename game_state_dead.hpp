@@ -15,12 +15,6 @@
 class game_state_dead : public drawable{
 private:
     state & state_t;
-    //window_part dead_window;
-//    sf::Texture & screenshot_gamescreen;
-//    buttons quit_game_button;
-//    buttons back_to_menu_button;
-//    buttons restart_button;
-//    label dead_message;
     std::vector<std::shared_ptr<drawable>> objects;
 public:
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t);
