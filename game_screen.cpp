@@ -72,4 +72,5 @@ void game_screen::run(){
         window.display();
         sf::sleep(sf::milliseconds(20));
     }
+    save(unlocked_players,game_setting);
 }

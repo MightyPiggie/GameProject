@@ -1,4 +1,5 @@
 #include "game_state_shop.hpp"
+#include "label_player_settings.hpp"
 
 #include "sprite_factory.hpp"
 
@@ -18,7 +19,12 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<window_part> shop_window = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(0,0),vector2f_from_unsigned_ints(width,height), sf::Color(33,182,168));
                                     std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){ save(unlocked_players, gameSettings) ;window.close();},"Quit", sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> back_to_menu_from_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){save(unlocked_players, gameSettings); state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
-
+                                    std::shared_ptr<label_player_settings_coins> display_coins_shop = std::make_shared<label_player_settings_coins>(window,
+                                                                                                                                                    sf::Vector2f(float(width) - 250.f, 50),
+                                                                                                                                                    "Coins " + std::to_string(gameSettings.coins),
+                                                                                                                                                    25,
+                                                                                                                                                    sf::Color(163 , 235 , 177),
+                                                                                                                                                    gameSettings);
                                             /// Shop buttons
                                             //Todo: Moet nog netjes neergezet worden.
                                     std::shared_ptr<buttons> previeus_player_button = std::make_shared<buttons>(window,
@@ -36,7 +42,10 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> buy_button = std::make_shared<buttons>(window,
                                                                                                     50,
                                                                                                     vector2f_from_unsigned_ints(width/2-100, height - 200),
-                                                                                                    [&](){unlocked_players.push_back(all_players[player_scrolling_int]);
+                                                                                                    [&](){if(gameSettings.coins >= 100){
+                                                                                                        unlocked_players.push_back(all_players[player_scrolling_int]);
+                                                                                                        gameSettings.coins -= 100;
+                                                                                                    }
                                                                                                         sf::sleep(sf::milliseconds(100));
                                                                                                         },
                                                                                                         "Buy",
@@ -44,7 +53,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> equip_button = std::make_shared<buttons>(window,
                                                                                                       50,
                                                                                                       vector2f_from_unsigned_ints(width/2-100, height - 200),
-                                                                                                      [&](){gameSettings.player = all_players[player_scrolling_int]; std::cout << gameSettings.player << std::endl;
+                                                                                                      [&](){gameSettings.player = all_players[player_scrolling_int];
                                                                                                         sf::sleep(sf::milliseconds(100));
                                                                                                         },
                                                                                                         "Equip",
@@ -69,7 +78,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<window_part> slime = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[1]+"_shop"]);
                                     std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[2]+"_shop"]);
 
-                                    objects = {shop_window,quit_gamewindow,back_to_menu_from_gamewindow, previeus_player_button, next_player_button};
+                                    objects = {shop_window,quit_gamewindow,back_to_menu_from_gamewindow, previeus_player_button, next_player_button, display_coins_shop};
                                     /// Lijst van players die er zijn? Kan misschien anders
                                     players = {chicken, slime, pacman};
 

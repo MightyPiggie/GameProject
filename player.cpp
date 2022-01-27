@@ -24,7 +24,7 @@ void player::update() {
         sprite.setTexture(texture);
     // }
 }
-
+//TODO not checking line so won't die trough water
 //TODO check if this can be renamed to update
 void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
@@ -79,6 +79,13 @@ void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
 void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects) {
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
+            for (auto &object1: gameobjects) {
+                if (object1->object_state == FLOATING) {
+                    if(this->overlaps(object1)) {
+                        return;
+                    }
+                }
+            }
             if (this->overlaps(object)) {
                 state_t = DEAD;
                 if(game_setting.score > game_setting.highscore) {
@@ -87,6 +94,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects)
                 }
                 break;
             }
+            break;
         }
     }
 }

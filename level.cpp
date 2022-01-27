@@ -78,7 +78,7 @@ void level::build_line(float height, bool force_grass_line) {
     }
     // Water
     else if(line_type == 3 && force_grass_line == false) {
-        lines.push_back(std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, WATER, NON_OBSTACLE, "water_sprite"));
+        lines.push_back(std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, WATER, DEADLY, "water_sprite"));
     }
     // Grass
     else if((line_type == 1 || 4) || force_grass_line == true) {

@@ -14,6 +14,7 @@
 #include "buttons.hpp"
 #include "game_settings.hpp"
 #include "level.hpp"
+#include "label_player_settings.hpp"
 
 class game_state_game : public drawable{
 private:
