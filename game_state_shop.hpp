@@ -29,7 +29,7 @@ private:
 
 
 //    std::vector<std::shared_ptr<window_part>> unlocked_players_test;
-    std::vector<std::shared_ptr<label>> player_equipped_test;
+    std::vector<std::shared_ptr<drawable>> player_equipped_test;
 
     /// Game settings die erzijn
     game_settings & gameSettings;

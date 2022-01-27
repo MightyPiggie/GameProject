@@ -18,11 +18,12 @@ void player::draw() {
 }
 
 void player::update() {
-    // if(filename != "res/sprites/"+game_setting.player+".png"){
-       // spritename = ;
-        texture.loadFromFile("res/sprites/"+game_setting.player+".png");
+    if(spritename != sprite_factory::get_instance().filenames[game_setting.player]){
+        std::cout <<"opniuw ingeladen" << std::endl;
+        spritename = sprite_factory::get_instance().filenames[game_setting.player];
+        texture.loadFromFile(spritename);
         sprite.setTexture(texture);
-    // }
+    }
 }
 //TODO not checking line so won't die trough water
 //TODO check if this can be renamed to update

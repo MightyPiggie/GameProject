@@ -26,7 +26,7 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
         std::shared_ptr<buttons> restart_button = std::make_shared<buttons>(window,
                                                                             30,
                                                                             vector2f_from_unsigned_ints(width/2 - 100, height*2.5/4 ),
-                                                                            [&](){state_t = GAME;},
+                                                                            [&](){state_t = RESTART;},
                                                                             "Restart",
                                                                             sf::Color(81, 81 ,81));
         std::shared_ptr<label> dead_message = std::make_shared<label>(window,

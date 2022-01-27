@@ -34,7 +34,7 @@ void game_screen::run(){
     state_t = MENU;
     //Game State
 //    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-    game_state_game game_state(window, width, height, game_setting,  state_t);
+    std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t);
     //Menu State
     game_state_menu menu_state(window, width, height,state_t, game_setting);
 
@@ -49,8 +49,8 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
-                game_state.update();
-                game_state.draw();
+                game_state->update();
+                game_state->draw();
                 break;
             }
             case MENU: { // TODO Check updateables
@@ -61,6 +61,13 @@ void game_screen::run(){
             case DEAD: {
                 dead_state.update();
                 dead_state.draw();
+                break;
+            }
+            case RESTART :{
+                game_state = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t);
+                game_setting.score = 0;
+                game_setting.started = false;
+                state_t = GAME;
                 break;
             }
             case SHOP: {

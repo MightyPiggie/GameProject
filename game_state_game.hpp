@@ -14,7 +14,6 @@
 #include "buttons.hpp"
 #include "game_settings.hpp"
 #include "level.hpp"
-#include "label_player_settings.hpp"
 
 class game_state_game : public drawable{
 private:
@@ -22,16 +21,6 @@ private:
     state & state_t;
     unsigned int width;
     unsigned int height;
-//    window_part left;
-//    window_part right;
-    //  std::shared_ptr<window_part> game_window;
-//    player player1;
-//    label display_coins;
-//    label display_highscore;
-//    label display_score;
-//    buttons quit_gamewindow;
-//    buttons back_to_menu_gamewindow;
-//    builder builder1;
     std::vector<std::shared_ptr<label>> labels;
     std::vector<std::shared_ptr<drawable>> drawables;
     std::vector<std::shared_ptr<drawable>> drawables1;
@@ -48,6 +37,9 @@ public:
     void draw() override;
     void update() override;
     void destructor();
+    std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
+        return rhs;
+    }
 };
 
 #endif
