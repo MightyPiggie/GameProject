@@ -26,7 +26,7 @@ void level::update(){
             player->lower();
             player->update();
                 for(auto& line : lines){
-                    player->check_dead(line->get_objects());
+                    player->check_dead(line->get_objects(), line);
                     }
             }
 
@@ -54,6 +54,7 @@ void level::update(){
                          objects.insert(objects.begin(), object.begin(), object.end());
                     }
                     player->move(objects);
+                    //player->check_dead(objects);
                 }
             }
         }

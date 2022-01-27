@@ -101,9 +101,9 @@ void line::generate_obstacle_logs() {
     bool direction = random_int_between_range(0, 1);
     bool log_length = random_int_between_range(0, 1);
     if(direction == 0) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4*3.f+60, position.y}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprites_log[log_length], 300, direction));
+        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4*3.f+60, position.y}, sf::Vector2f{119.0, 59.0}, FLOATING, sprites_log[log_length], 300, direction));
     }
     else if(direction == 1) {
-        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-180, position.y}, sf::Vector2f{119.0, 59.0}, NON_OBSTACLE, sprites_log[log_length], 300, direction));
+        objects.push_back(std::make_shared<moving_object>(window, sf::Vector2f{window.getSize().x/4.f-180, position.y}, sf::Vector2f{119.0, 59.0}, FLOATING, sprites_log[log_length], 300, direction));
     }
 }

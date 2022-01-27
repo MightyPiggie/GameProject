@@ -76,7 +76,7 @@ void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
     }
 }
 
-void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects) {
+void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects) {
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             for (auto &object1: gameobjects) {
@@ -97,7 +97,23 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects)
             break;
         }
     }
-}
+    if (lineobjects->object_state == DEADLY) {
+            for (auto &object1: gameobjects) {
+                if (object1->object_state == FLOATING && this->overlaps(lineobjects)) {
+                    if(this->overlaps(object1)) {
+                        return;
+                    }
+                    else {
+                        state_t = DEAD;
+                        if(game_setting.score > game_setting.highscore) {
+                            game_setting.highscore = game_setting.score;
+                            save(unlocked_players, game_setting);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 
 

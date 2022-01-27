@@ -31,7 +31,7 @@ public:
 
     void draw() override;
     void move(const std::vector<std::shared_ptr<object>>& gameobjects);
-    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects);
+    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects);
     sf::FloatRect getbounds() override;
     void update() override;
 
