@@ -1,6 +1,6 @@
 #include "game_state_dead.hpp"
 
-
+/// game_state_dead construcor. Zet ook direct de objecten neer.
 game_state_dead::game_state_dead(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
@@ -39,12 +39,13 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
     objects = {dead_window , quit_game_button , back_to_menu_button ,restart_button};//, dead_message};
 }
 
+/// Tekent de game_state_dead
 void game_state_dead::draw(){
     for( auto & object : objects){
         object->draw();
     }
 }
-
+/// update de game_state_dead
 void game_state_dead::update() {
     for(auto &object : objects){
         object->update();

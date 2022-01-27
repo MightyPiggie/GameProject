@@ -6,6 +6,7 @@
 
 #include "game_states.hpp"
 
+/// Drawable class. Superclass voor elk object?
 class drawable {
 protected:
     sf::RenderWindow & window;

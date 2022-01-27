@@ -7,6 +7,7 @@
 
 #include "drawable.hpp"
 
+/// buttons class, heritage van drawable
 class buttons : public drawable{
 protected:
     std::function<void(void)> function;

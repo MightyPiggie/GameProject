@@ -13,7 +13,7 @@
 #include "simple_functions.hpp"
 #include "init_game.hpp"
 
-//initialisatie shop
+/// game_state_shop class, heritage van drawable
 class game_state_shop : public drawable{
 private:
     state & state_t;

@@ -12,6 +12,8 @@
 #include "sprite_factory.hpp"
 #include "game_settings.hpp"
 
+
+/// game_state_menu class, heritage van drawable
 class game_state_menu : public drawable{
 private:
     sf::RectangleShape rect;

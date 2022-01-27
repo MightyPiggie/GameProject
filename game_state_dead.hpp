@@ -12,6 +12,8 @@
 #include "sprite_factory.hpp"
 #include "buttons.hpp"
 
+
+/// game_state_dead class, heritage van drawable
 class game_state_dead : public drawable{
 private:
     state & state_t;

@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 
+/// sprite_factory class
 class sprite_factory{
 private:
     sprite_factory();

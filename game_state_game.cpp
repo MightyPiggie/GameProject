@@ -2,7 +2,10 @@
 
 #include "simple_functions.hpp"
 #include "label_player_settings.hpp"
+#include <iostream>
 
+/// game_state_game constructor. Maakt ook direct de objecten neer voor het scherm. Dit gaat alleen om de standaard objecten.
+/// Objecten van de game worden gemaakt in level.
 game_state_game::game_state_game(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
@@ -35,6 +38,8 @@ game_state_game::game_state_game(sf::RenderWindow & window,
 
 //game_state_game::~game_state_game() {delete[] ;}
 
+/// tekent de objecten in game_state_game
+/// Roept ook aan welke objecten daar bij horen van level
 void game_state_game::draw(){
     drawables1[0]->draw();
 
@@ -44,6 +49,9 @@ void game_state_game::draw(){
         object->draw();
     }
 }
+
+/// Update de objecten in game_state_game
+/// Roept ook aan welke objecten daar bij horen van level
 void game_state_game::update() {
     level1.update();
 

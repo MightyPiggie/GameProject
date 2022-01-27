@@ -7,6 +7,8 @@
 #include <iostream>
 #include "label_player_settings.hpp"
 
+
+/// Constructur van game_state_menu. Alle objecten worden er ook bij gemaakt.
 game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
@@ -72,12 +74,14 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                     };
                                 }
 
+/// tekent de objecten in game_state_menu
 void game_state_menu::draw(){
     for(auto &object : objects){
         object->draw();
     }
 }
 
+/// update de objecten in game_state_menu
 void game_state_menu::update(){
     for(auto &object : objects){
         object->update();

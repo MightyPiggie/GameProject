@@ -8,6 +8,7 @@
 
 #include "simple_functions.hpp"
 
+/// Buttons constructor. Zorgt er ook direct voor dat de button wordt getekend.
 buttons::buttons(sf::RenderWindow &window,
                  int char_size,
                  sf::Vector2f position,
@@ -40,11 +41,15 @@ buttons::buttons(sf::RenderWindow &window,
         txt.setCharacterSize(unsinged_int_from_vector2f(size)/2 - unsinged_int_from_vector2f(size)/16);
         */
 }
+
+
+/// Tekent de button.
 void buttons::draw(){
     window.draw(rect);
     window.draw(txt);
 }
 
+/// Update button. Kijkt of de muis erop zit. Of er op de klikt wordt. Hierop reacties.
 void buttons::update(){
     if(rect.getGlobalBounds().contains(vector2f_from_vector2i(sf::Mouse::getPosition()))){
         rect.setFillColor(hover);
@@ -58,6 +63,7 @@ void buttons::update(){
     }
 }
 
+/// Wordt volgens mij niet gebruikt.
 void buttons::update_coins(uint16_t coins){
     txt.setString(std::to_string(coins) + " C");
 }

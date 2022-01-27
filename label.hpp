@@ -10,6 +10,7 @@
 
 #include "drawable.hpp"
 
+/// label class, heritage van drawable
 class label : public drawable{
 protected:
     std::string text_string;

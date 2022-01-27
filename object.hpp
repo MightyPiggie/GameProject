@@ -7,6 +7,7 @@
 #include "drawable.hpp"
 #include "game_screen.hpp"
 
+/// object class, heritage van drawable
 class object : public drawable {
 protected:
     sf::RectangleShape obs;
@@ -22,6 +23,7 @@ public:
     object_states object_state;
 };
 
+/// moving_object class, heritage van object
 class moving_object : public object {
 protected:
     int change;

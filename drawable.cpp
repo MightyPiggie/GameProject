@@ -4,6 +4,7 @@
 
 #include "drawable.hpp"
 
+/// Drawable constructor
 drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size):
     window(window),
     position(position),
@@ -11,10 +12,12 @@ drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2
 {}
 
 //TODO Try without the =
+/// Kijkt wat er in de drawable is.
 bool drawable::within( int x, int a, int b ){
    return ( x >= a ) && ( x <= b );
 }
 
+/// Checkt of de drawable overlapt
 bool drawable::overlaps(std::shared_ptr<drawable> other) {
    bool x_overlap = within( 
       position.x, 
@@ -37,6 +40,8 @@ bool drawable::overlaps(std::shared_ptr<drawable> other) {
    return x_overlap && y_overlap;
 }
 
+/// Geeft de positie terug van de drawable.
 sf::Vector2f drawable::get_position(){return position;}
 
+/// Geeft de size terug van de drawable.
 sf::Vector2f drawable::get_size(){return size;}

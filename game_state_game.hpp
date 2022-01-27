@@ -15,6 +15,8 @@
 #include "game_settings.hpp"
 #include "level.hpp"
 
+
+/// game_state_game class, heritage van drawable
 class game_state_game : public drawable{
 private:
     game_settings & gameSettings;

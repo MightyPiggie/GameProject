@@ -13,6 +13,8 @@
 #include "object.hpp"
 #include "line.hpp"
 
+
+/// player class, heritage van object
 class player : public object {
 protected:
     float movement_speed = 60;

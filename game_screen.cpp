@@ -10,11 +10,12 @@
 #include "game_state_dead.hpp"
 #include "game_state_shop.hpp"
 
-
+/// Laad de game_settings in van player.txt
 std::vector<std::string> game_screen::init(){
     return read_values(game_setting);
 }
 
+/// Hoofd run voor de game. Vanuit de run wordt al het andere aangeroepen.
 void game_screen::run(){
     //window settingssettings
     window.setKeyRepeatEnabled(false);
