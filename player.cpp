@@ -1,5 +1,7 @@
 #include "player.hpp"
 
+#include <iostream>
+
 player::player(sf::RenderWindow & window,
         sf::Vector2f position,
         sf::Vector2f size,
@@ -17,14 +19,14 @@ void player::draw() {
 
 void player::update() {
     // if(filename != "res/sprites/"+game_setting.player+".png"){
-    //     filename = "res/sprites/"+game_setting.player+".png";
-    //     texture.loadFromFile(filename);
-    //     sprite.setTexture(texture);
+       // spritename = ;
+        texture.loadFromFile("res/sprites/"+game_setting.player+".png");
+        sprite.setTexture(texture);
     // }
 }
-/*
+
 //TODO check if this can be renamed to update
-void player::move(std::vector<std::shared_ptr<game_drawable>>& gameobjects) {
+void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
     if (position.x != float(window_width)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
@@ -74,7 +76,7 @@ void player::move(std::vector<std::shared_ptr<game_drawable>>& gameobjects) {
     }
 }
 
-void player::check_dead(const std::vector<std::shared_ptr<game_drawable>>& gameobjects) {
+void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects) {
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             if (this->overlaps(object)) {
@@ -88,7 +90,7 @@ void player::check_dead(const std::vector<std::shared_ptr<game_drawable>>& gameo
         }
     }
 }
-*/
+
 
 
 sf::FloatRect player::getbounds() {

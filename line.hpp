@@ -12,8 +12,8 @@ enum line_type {GRASS, RAILS, WATER, ROAD};
 class line : public object {
 private:
     line_type type;
+    
     std::vector<std::shared_ptr<object>> objects;
-
     std::vector<std::string> sprites_car = {"car_cool_left_sprite", "car_cool_right_sprite", "car_camper_left_sprite", "car_camper_right_sprite", "car_orange_left_sprite", "car_orange_right_sprite", "car_pink_left_sprite", "car_pink_right_sprite", "car_police_left_sprite", "car_police_right_sprite"};
     std::vector<std::string> sprites_log = {"tree_trunk_2t_sprite", "tree_trunk_3t_sprite"};
 
@@ -32,10 +32,10 @@ public:
             line_type type,
             object_states object_state,
             std::string sprite_name);
-
     void draw() override;
     void update();
     void lower() override;
+    std::vector<std::shared_ptr<object>> get_objects();
 };
 
 #endif

@@ -17,6 +17,8 @@ object::object(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f s
     sprite.setTexture(texture);
 }
 
+
+
 void object::draw() {
     sprite.setPosition(position);
     window.draw(sprite);

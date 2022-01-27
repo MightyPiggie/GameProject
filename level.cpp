@@ -16,20 +16,45 @@ level::level(sf::RenderWindow& window,
         }
     }
 
+    
+
 void level::update(){
+
+    for(auto& player : players){
+        player->lower();
+        player->update();
+            for(auto& line : lines){
+                player->check_dead(line->get_objects());
+                }
+        }
+
     for(auto& line : lines){
         line->lower();
         line->update();
     }
-    for(auto& player : players){
-        player->lower();
-        player->update();
-    }
+
+    
 
     if(ticks % 60 == 0) {
         build_line();
     }
     ticks +=1;
+
+    sf::Event event{};
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::KeyPressed) {
+            if(state_t == GAME){
+               for(auto& player : players){
+                   std::vector<std::shared_ptr<object>> objects = {};
+                    for(auto& line : lines){
+                        std::vector<std::shared_ptr<object>> object = line->get_objects();
+                         objects.insert(objects.begin(), object.begin(), object.end());
+                    }
+                    player->move(objects);
+                }
+            }
+        }
+    }
 }
 
 void level::draw(){
@@ -61,3 +86,4 @@ void level::build_line(float height, bool force_grass_line) {
         lines.push_back(std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, GRASS, NON_OBSTACLE, "grass_sprite"));
     }
 }
+

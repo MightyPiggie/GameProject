@@ -23,7 +23,7 @@ private:
     unsigned int height;
 //    window_part left;
 //    window_part right;
-//    window_part game_window;
+    //  std::shared_ptr<window_part> game_window;
 //    player player1;
 //    label display_coins;
 //    label display_highscore;
@@ -33,6 +33,7 @@ private:
 //    builder builder1;
     std::vector<std::shared_ptr<label>> labels;
     std::vector<std::shared_ptr<drawable>> drawables;
+    std::vector<std::shared_ptr<drawable>> drawables1;
     level level1;
 
 public:

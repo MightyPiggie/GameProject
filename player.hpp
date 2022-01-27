@@ -11,6 +11,7 @@
 #include "game_states.hpp"
 #include "sprite_factory.hpp"
 #include "object.hpp"
+#include "line.hpp"
 
 class player : public object {
 protected:
@@ -29,8 +30,8 @@ public:
             state & state_t);
 
     void draw() override;
-    //void move(std::vector<std::shared_ptr<game_drawable>>& gameobjects);
-    //void check_dead(const std::vector<std::shared_ptr<game_drawable>>& gameobjects);
+    void move(const std::vector<std::shared_ptr<object>>& gameobjects);
+    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects);
     sf::FloatRect getbounds() override;
     void update() override;
 

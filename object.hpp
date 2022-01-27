@@ -13,13 +13,13 @@ protected:
     std::string spritename;
     sf::Texture texture;
     sf::Sprite sprite;
-    object_states object_state;
 
 public:
     object(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string spritename);
     void draw() override;
     sf::FloatRect getbounds() override;
     virtual void lower();
+    object_states object_state;
 };
 
 class moving_object : public object {

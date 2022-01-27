@@ -28,6 +28,10 @@ line::line(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, l
     }
 }
 
+std::vector<std::shared_ptr<object>> line::get_objects() {
+    return objects;
+}
+
 void line::update(){
     for(auto& object : objects){
         object->update();

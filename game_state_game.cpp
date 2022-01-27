@@ -26,7 +26,8 @@ game_state_game::game_state_game(sf::RenderWindow & window,
     std::shared_ptr<label> display_score = std::make_shared<label>(window, sf::Vector2f(float(width) - 250.f, 150), std::to_string(gameSettings.score), 25, sf::Color(163 , 235 , 177), false);
     std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){window.close();},"Quit", sf::Color(163 , 235 , 177));
     std::shared_ptr<buttons> back_to_menu_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
-    drawables = {left, game_window, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow};
+    drawables1 = {game_window};
+    drawables = {left, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow};
     labels = {display_coins , display_score};
 //    screenshot_gamescreen.update(window);
     gameSettings.started = true;
@@ -35,11 +36,13 @@ game_state_game::game_state_game(sf::RenderWindow & window,
 //game_state_game::~game_state_game() {delete[] ;}
 
 void game_state_game::draw(){
+    drawables1[0]->draw();
+
+    level1.draw();
+
     for(auto & object : drawables){
         object->draw();
     }
-
-    level1.draw();
 }
 void game_state_game::update() {
     if(gameSettings.started){
@@ -52,14 +55,6 @@ void game_state_game::update() {
     labels[0]->update_text("Coins  " + std::to_string(gameSettings.coins));
     labels[1]->update_text("Score  " + std::to_string(gameSettings.score));
 
-    sf::Event event{};
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::KeyPressed) {
-            if(state_t == GAME){
-                //player_list[0]->move(game_drawables);
-                }
-            }
-    }
 }
 
 /*
