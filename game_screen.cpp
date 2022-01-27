@@ -52,7 +52,7 @@ void game_screen::run(){
                 game_state->draw();
                 break;
             }
-            case MENU: { // TODO Check updateables
+            case MENU: { 
                 menu_state.update();
                 menu_state.draw();
                 break;
