@@ -1,4 +1,4 @@
-MUNTEN 117
+MUNTEN 121
 HIGH 36
 EQUIPPED pacman_player
 PLAYER chicken_player

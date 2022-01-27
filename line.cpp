@@ -121,7 +121,7 @@ void line::generate_obstacle_logs() {
     if(direction == 0) {
         for(unsigned int i = 0; i <= amount_logs; i++) {
             bool side = random_int_between_range(0, 1);
-            objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, log_length == 0 ? sf::Vector2f{119.0, 59.0} : sf::Vector2f{179.0, 59.0}, FLOATING, sprites_log[log_length], 200, direction));
+            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, log_length == 0 ? sf::Vector2f{119.0, 59.0} : sf::Vector2f{179.0, 59.0}, FLOATING, sprites_log[log_length], 200, direction));
         }
    }
     else if(direction == 1) {
