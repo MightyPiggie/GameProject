@@ -33,7 +33,7 @@ line::line(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, l
     }
 }
 
-std::vector<std::shared_ptr<object>> line::get_objects() {
+std::vector<std::shared_ptr<object>> & line::get_objects() {
     return objects;
 }
 
@@ -64,7 +64,7 @@ void line::generate_coins(){
     unsigned int chance = random_int_between_range(0, 5);
     if(chance == 0) {
         std::vector<unsigned int> location_obstacles = random_int_between_range_multiple(window.getSize().x / 4, window.getSize().x / 4 * 3, 1);
-        objects.push_back(std::make_shared<object>(window, sf::Vector2f{((int(location_obstacles[0] / 60)) * 60.f), position.y}, sf::Vector2f{59.0, 59.0}, NON_OBSTACLE, "coin_sprite"));
+        objects.push_back(std::make_shared<object>(window, sf::Vector2f{((int(location_obstacles[0] / 60)) * 60.f), position.y}, sf::Vector2f{59.0, 59.0}, COIN, "coin_sprite"));
     }
 }
 
@@ -113,7 +113,6 @@ void line::generate_obstacle_logs() {
     if(direction == 0) {
         for(unsigned int i = 0; i <= amount_logs; i++) {
             bool side = random_int_between_range(0, 1);
-            std::cout << side << std::endl;
             objects.push_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, log_length == 0 ? sf::Vector2f{119.0, 59.0} : sf::Vector2f{179.0, 59.0}, FLOATING, sprites_log[log_length], 200, direction));
         }
    }

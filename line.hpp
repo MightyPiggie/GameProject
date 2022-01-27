@@ -33,9 +33,9 @@ public:
             object_states object_state,
             std::string sprite_name);
     void draw() override;
-    void update();
+    void update() override;
     void lower() override;
-    std::vector<std::shared_ptr<object>> get_objects();
+    std::vector<std::shared_ptr<object>> & get_objects();
 };
 
 #endif

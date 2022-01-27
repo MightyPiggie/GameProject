@@ -49,7 +49,7 @@ void level::update(){
                 for(auto& player : players){
                     std::vector<std::shared_ptr<object>> objects = {};
                     for(auto& line : lines){
-                        std::vector<std::shared_ptr<object>> object = line->get_objects();
+                        std::vector<std::shared_ptr<object>> & object = line->get_objects();
                         objects.insert(objects.begin(), object.begin(), object.end());
                     }
                     player->move(objects);

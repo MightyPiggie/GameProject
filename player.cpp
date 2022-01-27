@@ -25,7 +25,7 @@ void player::update() {
     }
 }
 
-void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
+void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
     if (position.x != float(window.getSize().x)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         position += sf::Vector2f{-movement_speed, 0};
         for(auto &object : gameobjects) {
@@ -50,11 +50,26 @@ void player::move(const std::vector<std::shared_ptr<object>>& gameobjects) {
         game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
-        for(auto &object : gameobjects) {
-            if(object->object_state == OBSTACLE){
-                if (this->overlaps(object)) {
+        for(unsigned int index = 0; index < gameobjects.size(); index++) {
+            if(gameobjects[index]->object_state == OBSTACLE){
+                if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{0, movement_speed};
                     score = false;
+                }
+            }
+            if(gameobjects[index]->object_state == COIN) {
+//                std::cout << game_setting.coins << std::endl;
+                if (this->overlaps(gameobjects[index])) {
+                    game_setting.coins ++;
+                    std::cout << game_setting.coins << std::endl;
+                    std::cout << gameobjects[index].use_count() << std::endl;
+                    std::cout << std::endl;
+                    gameobjects.erase (gameobjects.begin() + index);
+                    std::cout << gameobjects[index].use_count() << std::endl;
+                    std::cout << std::endl;
+//                    for(unsigned int j = 0; j < gameobjects.size(); j++){
+////                        std::cout << gameobjects[j] << std::endl;
+//                    }
                 }
             }
         }
