@@ -1,4 +1,4 @@
-MUNTEN 103
-HIGH 47
+MUNTEN 129
+HIGH 37
 EQUIPPED chicken_player
 PLAYER chicken_player
