@@ -28,10 +28,10 @@ public:
     /**
      * @brief Construct a new player object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param size 
-     * @param game_setting 
+     * @param game_setting A reference to all game settings of the game.
      * @param state_t 
      */
     player(sf::RenderWindow & window,

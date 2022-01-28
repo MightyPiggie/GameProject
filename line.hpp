@@ -55,13 +55,13 @@ public:
     /**
      * @brief Construct a new line object
      * 
-     * @param window 
-     * @param position 
-     * @param size 
-     * @param type 
-     * @param object_state 
-     * @param sprite_name 
-     * @param objects_for_level 
+     * @param window A reference to the window where everything is drawn on.
+     * @param position The position on which the line will be placed on.
+     * @param size The size on how large a line will be.
+     * @param type The type a line could be.
+     * @param object_state The state a is in.
+     * @param sprite_name The name of the sprite.
+     * @param objects_for_level All the objects of the level.
      */
     line(sf::RenderWindow& window,
             sf::Vector2f position,

@@ -19,7 +19,7 @@ public:
     /**
      * @brief Construct a new object object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param size 
      * @param object_state 
