@@ -20,16 +20,9 @@ private:
     /// Lijst players die er zijn om hiermee de sprites ervan op te halen
     std::vector<std::string> all_players = {"chicken_player", "slime_player", "pacman_player"};
 
-    /// Mogelijk deze later gebruiken
-//    std::vector<std::string> all_players_shop = {"chicken_player_shop", "slime_player_shop", "pacman_player_shop"};
-
-
     ///Lijst players die gekocht zijn, uit player.txt gehaald in game_screen.cpp
     std::vector<std::string> & unlocked_players;
-
-
-//    std::vector<std::shared_ptr<window_part>> unlocked_players_test;
-    std::vector<std::shared_ptr<drawable>> player_equipped_test;
+    std::vector<std::shared_ptr<drawable>> player_equipped;
 
     /// Game settings die erzijn
     game_settings & gameSettings;

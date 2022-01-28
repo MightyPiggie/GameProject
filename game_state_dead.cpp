@@ -1,5 +1,10 @@
 #include "game_state_dead.hpp"
 
+#include "window_part.hpp"
+#include "label.hpp"
+#include "sprite_factory.hpp"
+#include "buttons.hpp"
+
 /// game_state_dead construcor. Zet ook direct de objecten neer.
 game_state_dead::game_state_dead(sf::RenderWindow & window,
                                  unsigned int width,
@@ -30,13 +35,8 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
                                                                             [&](){state_t = RESTART;},
                                                                             "Restart",
                                                                             sf::Color(81, 81 ,81));
-//        std::shared_ptr<label> dead_message = std::make_shared<label>(window,
-//                                                                      vector2f_from_unsigned_ints(width/2 - 250, height/2 ),
-//                                                                      "GAME OVER",
-//                                                                      60,
-//                                                                      sf::Color(81, 81 ,81));
 
-    objects = {dead_window , quit_game_button , back_to_menu_button ,restart_button};//, dead_message};
+    objects = {dead_window , quit_game_button , back_to_menu_button ,restart_button};
 }
 
 /// Tekent de game_state_dead

@@ -6,12 +6,7 @@
 #include "drawable.hpp"
 #include "simple_functions.hpp"
 #include "game_states.hpp"
-#include "label.hpp"
-#include "buttons.hpp"
-#include "window_part.hpp"
-#include "sprite_factory.hpp"
 #include "game_settings.hpp"
-
 
 /// game_state_menu class, heritage van drawable
 class game_state_menu : public drawable{

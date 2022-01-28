@@ -1,6 +1,5 @@
 #include "game_screen.hpp"
 
-#include <map>
 #include <vector>
 #include "sprite_factory.hpp"
 #include "init_game.hpp"
@@ -17,7 +16,6 @@ std::vector<std::string> game_screen::init(){
 
 /// Hoofd run voor de game. Vanuit de run wordt al het andere aangeroepen.
 void game_screen::run(){
-    //window settingssettings
     window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     unlocked_players = init();
@@ -30,11 +28,11 @@ void game_screen::run(){
     image.loadFromFile(sprite_reader.filenames["icon"]);
     window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
 
-    //start state
+    //state in wich the game is starting
     state_t = MENU;
+
     //Game State
-//    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-    std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t);
+    std::shared_ptr<game_state_game> game_state;
     //Menu State
     game_state_menu menu_state(window, width, height,state_t, game_setting);
 

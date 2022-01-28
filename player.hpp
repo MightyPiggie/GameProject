@@ -11,7 +11,7 @@
 #include "game_states.hpp"
 #include "sprite_factory.hpp"
 #include "object.hpp"
-#include "line.hpp"
+#include "builder_object.hpp"
 
 
 /// player class, heritage van object
@@ -33,7 +33,8 @@ public:
 
     void draw() override;
     void move(std::vector<std::shared_ptr<object>>& gameobjects);
-    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects);
+    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
+    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
     sf::FloatRect getbounds() override;
     void update() override;
 

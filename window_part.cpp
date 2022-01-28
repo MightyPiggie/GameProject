@@ -1,5 +1,4 @@
 #include "window_part.hpp"
-#include <iostream>
 
 window_part::window_part(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, sf::Color color):
     drawable(window, position, size)
@@ -44,6 +43,7 @@ void window_part::update() {
 }
 
 
+
 window_part_player::window_part_player(sf::RenderWindow &window,
                                        sf::Vector2f position,
                                        std::string filename,
@@ -51,7 +51,8 @@ window_part_player::window_part_player(sf::RenderWindow &window,
                                        ):
                                        window_part(window, position, filename),
                                        filename(filename),
-                                       gameSettings(gameSettings){}
+                                       gameSettings(gameSettings)
+{}
 
 void window_part_player::draw() {
     texture.loadFromFile(filename);
