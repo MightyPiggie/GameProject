@@ -23,7 +23,7 @@ protected:
     game_settings & game_setting;
     state & state_t;
     std::vector<std::string> unlocked_players = read_values(game_setting);
-
+    bool overlap = false;
 public:
     player(sf::RenderWindow & window,
             sf::Vector2f position,
@@ -36,7 +36,7 @@ public:
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects);
     sf::FloatRect getbounds() override;
     void update() override;
-
+    void restore_position();
 };
 
 #endif

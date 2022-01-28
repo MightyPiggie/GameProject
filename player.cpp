@@ -30,6 +30,7 @@ void player::update() {
 /// Player move. Wordt gekeken naar keys en welk object dat dan is/van welke state. Op elk object een andere reactie.
 void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
     if (position.x != float(window.getSize().x)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        restore_position();
         position += sf::Vector2f{-movement_speed, 0};
         for(unsigned int index = 0; index < gameobjects.size(); index++) {
             if(gameobjects[index]->object_state == OBSTACLE){
@@ -46,6 +47,7 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
         }
     }
     else if (position.x != float(window.getSize().x)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        restore_position();
         position += sf::Vector2f{movement_speed, 0};
         for(unsigned int index = 0; index < gameobjects.size(); index++) {
             if(gameobjects[index]->object_state == OBSTACLE){
@@ -62,6 +64,7 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
         }
     }
     else if(position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        restore_position();
         game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
@@ -69,6 +72,7 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
             if(gameobjects[index]->object_state == OBSTACLE){
                 if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{0, movement_speed};
+
                     score = false;
                 }
             }
@@ -83,6 +87,7 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
         if(score){game_setting.score++;}
     }
     else if(position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        restore_position();
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
         for(unsigned int index = 0; index < gameobjects.size(); index++) {
@@ -105,6 +110,12 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
 
 /// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
 void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects) {
+//    std::cout << position.x << "X" << std::endl;
+//    std::cout << window.getSize().x << "W" << std::endl;
+    if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){
+        state_t = DEAD;
+        return;
+    }
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             for (auto &object1: gameobjects) {
@@ -122,16 +133,23 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
             break;
         }
     }
-    bool overlap = false;
+
+    overlap = false;
     if (lineobjects->object_state == DEADLY) {
         for (auto &object1: gameobjects) {
             if (object1->object_state == FLOATING && this->overlaps(lineobjects)) {
                 if(this->overlaps(object1)) {
+                    if(object1->get_speed() != 0){
+                        bool dir = object1->get_direction(); // 1 is naar rechts, 0 naar links;
+                        dir ? position.x += object1->get_speed() : position.x -= object1->get_speed();
+
+                    }
                     overlap = true;
                     break;
                 }
             }
         }
+
         if (overlap == false && this->overlaps(lineobjects)) {
             state_t = DEAD;
             if(game_setting.score > game_setting.highscore) {
@@ -146,4 +164,13 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 /// Krijg player global bounds.
 sf::FloatRect player::getbounds() {
     return sprite.getGlobalBounds();
+}
+void player::restore_position(){
+    if(int(position.x) % 60 == 0){
+        return;
+    }else if(int(position.x) % 60 <= 30){
+        position.x -= int(position.x) % 60;
+    }else{
+        position.x += 60 - (int(position.x) % 60);
+    }
 }

@@ -21,6 +21,8 @@ public:
     sf::FloatRect getbounds() override;
     virtual void lower();
     object_states object_state;
+    virtual unsigned int get_speed(){return 0;}
+    virtual bool get_direction(){return 0;}
 };
 
 /// moving_object class, heritage van object
@@ -35,6 +37,8 @@ public:
     moving_object(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction , unsigned int speed = 2);
     unsigned int random_int_between_range(int min, int max);
     void update() override;
+    unsigned int get_speed() override {return speed;}
+    bool get_direction() override {return direction;}
 };
 
 #endif

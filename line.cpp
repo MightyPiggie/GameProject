@@ -120,7 +120,7 @@ void line::generate_obstacle_logs() {
         int amount_lely = random_int_between_range(5, 10);
         std::vector<unsigned int> location_obstacles = random_int_between_range_multiple(window.getSize().x / 4, window.getSize().x / 4 * 3, amount_lely);
         for(unsigned int i = 1; i < location_obstacles.size(); i++){
-            objects_for_level.emplace_back(std::make_shared<object>(window, sf::Vector2f(((int(location_obstacles[i] / 60)) * 60.f), position.y), sf::Vector2f(60.f,60.f), FLOATING, "lilypad_sprite"));
+            objects_for_level.emplace_back(std::make_shared<object>(window, sf::Vector2f(((int(location_obstacles[i] / 60)) * 60.f), position.y), sf::Vector2f(59.f,60.f), FLOATING, "lilypad_sprite"));
         }
     }else {
         bool direction = random_int_between_range(0, 1);
