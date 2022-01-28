@@ -44,7 +44,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                                 vector2f_from_unsigned_ints(width/10.f, height - 200.f),
                                                                                                                 [&](){if(player_scrolling_int <= 0){player_scrolling_int = players.size()-1;}
                                                                                                                 else{player_scrolling_int--;}
-                                                                                                                sf::sleep(sf::milliseconds(100));},
+                                                                                                                sf::sleep(sf::milliseconds(200));},
                                                                                                                 "prev",
                                                                                                                 sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> buy_button = std::make_shared<buttons>(window,
@@ -53,14 +53,14 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                     [&](){if(gameSettings.coins >= 100){
                                                                                                         unlocked_players.push_back(all_players[player_scrolling_int]);
                                                                                                         gameSettings.coins -= 100;}
-                                                                                                        sf::sleep(sf::milliseconds(100));},
+                                                                                                        sf::sleep(sf::milliseconds(200));},
                                                                                                         "Buy",
                                                                                                         sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> equip_button = std::make_shared<buttons>(window,
                                                                                                       50,
                                                                                                       vector2f_from_unsigned_ints(width/3 - 50, height - 200),
                                                                                                       [&](){gameSettings.player = all_players[player_scrolling_int];
-                                                                                                        sf::sleep(sf::milliseconds(100));},
+                                                                                                        sf::sleep(sf::milliseconds(200));},
                                                                                                         "Equip",
                                                                                                         sf::Color(163 , 235 , 177));
                                     std::shared_ptr<label> equipped = std::make_shared<label>(window,
@@ -74,7 +74,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                             [&](){if(player_scrolling_int >= players.size()-1){
                                                                                                                 player_scrolling_int = 0;}
                                                                                                             else{player_scrolling_int++;}
-                                                                                                            sf::sleep(sf::milliseconds(100));},
+                                                                                                            sf::sleep(sf::milliseconds(200));},
                                                                                                             "next",
                                                                                                             sf::Color(163 , 235 , 177));
 
