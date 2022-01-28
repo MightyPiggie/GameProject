@@ -44,14 +44,41 @@ private:
     unsigned int player_scrolling_int = 0;
 
 public:
+    /**
+     * @brief Construct a new game state shop object
+     * 
+     * @param window 
+     * @param state_t 
+     * @param width 
+     * @param height 
+     * @param unlocked_players 
+     * @param gameSettings 
+     */
     game_state_shop(sf::RenderWindow& window,
                     state & state_t,
                     unsigned int width,
                     unsigned int height,
                     std::vector<std::string> & unlocked_players,
                     game_settings & gameSettings);
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
+
+    /**
+     * @brief 
+     * 
+     * @return true 
+     * @return false 
+     */
     bool check_functie_unlocked();
 
 

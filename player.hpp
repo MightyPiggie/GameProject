@@ -25,16 +25,53 @@ protected:
     std::vector<std::string> unlocked_players = read_values(game_setting);
 
 public:
+    /**
+     * @brief Construct a new player object
+     * 
+     * @param window 
+     * @param position 
+     * @param size 
+     * @param game_setting 
+     * @param state_t 
+     */
     player(sf::RenderWindow & window,
             sf::Vector2f position,
             sf::Vector2f size,
             game_settings & game_setting,
             state & state_t);
 
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     */
     void move(std::vector<std::shared_ptr<object>>& gameobjects);
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param lineobjects 
+     */
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects);
+
+    /**
+     * @brief 
+     * 
+     * @return sf::FloatRect 
+     */
     sf::FloatRect getbounds() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 
 };

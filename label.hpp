@@ -23,6 +23,17 @@ protected:
     sf::Font font_text;
     sf::Text text_SFML;
 public:
+    /**
+     * @brief Construct a new label object
+     * 
+     * @param window 
+     * @param position 
+     * @param text_string 
+     * @param size_char 
+     * @param background_text_color 
+     * @param rectangle_display 
+     * @param text_color 
+     */
     label(sf::RenderWindow &window,
         sf::Vector2f position,
         std::string text_string,
@@ -31,7 +42,17 @@ public:
         bool rectangle_display = true,
         sf::Color text_color = sf::Color::Black);
 
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     * @param new_value 
+     */
     void update_text(std::string new_value);
 };
 

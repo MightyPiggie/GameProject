@@ -60,16 +60,3 @@ void game_state_game::update() {
     }
 }
 
-/*
-void game_state_game::destructor(){
-    for(unsigned int i =0; i < drawables.size(); i++){
-        if(drawables[i]->get_position().y >= height){
-            drawables.erase(drawables.begin()+i);
-        }else if(drawables[i]->get_position().x >= width){
-            drawables.erase(drawables.begin()+i);
-        }else if(drawables[i]->get_position().x + drawables[i]->get_size().x <= 0){
-            drawables.erase(drawables.erase(drawables.begin() + i));
-        }
-    }
-}
-*/

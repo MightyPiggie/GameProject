@@ -24,12 +24,31 @@ private:
     std::vector<std::shared_ptr<drawable>> objects = {};
 
 public:
+    /**
+     * @brief Construct a new game state menu object
+     * 
+     * @param window 
+     * @param width 
+     * @param height 
+     * @param state_t 
+     * @param gameSettings 
+     */
     game_state_menu(sf::RenderWindow& window,
                     unsigned int width,
                     unsigned int height,
                     state & state_t,
                     game_settings & gameSettings);
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 

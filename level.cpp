@@ -42,9 +42,14 @@ void level::update(){
         /// Hou het aantal ticks bij om nieuwe lines te maken.
         if(ticks % 60 == 0) {
             build_line();
+            for(unsigned int index = 0; index < lines.size(); index++)
+                if(lines[index]->get_position().y <= window.getSize().y/2) {
+                    lines.erase(lines.begin() + index);
+                    break;
+                }
+            }
         }
         ticks +=1;
-    }
 
     sf::Event event{};
     while (window.pollEvent(event)) {

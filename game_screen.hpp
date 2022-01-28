@@ -21,9 +21,19 @@ private:
     state state_t;
     game_settings game_setting;
     std::vector<std::string> unlocked_players = {};
+
+    /**
+     * @brief 
+     * 
+     * @return std::vector<std::string> 
+     */
     std::vector<std::string> init();
     
 public:
+    /**
+     * @brief 
+     * 
+     */
     void run();
 };
 

@@ -29,6 +29,15 @@ private:
     level level1;
 
 public:
+    /**
+     * @brief Construct a new game state game object
+     * 
+     * @param window 
+     * @param width 
+     * @param height 
+     * @param gameSettings 
+     * @param state_t 
+     */
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,
                     unsigned int height,
@@ -36,9 +45,31 @@ public:
                     state & state_t);
 //    ~game_state_game();
     sf::Texture screenshot_gamescreen;
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void destructor();
+
+    /**
+     * @brief 
+     * 
+     * @param rhs 
+     * @return std::shared_ptr<game_state_game> 
+     */
     std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
         return rhs;
     }
