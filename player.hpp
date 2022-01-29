@@ -35,10 +35,13 @@ public:
             state & state_t,
             sound_class & the_sound_class_player);
 
+
+    void function_for_move(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position);
+    void function_for_move_score(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position, bool & score, bool new_score_bool);
     void draw() override;
-    void move(std::vector<std::shared_ptr<object>>& gameobjects);
+    void move(std::vector<std::shared_ptr<builder_object>>& gameobjects);
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
-    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
+//    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
     sf::FloatRect getbounds() override;
     void update() override;
     void restore_position();

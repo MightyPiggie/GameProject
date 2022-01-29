@@ -23,7 +23,7 @@ private:
     sound_class the_sound_class;
 
 
-    sf::Sound test_sound;
+    sf::Sound start_sound;
     sf::Sound window_close;
 
 public:

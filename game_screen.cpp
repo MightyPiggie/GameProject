@@ -33,7 +33,7 @@ void game_screen::run(){
     the_sound_class.set_sound_buffer("click_sound","res/sounds/mouse_click.wav");
     the_sound_class.set_sound_buffer("dead","res/sounds/gtaWasted.wav");
 
-    test_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
+    start_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
     window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
 
     //start state
@@ -50,7 +50,7 @@ void game_screen::run(){
     //Shop State
     game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting, the_sound_class);
 
-    test_sound.play();
+    start_sound.play();
 
     while (window.isOpen()) {
         window.clear();

@@ -25,7 +25,6 @@ private:
     void generate_obstacle_logs();
 
     const unsigned int max_amount_obstacles_per_tile;
-    std::vector<std::shared_ptr<object>> & objects_for_level;
 
 public:
     builder_object(sf::RenderWindow& window,
@@ -33,13 +32,14 @@ public:
                    sf::Vector2f size,
                    line_type type,
                    object_states object_state,
-                   std::string sprite_name,
-                   std::vector<std::shared_ptr<object>> & objects_for_level);
+                   std::string sprite_name);
+
+    std::vector<std::shared_ptr<object>> objects_for_level;
+
     void draw() override;
     void update() override;
-    void lower_obstakels();
     void lower() override;
-    std::vector<std::shared_ptr<object>> & get_objects();
+//    std::vector<std::shared_ptr<object>> & get_objects();
 };
 
 #endif

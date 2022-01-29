@@ -4,11 +4,10 @@
 
 #include <iostream>
 
-builder_object::builder_object(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, line_type type, object_states object_state, std::string sprite_name, std::vector<std::shared_ptr<object>> & objects_for_level):
+builder_object::builder_object(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, line_type type, object_states object_state, std::string sprite_name):
     object(window, position, size, object_state, sprite_name),
     type(type),
-    max_amount_obstacles_per_tile(window.getSize().x/60/4),
-    objects_for_level(objects_for_level)
+    max_amount_obstacles_per_tile(window.getSize().x/60/4)
 {
     switch (type)
     {
@@ -49,15 +48,11 @@ void builder_object::draw(){
         object->draw();
     }
 }
-void builder_object::lower_obstakels(){
+void builder_object::lower(){
+    position.y += 1;
     for(auto& object : objects_for_level){
         object->lower();
     }
-}
-
-
-void builder_object::lower(){
-    position.y += 1;
 }
 
 void builder_object::generate_coins(){
