@@ -16,7 +16,6 @@ std::vector<std::string> game_screen::init(){
 
 /// Hoofd run voor de game. Vanuit de run wordt al het andere aangeroepen.
 void game_screen::run(){
-    //window settingssettings
     window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     unlocked_players = init();
@@ -61,7 +60,7 @@ void game_screen::run(){
                 game_state->draw();
                 break;
             }
-            case MENU: { 
+            case MENU: {
                 menu_state.update();
                 menu_state.draw();
                 break;

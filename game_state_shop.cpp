@@ -18,7 +18,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  the_sound_class_shop(the_sound_class_shop)
                                 {
                                     click_sound.setBuffer(the_sound_class_shop.get_sound_buffer("click_sound"));
-                                    sprite_factory sprite_reader = sprite_factory::get_instance(); 
+                                    sprite_factory sprite_reader = sprite_factory::get_instance();
                                     std::shared_ptr<window_part> shop_window = std::make_shared<window_part>(window,
                                                                                                              vector2f_from_unsigned_ints(0,0),
                                                                                                              sprite_reader.filenames["shop"]);
@@ -51,26 +51,26 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                                 }
                                                                                                                 else{player_scrolling_int--;
                                                                                                                 }
-                                                                                                                sf::sleep(sf::milliseconds(100));
+                                                                                                                sf::sleep(sf::milliseconds(200));
                                                                                                                 },
                                                                                                                 "prev",
                                                                                                                 sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<buttons> buy_button = std::make_shared<buttons>(window,
+                                    std::shared_ptr<buttons> buy = std::make_shared<buttons>(window,
                                                                                                     50,
                                                                                                     vector2f_from_unsigned_ints(width/3 - 50, height - 200),
                                                                                                     [&](){click_sound.play(); if(gameSettings.coins >= 100){
                                                                                                         unlocked_players.push_back(all_players[player_scrolling_int]);
                                                                                                         gameSettings.coins -= 100;
                                                                                                     }
-                                                                                                        sf::sleep(sf::milliseconds(100));
+                                                                                                        sf::sleep(sf::milliseconds(200));
                                                                                                         },
                                                                                                         "Buy",
                                                                                                         sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<buttons> equip_button = std::make_shared<buttons>(window,
+                                    std::shared_ptr<buttons> equip = std::make_shared<buttons>(window,
                                                                                                       50,
                                                                                                       vector2f_from_unsigned_ints(width/3 - 50, height - 200),
                                                                                                       [&](){click_sound.play(); gameSettings.player = all_players[player_scrolling_int];
-                                                                                                        sf::sleep(sf::milliseconds(100));
+                                                                                                        sf::sleep(sf::milliseconds(200));
                                                                                                         },
                                                                                                         "Equip",
                                                                                                         sf::Color(163 , 235 , 177));
@@ -87,7 +87,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                             }
                                                                                                             else{player_scrolling_int++;
                                                                                                             }
-                                                                                                            sf::sleep(sf::milliseconds(100));
+                                                                                                            sf::sleep(sf::milliseconds(200));
                                                                                                             },
                                                                                                             "next",
                                                                                                             sf::Color(163 , 235 , 177));
@@ -99,16 +99,15 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[2]+"_shop"]);
 
                                     objects = {shop_window,quit_gamewindow,back_to_menu_from_gamewindow, previeus_player_button, next_player_button, display_coins_shop};
-                                    /// Lijst van players die er zijn? Kan misschien anders
                                     players = {chicken, slime, pacman};
 
                                     /// Wou het wat aanpassen dat de buy button vervangen wordt door de equip button indien die gekocht is.
-                                    scrol_objects_purchased = {equip_button};
-                                    scrol_objects_not_purchased = {buy_button};
+                                    equip_button = equip;
+                                    buy_button = buy;
 
                                     /// Deze wordt niet gebruikt
                                     //unlocked_players = {chicken};
-                                    player_equipped_test = {equipped};
+                                    equiped_label = equipped;
                                 }
 
 bool game_state_shop::check_functie_unlocked(){
@@ -132,20 +131,15 @@ void game_state_shop::draw() {
     }
     if(check_functie_unlocked()) {
         if(all_players[player_scrolling_int] == gameSettings.player) {
-            for (auto &object: player_equipped_test) {
-                object->draw();
-            }
+            equiped_label->draw();
         }
         else{
-            for (auto &object: scrol_objects_purchased) {
-                object->draw();
-            }
+            equip_button->draw();
         }
     }
     else {
-        for (auto &object2: scrol_objects_not_purchased) {
-            object2->draw();
-        }
+        buy_button->draw();
+
     }
     players[player_scrolling_int]->draw();
 }
@@ -156,20 +150,14 @@ void game_state_shop::update() {
     }
     if(check_functie_unlocked()) {
         if(all_players[player_scrolling_int] == gameSettings.player) {
-            for (auto &object: player_equipped_test) {
-                object->update();
-            }
+            equiped_label->update();
         }
         else{
-            for (auto &object: scrol_objects_purchased) {
-                object->update();
-            }
+            equip_button->update();
         }
     }
     else {
-        for (auto &object2: scrol_objects_not_purchased) {
-            object2->update();
-        }
+        buy_button->update();
     }
     sf::Event event{};
     while (window.pollEvent(event)) {}

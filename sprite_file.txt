@@ -5,11 +5,10 @@ water_sprite            res/sprites/water.png
 rock_sprite             res/sprites/rock.png
 lilypad_sprite          res/sprites/lilypad.png
 tree_sprite             res/sprites/tree.png
+coin_sprite             res/sprites/coin.png
 tree_trunk_2t_sprite    res/sprites/tree_trunk_2t.png
 tree_trunk_3t_sprite    res/sprites/tree_trunk_3t.png
-game_over_background    res/sprites/gameover.jpg
-coin_sprite             res/sprites/coin.png
-shop                    res/sprites/shoptest.jpg
+
 car_cool_left_sprite    res/sprites/car_cool_left.png
 car_cool_right_sprite   res/sprites/car_cool_right.png
 car_camper_left_sprite  res/sprites/car_camper_left.png
@@ -29,12 +28,13 @@ background_sprite       res/sprites/game_background.png
 game_bg_forrest_left    res/sprites/game_background_left_forest.png
 game_bg_forrest_right   res/sprites/game_background_right_forest.png
 menu_background_river   res/sprites/menu_background_river.png
-background_barn_test    res/sprites/menu_background_test.png
-background_barn_test2   res/sprites/menu_background_test_nochicken.png
 
 icon                    res/sprites/chicken_icon.png
 
 player_icon_menu        res/sprites/chicken_menu.png
+
+game_over_background    res/sprites/gameover.jpg
+shop                    res/sprites/shoptest.jpg
 
 chicken_player                  res/sprites/chicken_player.png
 pacman_player                   res/sprites/pacman_player.png

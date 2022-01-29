@@ -1,7 +1,6 @@
 #include "init_game.hpp"
 
 #include <fstream>
-#include "iostream"
 
 std::vector<std::string> read_values(game_settings & game){
     std::vector<std::string> list;

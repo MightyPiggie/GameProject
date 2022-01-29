@@ -1,5 +1,10 @@
 #include "game_state_dead.hpp"
 
+#include "window_part.hpp"
+#include "label.hpp"
+#include "sprite_factory.hpp"
+#include "buttons.hpp"
+
 /// game_state_dead construcor. Zet ook direct de objecten neer.
 game_state_dead::game_state_dead(sf::RenderWindow & window,
                                  unsigned int width,
@@ -57,6 +62,3 @@ void game_state_dead::update() {
     sf::Event event{};
     while (window.pollEvent(event)) {}
 }
-
-
-

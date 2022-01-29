@@ -35,5 +35,4 @@ public:
     void update_coins(uint16_t coins);
 };
 
-
 #endif

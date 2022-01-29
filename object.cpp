@@ -1,13 +1,9 @@
 #include "object.hpp"
 
-#include <stdlib.h>
-#include <time.h>
-#include <chrono>
+#include <random>
 
 #include "sprite_factory.hpp"
 
-
-#include <iostream>
 object::object(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f size, object_states object_state , std::string spritename):
     drawable(window, position, size),
     spritename(spritename),
@@ -16,8 +12,6 @@ object::object(sf::RenderWindow & window, sf::Vector2f position , sf::Vector2f s
     texture.loadFromFile(sprite_factory::get_instance().filenames[spritename]);
     sprite.setTexture(texture);
 }
-
-
 
 void object::draw() {
     sprite.setPosition(position);
@@ -59,5 +53,3 @@ void moving_object::update() {
         }
     }
 }
-
-

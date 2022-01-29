@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 17/01/2022.
-//
-
 #include "drawable.hpp"
 
 /// Drawable constructor
@@ -19,22 +15,22 @@ bool drawable::within( int x, int a, int b ){
 
 /// Checkt of de drawable overlapt
 bool drawable::overlaps(std::shared_ptr<drawable> other) {
-   bool x_overlap = within( 
-      position.x, 
-      other->position.x, 
+   bool x_overlap = within(
+      position.x,
+      other->position.x,
       other->position.x + other->size.x
-   ) || within( 
-      other->position.x, 
-      position.x, 
+   ) || within(
+      other->position.x,
+      position.x,
       position.x + size.x
    );
-   bool y_overlap = within( 
-      position.y, 
-      other->position.y, 
+   bool y_overlap = within(
+      position.y,
+      other->position.y,
       other->position.y + other->size.y
-   ) || within( 
-      other->position.y, 
-      position.y, 
+   ) || within(
+      other->position.y,
+      position.y,
       position.y + size.y
    );
    return x_overlap && y_overlap;

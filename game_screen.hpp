@@ -4,10 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-#include <map>
-
 #include "game_states.hpp"
-#include "label.hpp"
 #include "game_settings.hpp"
 #include "sound_class.hpp"
 
@@ -17,7 +14,6 @@ class game_screen{
 private:
     unsigned int width = sf::VideoMode::getDesktopMode().width;
     unsigned int  height =  sf::VideoMode::getDesktopMode().height;
-    //unsigned int ticks = 0;
     sf::RenderWindow window{ sf::VideoMode( width,height,32), "Levensmoedige Vogel" , sf::Style::Fullscreen};
     state state_t;
     game_settings game_setting;
@@ -29,7 +25,7 @@ private:
 
     sf::Sound test_sound;
     sf::Sound window_close;
-    
+
 public:
     void run();
 };
