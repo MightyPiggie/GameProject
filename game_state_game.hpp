@@ -23,9 +23,8 @@ private:
     state & state_t;
     unsigned int width;
     unsigned int height;
-    std::vector<std::shared_ptr<label>> labels;
     std::vector<std::shared_ptr<drawable>> drawables;
-    std::vector<std::shared_ptr<drawable>> drawables1;
+    std::shared_ptr<drawable> background;
     level level1;
 
 public:
@@ -38,7 +37,6 @@ public:
     sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
-    void destructor();
     std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
         return rhs;
     }

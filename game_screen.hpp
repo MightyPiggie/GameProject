@@ -21,6 +21,7 @@ private:
     game_settings game_setting;
     std::vector<std::string> unlocked_players = {};
     std::vector<std::string> init();
+
 public:
     void run();
 };

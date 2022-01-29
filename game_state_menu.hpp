@@ -21,7 +21,7 @@ private:
     unsigned int height;
     state & state_t;
     game_settings & gameSettings;
-    std::vector<std::shared_ptr<drawable>> objects = {};
+    std::vector<std::shared_ptr<drawable>> objects;
 
 public:
     game_state_menu(sf::RenderWindow& window,

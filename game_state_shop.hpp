@@ -16,6 +16,9 @@
 /// game_state_shop class, heritage van drawable
 class game_state_shop : public drawable{
 private:
+    /// Game settings die erzijn
+    game_settings & gameSettings;
+    //state van game
     state & state_t;
     /// Lijst players die er zijn om hiermee de sprites ervan op te halen
     std::vector<std::string> all_players = {"chicken_player", "slime_player", "pacman_player"};
@@ -27,18 +30,13 @@ private:
     ///Lijst players die gekocht zijn, uit player.txt gehaald in game_screen.cpp
     std::vector<std::string> & unlocked_players;
 
-
-//    std::vector<std::shared_ptr<window_part>> unlocked_players_test;
-    std::vector<std::shared_ptr<drawable>> player_equipped_test;
-
-    /// Game settings die erzijn
-    game_settings & gameSettings;
-
     /// Lijst players die er zijn. Alles dus maar dan window_part. Met all_players kun je de juiste sprite pakken.
     std::vector<std::shared_ptr<window_part>> players;
     std::vector<std::shared_ptr<drawable>> objects;
-    std::vector<std::shared_ptr<drawable>> scrol_objects_purchased;
-    std::vector<std::shared_ptr<drawable>> scrol_objects_not_purchased;
+    std::shared_ptr<buttons> equip_button;
+    std::shared_ptr<buttons> buy_button;
+    std::shared_ptr<label> equiped_label;
+
 
     /// Waarde waar mee ik door de shop heen kan scrollen van players.
     unsigned int player_scrolling_int = 0;

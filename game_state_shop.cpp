@@ -11,9 +11,9 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  game_settings & gameSettings
                                  ):
                                  drawable(window,{0,0}, {0,0}),
+                                 gameSettings(gameSettings),
                                  state_t(state_t),
-                                 unlocked_players(unlocked_players),
-                                 gameSettings(gameSettings)
+                                 unlocked_players(unlocked_players)
                                 {
                                     sprite_factory sprite_reader = sprite_factory::get_instance(); 
                                     std::shared_ptr<window_part> shop_window = std::make_shared<window_part>(window,
@@ -52,7 +52,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                                 },
                                                                                                                 "prev",
                                                                                                                 sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<buttons> buy_button = std::make_shared<buttons>(window,
+                                    std::shared_ptr<buttons> buy = std::make_shared<buttons>(window,
                                                                                                     50,
                                                                                                     vector2f_from_unsigned_ints(width/3 - 50, height - 200),
                                                                                                     [&](){if(gameSettings.coins >= 100){
@@ -63,7 +63,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                         },
                                                                                                         "Buy",
                                                                                                         sf::Color(163 , 235 , 177));
-                                    std::shared_ptr<buttons> equip_button = std::make_shared<buttons>(window,
+                                    std::shared_ptr<buttons> equip = std::make_shared<buttons>(window,
                                                                                                       50,
                                                                                                       vector2f_from_unsigned_ints(width/3 - 50, height - 200),
                                                                                                       [&](){gameSettings.player = all_players[player_scrolling_int];
@@ -100,12 +100,12 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     players = {chicken, slime, pacman};
 
                                     /// Wou het wat aanpassen dat de buy button vervangen wordt door de equip button indien die gekocht is.
-                                    scrol_objects_purchased = {equip_button};
-                                    scrol_objects_not_purchased = {buy_button};
+                                    equip_button = equip;
+                                    buy_button = buy;
 
                                     /// Deze wordt niet gebruikt
                                     //unlocked_players = {chicken};
-                                    player_equipped_test = {equipped};
+                                    equiped_label = equipped;
                                 }
 
 bool game_state_shop::check_functie_unlocked(){
@@ -129,20 +129,15 @@ void game_state_shop::draw() {
     }
     if(check_functie_unlocked()) {
         if(all_players[player_scrolling_int] == gameSettings.player) {
-            for (auto &object: player_equipped_test) {
-                object->draw();
-            }
+            equiped_label->draw();
         }
         else{
-            for (auto &object: scrol_objects_purchased) {
-                object->draw();
-            }
+            equip_button->draw();
         }
     }
     else {
-        for (auto &object2: scrol_objects_not_purchased) {
-            object2->draw();
-        }
+        buy_button->draw();
+
     }
     players[player_scrolling_int]->draw();
 }
@@ -153,20 +148,14 @@ void game_state_shop::update() {
     }
     if(check_functie_unlocked()) {
         if(all_players[player_scrolling_int] == gameSettings.player) {
-            for (auto &object: player_equipped_test) {
-                object->update();
-            }
+            equiped_label->update();
         }
         else{
-            for (auto &object: scrol_objects_purchased) {
-                object->update();
-            }
+            equip_button->update();
         }
     }
     else {
-        for (auto &object2: scrol_objects_not_purchased) {
-            object2->update();
-        }
+        buy_button->update();
     }
     sf::Event event{};
     while (window.pollEvent(event)) {}
