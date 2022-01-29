@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 17/01/2022.
-//
-
 #include "drawable.hpp"
 
 /// Drawable constructor

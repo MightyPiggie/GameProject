@@ -32,35 +32,25 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
     if (position.x != float(window.getSize().x)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         restore_position();
         position += sf::Vector2f{-movement_speed, 0};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
+        for (unsigned int index = 0; index < gameobjects.size(); index++) {
+            if (gameobjects[index]->object_state == OBSTACLE) {
                 if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{movement_speed, 0};
                 }
             }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
+            check_coin(gameobjects);
         }
     }
     else if (position.x != float(window.getSize().x)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
         restore_position();
         position += sf::Vector2f{movement_speed, 0};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
+        for (unsigned int index = 0; index < gameobjects.size(); index++) {
+            if (gameobjects[index]->object_state == OBSTACLE) {
                 if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{-movement_speed, 0};
                 }
             }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
+            check_coin(gameobjects);
         }
     }
     else if(position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -68,20 +58,15 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
         game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
+        for (unsigned int index = 0; index < gameobjects.size(); index++) {
+            if (gameobjects[index]->object_state == OBSTACLE) {
                 if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{0, movement_speed};
 
                     score = false;
                 }
             }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
+            check_coin(gameobjects);
         }
         //todo score ivm met objecten moet elke keer maar 1 omhoog gaan en niet hoevaak er objecten zijn
         if(score){game_setting.score++;}
@@ -90,26 +75,32 @@ void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
         restore_position();
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
+        for (unsigned int index = 0; index < gameobjects.size(); index++) {
+            if (gameobjects[index]->object_state == OBSTACLE) {
                 if (this->overlaps(gameobjects[index])) {
                     position += sf::Vector2f{0, -movement_speed};
                     score = false;
                 }
             }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
+            check_coin(gameobjects);
+        }
+        if (game_setting.score >= 1 && score) { game_setting.score--; }
+    }
+}
+
+void player::check_coin(std::vector<std::shared_ptr<object>> &gameobjects) {
+    for (unsigned int index = 0; index < gameobjects.size(); index++) {
+        if (gameobjects[index]->object_state == COIN) {
+            if (this->overlaps(gameobjects[index])) {
+                game_setting.coins++;
+                gameobjects.erase(gameobjects.begin() + index);
             }
         }
-        if(game_setting.score >= 1 && score){game_setting.score--; }
     }
 }
 
 /// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
-void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects) {
+void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects) {
 //    std::cout << position.x << "X" << std::endl;
 //    std::cout << window.getSize().x << "W" << std::endl;
     if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){

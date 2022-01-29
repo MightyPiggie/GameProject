@@ -4,14 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
+#include "drawable.hpp"
 #include "simple_functions.hpp"
 #include "game_state_game.hpp"
-#include "drawable.hpp"
-#include "window_part.hpp"
-#include "label.hpp"
-#include "sprite_factory.hpp"
-#include "buttons.hpp"
-
 
 /// game_state_dead class, heritage van drawable
 class game_state_dead : public drawable{

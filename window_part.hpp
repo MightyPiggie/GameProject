@@ -7,7 +7,6 @@
 #include "drawable.hpp"
 #include "game_settings.hpp"
 
-
 /// window_part class, heritage van drawable
 class window_part : public drawable{
 protected:
@@ -30,6 +29,8 @@ public:
     void new_sprite(std::string path);
     void update() override;
 };
+
+
 
 /// window_part_player class, heritage van window_part
 /// Gamaakt om de game settings over te sturen/ te delen/up to date houden tijdens de game.

@@ -4,12 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
-#include <map>
 
 #include "game_states.hpp"
-#include "label.hpp"
 #include "game_settings.hpp"
-
 
 /// Game_screen class. Build om alles van te maken.
 class game_screen{

@@ -4,17 +4,12 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
-#include <map>
 #include <string>
 
 #include "drawable.hpp"
-#include "window_part.hpp"
-#include "label.hpp"
-#include "sprite_factory.hpp"
-#include "buttons.hpp"
 #include "game_settings.hpp"
-#include "level.hpp"
-
+#include "sprite_factory.hpp"
+#include "builder_biome.hpp"
 
 /// game_state_game class, heritage van drawable
 class game_state_game : public drawable{
@@ -25,7 +20,7 @@ private:
     unsigned int height;
     std::vector<std::shared_ptr<drawable>> drawables;
     std::shared_ptr<drawable> background;
-    level level1;
+    builder_biome level1;
 
 public:
     game_state_game(sf::RenderWindow & window,
@@ -33,8 +28,6 @@ public:
                     unsigned int height,
                     game_settings & gameSettings,
                     state & state_t);
-//    ~game_state_game();
-    sf::Texture screenshot_gamescreen;
     void draw() override;
     void update() override;
     std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){

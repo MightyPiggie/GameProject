@@ -2,7 +2,6 @@
 #define OBJECT_HPP
 
 #include <SFML/Graphics.hpp>
-#include <random>
 
 #include "drawable.hpp"
 #include "game_screen.hpp"

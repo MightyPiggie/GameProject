@@ -1,9 +1,8 @@
-#include "level.hpp"
+#include "builder_biome.hpp"
 
 #include "simple_functions.hpp"
-#include <iostream>
 
-level::level(sf::RenderWindow& window,
+builder_biome::builder_biome(sf::RenderWindow& window,
             game_settings& game_setting,
             state& state_t):
         window(window),
@@ -19,7 +18,7 @@ level::level(sf::RenderWindow& window,
     }
 
 
-void level::update(){
+void builder_biome::update(){
     players[0]->update();
     if(game_setting.started){
         for(auto& player : players){
@@ -51,12 +50,6 @@ void level::update(){
         if (event.type == sf::Event::KeyPressed) {
             if(state_t == GAME){
                 for(auto& player : players){
-                    /// Dit zou niet meer hoeven omdat het als een refrence wordt meegegeven.
-//                    std::vector<std::shared_ptr<object>> objects = {};
-//                    for(auto& line : lines){
-//                        std::vector<std::shared_ptr<object>> & object = line->get_objects();
-//                        objects.insert(objects.begin(), object.begin(), object.end());
-//                    }
                     player->move(objects);
                 }
             }
@@ -64,7 +57,7 @@ void level::update(){
     }
 }
 
-void level::draw(){
+void builder_biome::draw(){
     for(auto& line : lines){
         line->draw();
     }
@@ -73,27 +66,27 @@ void level::draw(){
     }
 }
 
-void level::build_line(float height, bool force_grass_line) {
+void builder_biome::build_line(float height, bool force_grass_line) {
     unsigned int line_type = random_int_between_range(0,4);
     // Rails
     if(line_type == 0 && force_grass_line == false) {
-        std::shared_ptr<line> create_rails_line = std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, RAILS, NON_OBSTACLE, "rails_sprite",objects);
+        std::shared_ptr<builder_object> create_rails_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, RAILS, NON_OBSTACLE, "rails_sprite",objects);
         lines.emplace_back(create_rails_line);
     }
     // Roads
-    else if(line_type == 2 && force_grass_line == false) {  //todo WATER MUST BE CHANGED TO DEADLY
-        std::shared_ptr<line> create_roads_line = std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, ROAD, NON_OBSTACLE, "roads_sprite",objects);
+    else if(line_type == 2 && force_grass_line == false) {
+        std::shared_ptr<builder_object> create_roads_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, ROAD, NON_OBSTACLE, "roads_sprite",objects);
         lines.emplace_back(create_roads_line);
     }
     // Water
     else if(line_type == 3 && force_grass_line == false) {
-        std::shared_ptr<line> create_water_line = std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, WATER, DEADLY, "water_sprite",objects);
+        std::shared_ptr<builder_object> create_water_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, WATER, DEADLY, "water_sprite",objects);
         lines.emplace_back(create_water_line);
     }
     // Grass
     else if((line_type == 1 || 4) || force_grass_line == true) {
         // TODO No coins first 5
-        std::shared_ptr<line> create_grass_line = std::make_shared<line>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, GRASS, NON_OBSTACLE, "grass_sprite",objects);
+        std::shared_ptr<builder_object> create_grass_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, GRASS, NON_OBSTACLE, "grass_sprite",objects);
         lines.emplace_back(create_grass_line);
     }
 }

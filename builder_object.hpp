@@ -9,8 +9,8 @@
 
 enum line_type {GRASS, RAILS, WATER, ROAD};
 
-/// line class, heritage van object
-class line : public object {
+/// builder_object class, heritage van object
+class builder_object : public object {
 private:
     line_type type;
     /// Wegems refrence niet nodig.
@@ -28,13 +28,13 @@ private:
     std::vector<std::shared_ptr<object>> & objects_for_level;
 
 public:
-    line(sf::RenderWindow& window,
-            sf::Vector2f position,
-            sf::Vector2f size,
-            line_type type,
-            object_states object_state,
-            std::string sprite_name,
-         std::vector<std::shared_ptr<object>> & objects_for_level);
+    builder_object(sf::RenderWindow& window,
+                   sf::Vector2f position,
+                   sf::Vector2f size,
+                   line_type type,
+                   object_states object_state,
+                   std::string sprite_name,
+                   std::vector<std::shared_ptr<object>> & objects_for_level);
     void draw() override;
     void update() override;
     void lower_obstakels();

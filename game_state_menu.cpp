@@ -1,12 +1,13 @@
-//
-// Created by Isaak van Luijk on 17/01/2022.
-//
-
 #include "game_state_menu.hpp"
+
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include "label_player_settings.hpp"
 
+#include "label_player_settings.hpp"
+#include "label.hpp"
+#include "buttons.hpp"
+#include "window_part.hpp"
+#include "sprite_factory.hpp"
 
 /// Constructur van game_state_menu. Alle objecten worden er ook bij gemaakt.
 game_state_menu::game_state_menu(sf::RenderWindow & window,

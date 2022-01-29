@@ -26,14 +26,6 @@ unsigned int unsinged_int_from_float(float rhs){
     return static_cast<unsigned int>(rhs);
 }
 
-// unsigned int random_int_between_range(int min, int max) {
-//     std::random_device rd;     // only used once to initialise (seed) engine
-//     std::mt19937 rng(rd());    // random-number engine used (Mersenne-Twister in this case)
-//     std::uniform_int_distribution<int> uni(min,max); // guaranteed unbiased
-
-//     return uni(rng);
-//}
-
 unsigned int random_int_between_range(int min, int max) {
     return rand() % (max+1);
 }

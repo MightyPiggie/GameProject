@@ -32,14 +32,6 @@ buttons::buttons(sf::RenderWindow &window,
     size ={ float_from_double(txt.getGlobalBounds().width*1.6), float_from_double(txt.getGlobalBounds().height*1.5)};
     rect.setSize(size);
     rect.setFillColor(kleur);
-    /* TODO check this
-    if(!font.loadFromFile("res/fonts/lato/Lato-Black.ttf")){std::cout << "geen lato" << std::endl; }
-        txt.setFont(font);
-        txt.setPosition({position.x, position.y});
-        txt.setFillColor(hover);
-        txt.setString(name);
-        txt.setCharacterSize(unsinged_int_from_vector2f(size)/2 - unsinged_int_from_vector2f(size)/16);
-        */
 }
 
 

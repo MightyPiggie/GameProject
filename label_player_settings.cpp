@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 26/01/2022.
-//
-
 #include "label_player_settings.hpp"
 #include <iostream>
 
@@ -23,8 +19,6 @@ void label_player_settings_coins::update() {
         text_string = "Coins " + std::to_string(gameSettings.coins);
     }
 }
-
-
 
 label_player_settings_highscore::label_player_settings_highscore(sf::RenderWindow &window,
                                                          sf::Vector2f position,
