@@ -16,6 +16,7 @@ private:
     sf::RenderWindow& window;
     game_settings& game_setting;
     state& state_t;
+    sound_class & the_sound_class_builder_biome;
     std::vector<std::shared_ptr<player>> players;
     std::vector<std::shared_ptr<builder_object>> lines;
     std::vector<std::shared_ptr<object>> objects;
@@ -26,7 +27,8 @@ private:
 public:
     builder_biome(sf::RenderWindow& window,
                   game_settings& game_setting,
-                  state& state_t);
+                  state& state_t,
+                  sound_class & the_sound_class_builder_biome);
 
     void draw();
     void update();

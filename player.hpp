@@ -22,7 +22,7 @@ protected:
     unsigned int window_height;
     game_settings & game_setting;
     state & state_t;
-    sound_class & the_sound_class;
+    sound_class & the_sound_class_player;
     std::vector<std::string> unlocked_players = read_values(game_setting);
     bool overlap = false;
     sf::Sound dead;
@@ -32,7 +32,8 @@ public:
             sf::Vector2f position,
             sf::Vector2f size,
             game_settings & game_setting,
-            state & state_t);
+            state & state_t,
+            sound_class & the_sound_class_player);
 
     void draw() override;
     void move(std::vector<std::shared_ptr<object>>& gameobjects);

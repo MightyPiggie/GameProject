@@ -12,9 +12,9 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                  sound_class & the_sound_class_shop
                                  ):
                                  drawable(window,{0,0}, {0,0}),
+                                 gameSettings(gameSettings),
                                  state_t(state_t),
                                  unlocked_players(unlocked_players),
-                                 gameSettings(gameSettings),
                                  the_sound_class_shop(the_sound_class_shop)
                                 {
                                     click_sound.setBuffer(the_sound_class_shop.get_sound_buffer("click_sound"));

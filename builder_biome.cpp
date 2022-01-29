@@ -4,12 +4,14 @@
 
 builder_biome::builder_biome(sf::RenderWindow& window,
             game_settings& game_setting,
-            state& state_t):
+            state& state_t,
+            sound_class & the_sound_class_builder_biome):
         window(window),
         game_setting(game_setting),
-        state_t(state_t)
+        state_t(state_t),
+        the_sound_class_builder_biome(the_sound_class_builder_biome)
     {
-        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 0.0 }, game_setting, state_t));
+        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 0.0 }, game_setting, state_t, the_sound_class_builder_biome));
 
         for(int i = 0; i <= int(window.getSize().y / 60); i++){
             build_line(window.getSize().y - (60 * i), i < 5);

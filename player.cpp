@@ -8,13 +8,13 @@ player::player(sf::RenderWindow & window,
         sf::Vector2f size,
         game_settings & game_setting,
         state & state_t,
-        sound_class & the_sound_class):
+        sound_class & the_sound_class_player):
     object(window, position, size, NON_OBSTACLE, "chicken_player"),
     game_setting(game_setting),
     state_t(state_t),
-    the_sound_class(the_sound_class)
+    the_sound_class_player(the_sound_class_player)
 {
-    dead.setBuffer(the_sound_class.get_sound_buffer("dead"));
+    dead.setBuffer(the_sound_class_player.get_sound_buffer("dead"));
 }
 /// Player draw, dit is in een sprite
 void player::draw() {
