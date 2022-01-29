@@ -22,14 +22,18 @@ protected:
     unsigned int window_height;
     game_settings & game_setting;
     state & state_t;
+    sound_class & the_sound_class;
     std::vector<std::string> unlocked_players = read_values(game_setting);
+
+    sf::Sound dead;
 
 public:
     player(sf::RenderWindow & window,
             sf::Vector2f position,
             sf::Vector2f size,
             game_settings & game_setting,
-            state & state_t);
+            state & state_t,
+           sound_class & the_sound_class);
 
     void draw() override;
     void function_for_move(std::vector<std::shared_ptr<line>>& gameobjects, sf::Vector2f new_position);

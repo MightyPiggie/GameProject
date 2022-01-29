@@ -14,6 +14,7 @@
 #include "buttons.hpp"
 #include "game_settings.hpp"
 #include "level.hpp"
+#include "sound_class.hpp"
 
 
 /// game_state_game class, heritage van drawable
@@ -27,13 +28,17 @@ private:
     std::vector<std::shared_ptr<drawable>> drawables;
     std::vector<std::shared_ptr<drawable>> drawables1;
     level level1;
+    sound_class & the_sound_class_ingame;
+
+    sf::Sound click_sound;
 
 public:
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,
                     unsigned int height,
                     game_settings & gameSettings,
-                    state & state_t);
+                    state & state_t,
+                    sound_class & the_sound_class_ingame);
 //    ~game_state_game();
     sf::Texture screenshot_gamescreen;
     void draw() override;

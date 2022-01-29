@@ -10,17 +10,21 @@ game_state_game::game_state_game(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  game_settings & gameSettings,
-                                 state & state_t
+                                 state & state_t,
+                                 sound_class & the_sound_class_ingame
 ):
                                 drawable(window,{0,0},{0,0}),
                                 gameSettings(gameSettings),
                                 state_t(state_t),
                                 width(width), 
                                 height(height),
-                                level1(window, gameSettings, state_t)
+                                level1(window, gameSettings, state_t, the_sound_class_ingame),
+                                the_sound_class_ingame(the_sound_class_ingame)
 //                                screenshot_gamescreen{}
 {
     sprite_factory sprite_reader = sprite_factory::get_instance();
+
+    click_sound.setBuffer(the_sound_class_ingame.get_sound_buffer("click_sound"));
     
     std::shared_ptr<window_part> left = std::make_shared<window_part>(window,vector2f_from_unsigned_ints(0,0), sprite_reader.filenames["game_bg_forrest_left"]);
     std::shared_ptr<window_part> right = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(float(width)*3/4, 0),sprite_reader.filenames["game_bg_forrest_right"]);
@@ -28,8 +32,8 @@ game_state_game::game_state_game(sf::RenderWindow & window,
     std::shared_ptr<label_player_settings_coins> display_coins = std::make_shared<label_player_settings_coins>(window, sf::Vector2f(float(width) - 250.f, 50), std::to_string(gameSettings.coins), 25, sf::Color(163 , 235 , 177), gameSettings, false);
     std::shared_ptr<label_player_settings_highscore> display_highscore = std::make_shared<label_player_settings_highscore>(window, sf::Vector2f(float(width) - 250.f, 100), "highs: " + std::to_string(gameSettings.highscore), 25, sf::Color(163 , 235 , 177), gameSettings, false);
     std::shared_ptr<label_player_settings_score> display_score = std::make_shared<label_player_settings_score>(window, sf::Vector2f(float(width) - 250.f, 150), std::to_string(gameSettings.score), 25, sf::Color(163 , 235 , 177), gameSettings, false);
-    std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){window.close();},"Quit", sf::Color(163 , 235 , 177));
-    std::shared_ptr<buttons> back_to_menu_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
+    std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40,30),  [&](){click_sound.play(); window.close();},"Quit", sf::Color(163 , 235 , 177));
+    std::shared_ptr<buttons> back_to_menu_gamewindow = std::make_shared<buttons>(window, 50,  vector2f_from_unsigned_ints(40, 120), [&](){click_sound.play(); state_t = MENU;},"Menu", sf::Color(163 , 235 , 177));
     drawables1 = {game_window};
     drawables = {left, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow};
     labels = {display_coins , display_score};

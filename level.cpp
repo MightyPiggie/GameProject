@@ -4,17 +4,18 @@
 
 level::level(sf::RenderWindow& window,
             game_settings& game_setting,
-            state& state_t):
+            state& state_t,
+             sound_class & the_sound_class):
         window(window),
         game_setting(game_setting),
-        state_t(state_t)
+        state_t(state_t),
+        the_sound_class(the_sound_class)
     {
-        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 0.0 }, game_setting, state_t));
+        players.emplace_back(std::make_shared<player>(window , sf::Vector2f( 960.0, 960.0 ), sf::Vector2f{ 59.0, 0.0 }, game_setting, state_t, the_sound_class));
 
         for(int i = 0; i <= int(window.getSize().y / 60); i++){
             build_line(window.getSize().y - (60 * i), i < 5);
         }
-
     }
 
 

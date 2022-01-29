@@ -7,11 +7,15 @@ player::player(sf::RenderWindow & window,
         sf::Vector2f position,
         sf::Vector2f size,
         game_settings & game_setting,
-        state & state_t):
+        state & state_t,
+        sound_class & the_sound_class):
     object(window, position, size, NON_OBSTACLE, "chicken_player"),
     game_setting(game_setting),
-    state_t(state_t)
-{}
+    state_t(state_t),
+    the_sound_class(the_sound_class)
+{
+    dead.setBuffer(the_sound_class.get_sound_buffer("dead"));
+}
 /// Player draw, dit is in een sprite
 void player::draw() {
     sprite.setPosition(position);
@@ -106,6 +110,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 
                     if (this->overlaps(object1)) {
                         state_t = DEAD;
+                        dead.play();
                         if(game_setting.score > game_setting.highscore) {
                             game_setting.highscore = game_setting.score;
                             save(unlocked_players, game_setting);
@@ -128,6 +133,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
         }
         if (overlap == false && this->overlaps(lineobjects)) {
             state_t = DEAD;
+            dead.play();
             if(game_setting.score > game_setting.highscore) {
                 game_setting.highscore = game_setting.score;
                 save(unlocked_players, game_setting);

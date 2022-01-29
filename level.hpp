@@ -9,6 +9,7 @@
 #include "game_states.hpp"
 #include "player.hpp"
 #include "line.hpp"
+#include "sound_class.hpp"
 
 /// level class
 class level {
@@ -16,6 +17,7 @@ private:
     sf::RenderWindow& window;
     game_settings& game_setting;
     state& state_t;
+    sound_class & the_sound_class;
     std::vector<std::shared_ptr<player>> players;
     std::vector<std::shared_ptr<line>> lines;
 
@@ -27,7 +29,8 @@ private:
 public:
     level(sf::RenderWindow& window,
             game_settings& game_setting,
-            state& state_t);
+            state& state_t,
+            sound_class & the_sound_class);
 
     void draw();
     void update();

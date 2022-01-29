@@ -44,7 +44,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 std::shared_ptr<buttons> shop_button_in_menu_window = std::make_shared<buttons>(window,
                                                                                                                 50,
                                                                                                                 vector2f_from_unsigned_ints(width/2 + 350, height/2 + 350),
-                                                                                                                [&](){state_t = SHOP;},
+                                                                                                                [&](){click_sound.play(); state_t = SHOP;},
                                                                                                                 "Shop",
                                                                                                                 sf::Color(163 , 235 , 177));
                                 std::shared_ptr<label> title_in_menu_window = std::make_shared<label>(window,

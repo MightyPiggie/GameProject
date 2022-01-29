@@ -1,6 +1,5 @@
 #include "game_screen.hpp"
 
-#include <map>
 #include <vector>
 #include "sprite_factory.hpp"
 #include "init_game.hpp"
@@ -32,7 +31,8 @@ void game_screen::run(){
 
     the_sound_class.set_sound_buffer("test_sound", "res/sounds/menu-window-title.wav");
     the_sound_class.set_sound_buffer("window_close", "res/sounds/windows_xp_shutdown.wav");
-    the_sound_class.set_sound_buffer("click_sound","res/sounds/chicken.wav");
+    the_sound_class.set_sound_buffer("click_sound","res/sounds/mouse_click.wav");
+    the_sound_class.set_sound_buffer("dead","res/sounds/gtaWasted.wav");
 
     test_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
     window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
@@ -41,15 +41,15 @@ void game_screen::run(){
     state_t = MENU;
     //Game State
 //    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-    std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t);
+    std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t,the_sound_class);
     //Menu State
     game_state_menu menu_state(window, width, height,state_t, game_setting, the_sound_class);
 
     //Dead State
-    game_state_dead dead_state(window, width, height,  state_t);
+    game_state_dead dead_state(window, width, height,  state_t, the_sound_class);
 
     //Shop State
-    game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting);
+    game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting, the_sound_class);
 
     test_sound.play();
 
@@ -72,7 +72,7 @@ void game_screen::run(){
                 break;
             }
             case RESTART :{
-                game_state = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t);
+                game_state = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t, the_sound_class);
                 game_setting.score = 0;
                 game_setting.started = false;
                 state_t = GAME;

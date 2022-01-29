@@ -17,9 +17,12 @@
 class game_state_dead : public drawable{
 private:
     state & state_t;
+    sound_class & the_sound_class_dead;
     std::vector<std::shared_ptr<drawable>> objects;
+
+    sf::Sound click_sound;
 public:
-    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t);
+    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, sound_class & the_sound_class);
     void draw() override;
     void update() override;
 };

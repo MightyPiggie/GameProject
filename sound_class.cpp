@@ -10,7 +10,6 @@ void sound_class::set_sound_buffer(const std::string &name, const std::string &F
         sf::SoundBuffer temp;
         if (temp.loadFromFile(Filename)) {
             sounds[name] = temp;
-            std::cout<< "Toegevoegd" <<std::endl;
         }
 //        else {
 //            throw load_exception("Sounds", name, Filename);

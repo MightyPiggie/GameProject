@@ -12,6 +12,7 @@
 #include <iostream>
 #include "simple_functions.hpp"
 #include "init_game.hpp"
+#include "sound_class.hpp"
 
 /// game_state_shop class, heritage van drawable
 class game_state_shop : public drawable{
@@ -33,6 +34,7 @@ private:
 
     /// Game settings die erzijn
     game_settings & gameSettings;
+    sound_class & the_sound_class_shop;
 
     /// Lijst players die er zijn. Alles dus maar dan window_part. Met all_players kun je de juiste sprite pakken.
     std::vector<std::shared_ptr<window_part>> players;
@@ -42,6 +44,7 @@ private:
 
     /// Waarde waar mee ik door de shop heen kan scrollen van players.
     unsigned int player_scrolling_int = 0;
+    sf::Sound click_sound;
 
 public:
     game_state_shop(sf::RenderWindow& window,
@@ -49,7 +52,8 @@ public:
                     unsigned int width,
                     unsigned int height,
                     std::vector<std::string> & unlocked_players,
-                    game_settings & gameSettings);
+                    game_settings & gameSettings,
+                    sound_class & the_sound_class_shop);
     void draw() override;
     void update() override;
     bool check_functie_unlocked();
