@@ -34,5 +34,4 @@ public:
     void draw() override;
     void update_text(std::string new_value);
 };
-
 #endif

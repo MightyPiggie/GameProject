@@ -30,7 +30,7 @@ void builder_biome::update(){
                 for(auto& line : lines){
                     /// Check of het object je dood maakt
                     player->check_dead(line->objects_for_level, line);
-                    }
+                }
             }
         /// Update de lines. In line update je dan ook weer de objecten van de line.
         for(auto& line : lines){

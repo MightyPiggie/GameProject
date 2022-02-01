@@ -33,41 +33,32 @@ void player::update() {
 
 /// Player move. Wordt gekeken naar keys en welk object dat dan is/van welke state. Op elk object een andere reactie.
 void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
-    if (position.x != float(window.getSize().x) / 4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    if (position.x != float(window.getSize().x) / 4 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))){
         restore_position();
+        game_setting.started = true;
         position += sf::Vector2f{-movement_speed, 0};
         function_for_move(gameobjects, sf::Vector2f{movement_speed, 0});
     } else if (position.x != float(window.getSize().x) * 3 / 4 - movement_speed &&
-               sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))) {
         restore_position();
+        game_setting.started = true;
         position += sf::Vector2f{movement_speed, 0};
         function_for_move(gameobjects, sf::Vector2f{-movement_speed, 0});
-    } else if (position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+    } else if (position.y > 30 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Space))) {
         restore_position();
         game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
         function_for_move_score(gameobjects, sf::Vector2f{0, movement_speed}, score, false);
-        //todo score ivm met objecten moet elke keer maar 1 omhoog gaan en niet hoevaak er objecten zijn
         if (score) { game_setting.score++; }
-    } else if (position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+    } else if (position.y != float(window_height) - movement_speed && (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::S))) {
         restore_position();
+        game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
         function_for_move_score(gameobjects, sf::Vector2f{0, movement_speed}, score, false);
     }
 }
-
-//void player::check_coin(std::vector<std::shared_ptr<object>> &gameobjects) {
-//    for (unsigned int index = 0; index < gameobjects.size(); index++) {
-//        if (gameobjects[index]->object_state == COIN) {
-//            if (this->overlaps(gameobjects[index])) {
-//                game_setting.coins++;
-//                gameobjects.erase(gameobjects.begin() + index);
-//            }
-//        }
-//    }
-//}
 
 /// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
 void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects) {
@@ -104,7 +95,6 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
                     if(object1->get_speed() != 0){
                         bool dir = object1->get_direction(); // 1 is naar rechts, 0 naar links;
                         dir ? position.x += object1->get_speed() : position.x -= object1->get_speed();
-
                     }
                     overlap = true;
                     break;

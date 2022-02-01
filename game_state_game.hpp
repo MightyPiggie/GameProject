@@ -25,7 +25,6 @@ private:
     sound_class & the_sound_class_ingame;
     std::shared_ptr<drawable> background;
     sf::Sound click_sound;
-
 public:
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,

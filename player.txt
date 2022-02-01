@@ -1,5 +1,3 @@
-MUNTEN 39
-HIGH 65
+MUNTEN 12
+HIGH 24
 EQUIPPED chicken_player
-PLAYER chicken_player
-PLAYER pacman_player

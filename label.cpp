@@ -38,6 +38,9 @@ void label::draw() {
     if(rectangle_display){
          window.draw(rect_SFML);
     }
+    rect_SFML.setPosition(position - sf::Vector2f(float_from_double(text_SFML.getGlobalBounds().width*0.1), 0));
+    size ={ float_from_double(text_SFML.getGlobalBounds().width*1.2), float_from_double(text_SFML.getGlobalBounds().height*1.5)};
+    rect_SFML.setSize(size);
     text_SFML.setString(text_string);
     window.draw(text_SFML);
 }
@@ -48,3 +51,4 @@ void label::update_text(std::string new_value) {
     size ={ float_from_double(text_SFML.getGlobalBounds().width*1.2), float_from_double(text_SFML.getGlobalBounds().height*1.5)};
     rect_SFML.setSize(size);
 }
+
