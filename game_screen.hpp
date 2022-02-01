@@ -20,21 +20,20 @@ private:
     std::vector<std::string> unlocked_players = {};
 
     /**
-     * @brief 
+     * @brief The function will read the game settings.
      * 
-     * @return std::vector<std::string> 
+     * @return std::vector<std::string> The returned vector are all game settings.
      */
     std::vector<std::string> init();
 
     sound_class the_sound_class;
-
 
     sf::Sound start_sound;
     sf::Sound window_close;
 
 public:
     /**
-     * @brief 
+     * @brief This is the main game loop. When this is called the game will start and launch.
      * 
      */
     void run();

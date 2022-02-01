@@ -36,7 +36,7 @@ public:
      * 
      * @param window A reference to the window where everything is drawn on.
      * @param game_setting A reference to all game settings of the game.
-     * @param state_t a refence to the state of which the game is in. 
+     * @param state_t A refence to the state of which the game is in. 
      * @param the_sound_class_builder_biome 
      */
     builder_biome(sf::RenderWindow& window,

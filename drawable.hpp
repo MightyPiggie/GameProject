@@ -16,14 +16,15 @@ public:
     /**
      * @brief Construct a new drawable object
      * 
-     * @param window 
-     * @param position 
-     * @param size 
+     * @param window A reference to the window where everything is drawn on.
+     * @param position The position where the drawable will be on the screen.
+     * @param size The size of the drawable.
      */
     drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
 
+    //TODO doxygen this
     /**
-     * @brief 
+     * @brief The within function checks of the given integers are within each other
      * 
      * @param x 
      * @param a 
@@ -34,42 +35,42 @@ public:
     bool within( int x, int a, int b );
 
     /**
-     * @brief 
+     * @brief check if the other drawable overlaps with the "this" drawable.
      * 
-     * @param other 
-     * @return true 
-     * @return false 
+     * @param other The drawable to check with if it is overlaping
+     * @return true If it overlaps
+     * @return false If it does not overlap.
      */
     bool overlaps(std::shared_ptr<drawable> other);
 
     /**
-     * @brief 
+     * @brief A virtual draw function. This function should every child implement so the object can be drawed on the screen.
      * 
      */
     virtual void draw()=0;
 
     /**
-     * @brief 
+     * @brief A virtual update function. This function can be implemented in the childs if it needs to be updated.
      * 
      */
     virtual void update(){}
 
     /**
-     * @brief Get the position object
+     * @brief Get the position of the object
      * 
      * @return sf::Vector2f 
      */
     sf::Vector2f get_position();
 
     /**
-     * @brief Get the size object
+     * @brief Get the size of the object
      * 
      * @return sf::Vector2f 
      */
     sf::Vector2f get_size();
 
     /**
-     * @brief 
+     * @brief Get the global bounds of the object.
      * 
      * @return sf::FloatRect 
      */

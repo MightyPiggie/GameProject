@@ -20,16 +20,16 @@ public:
     /**
      * @brief Construct a new game state dead object
      * 
-     * @param window 
-     * @param width 
-     * @param height 
-     * @param state_t 
-     * @param the_sound_class 
+     * @param window A reference to the window where everything is drawn on.
+     * @param width The width of the screen.
+     * @param height The height of the screen.
+     * @param state_t A refence to the state of which the game is in. 
+     * @param the_sound_class A reference to the sound_class object.
      */
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, sound_class & the_sound_class);
     
     /**
-     * @brief 
+     * @brief The draw function will call all objects draw function
      * 
      */
     void draw() override;

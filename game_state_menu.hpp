@@ -26,12 +26,12 @@ public:
     /**
      * @brief Construct a new game state menu object
      * 
-     * @param window 
-     * @param width 
-     * @param height 
-     * @param state_t 
-     * @param gameSettings 
-     * @param the_sound_class_menu 
+     * @param window A reference to the window where everything is drawn on.
+     * @param width The width of the screen.
+     * @param height The height of the screen.
+     * @param state_t A refence to the state of which the game is in.
+     * @param gameSettings A reference to all game settings of the game.
+     * @param the_sound_class_menu A reference to the sound_class object.
      */
     game_state_menu(sf::RenderWindow& window,
                     unsigned int width,
@@ -41,7 +41,7 @@ public:
                     sound_class & the_sound_class_menu);
 
     /**
-     * @brief 
+     * @brief The draw function will call all objects draw function
      * 
      */
     void draw() override;

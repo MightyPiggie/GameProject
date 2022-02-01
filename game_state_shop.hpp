@@ -45,13 +45,13 @@ public:
     /**
      * @brief Construct a new game state shop object
      * 
-     * @param window 
-     * @param state_t 
-     * @param width 
-     * @param height 
-     * @param unlocked_players 
-     * @param gameSettings 
-     * @param the_sound_class_shop 
+     * @param window A reference to the window where everything is drawn on.
+     * @param state_t A refence to the state of which the game is in.
+     * @param width The width of the screen.
+     * @param height The height of the screen.
+     * @param unlocked_players A vector of strings containing all the player that are unlocked by the player.
+     * @param gameSettings A reference to all game settings of the game.
+     * @param the_sound_class_shop A reference to the sound_class object.
      */
     game_state_shop(sf::RenderWindow& window,
                     state & state_t,
@@ -62,7 +62,7 @@ public:
                     sound_class & the_sound_class_shop);
 
     /**
-     * @brief 
+     * @brief The draw function will call all objects draw function. It will also switch the button text when you buy/change a player.
      * 
      */
     void draw() override;
