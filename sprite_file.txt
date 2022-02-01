@@ -23,7 +23,6 @@ car_police_right_sprite res/sprites/car_police_right.png
 train_right_sprite      res/sprites/train_right.png
 train_left_sprite       res/sprites/train_left.png
 
-menu_background_sprite  res/sprites/menu_background.png
 background_sprite       res/sprites/game_background.png
 game_bg_forrest_left    res/sprites/game_background_left_forest.png
 game_bg_forrest_right   res/sprites/game_background_right_forest.png
@@ -31,16 +30,20 @@ menu_background_river   res/sprites/menu_background_river.png
 
 icon                    res/sprites/chicken_icon.png
 
-player_icon_menu        res/sprites/chicken_menu.png
-
 game_over_background    res/sprites/gameover.jpg
-shop                    res/sprites/shoptest.jpg
+shop                    res/sprites/shop.jpg
 
 chicken_player                  res/sprites/chicken_player.png
+cow_player                      res/sprites/cow_player.png
+pig_player                      res/sprites/pig_player.png
 pacman_player                   res/sprites/pacman_player.png
 slime_player                    res/sprites/slime_player.png
 beta_player                     res/sprites/beta_player.png
 
+
 chicken_player_shop             res/sprites/chicken_player_shop.png
+cow_player_shop                 res/sprites/cow_player_shop.png
+pig_player_shop                 res/sprites/pig_player_shop.png
 slime_player_shop               res/sprites/slime_player_shop.png
 pacman_player_shop              res/sprites/pacman_player_shop.png
+beta_player_shop                res/sprites/beta_player_shop.png

@@ -1,3 +1,7 @@
-MUNTEN 12
-HIGH 24
-EQUIPPED chicken_player
+MUNTEN 809
+HIGH 65
+EQUIPPED cow_player
+PLAYER chicken_player
+PLAYER pacman_player
+PLAYER beta_player
+PLAYER cow_player
