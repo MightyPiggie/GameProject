@@ -48,6 +48,9 @@ void game_state_loading_screen::loading() {
     the_sound_class_loading_screen.set_sound_buffer("chicken_player","res/sounds/chicken_player.wav");
     the_sound_class_loading_screen.set_sound_buffer("slime_player","res/sounds/slime_player.wav");
     the_sound_class_loading_screen.set_sound_buffer("pacman_player","res/sounds/pacman_player.wav");
+    the_sound_class_loading_screen.set_sound_buffer("cow_player","res/sounds/cow_player.wav");
+    the_sound_class_loading_screen.set_sound_buffer("pig_player","res/sounds/pig_player.wav");
+    the_sound_class_loading_screen.set_sound_buffer("beta_player","res/sounds/beta_player.wav");
 
 
     /// BackGround music's
