@@ -21,6 +21,11 @@ private:
 public:
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, game_settings & gameSettings,sound_class & the_sound_class);
     void draw() override;
+
+    /**
+     * @brief The update function will call all the objects update function and it will poll for SFML events.
+     *
+     */
     void update() override;
 };
 #endif

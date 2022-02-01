@@ -25,20 +25,35 @@ private:
     sound_class & the_sound_class_ingame;
     std::shared_ptr<drawable> background;
     sf::Sound click_sound;
-
 public:
+    /**
+     * @brief Construct a new game state game object
+     * 
+     * @param window A reference to the window where everything is drawn on.
+     * @param width The width of the screen.
+     * @param height The height of the screen.
+     * @param gameSettings A reference to all game settings of the game.
+     * @param state_t A refence to the state of which the game is in. 
+     * @param sound_class A reference to the sound_class object.
+     */
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,
                     unsigned int height,
                     game_settings & gameSettings,
                     state & state_t,
                     sound_class & the_sound_class_ingame);
-//    ~game_state_game();
+
+    /**
+     * @brief The draw function will call all objects draw function. It will also call the levels draw function.
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief The update function will call all the objects update function.
+     * 
+     */
     void update() override;
-    std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
-        return rhs;
-    }
 };
 
 #endif

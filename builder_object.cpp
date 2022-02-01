@@ -113,7 +113,7 @@ void builder_object::generate_obstacle_logs() {
     }else {
         bool direction = random_int_between_range(0, 1);
         bool log_length = random_int_between_range(0, 1);
-        auto amount_logs = random_int_between_range(4, 7);
+        auto amount_logs = random_int_between_range(5, 10);
         if (direction == 0) {
             for (unsigned int i = 0; i <= amount_logs; i++) {
                 bool side = random_int_between_range(0, 1);

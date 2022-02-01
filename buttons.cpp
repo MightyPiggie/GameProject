@@ -14,13 +14,14 @@ buttons::buttons(sf::RenderWindow &window,
                  sf::Vector2f position,
                  std::function<void(void)> function,
                  std::string name,
-                 sf::Color kleur,
+                 sf::Color color_button,
                  sf::Color hover):
-                 drawable(window, position, {0,0}),
-                 function(function),
-                 name(name),
-                 kleur(kleur),
-                 hover(hover), char_size(char_size){
+drawable(window, position, {0,0}),
+function(function),
+name(name),
+color_button(color_button),
+hover(hover), 
+char_size(char_size){
 
     if(!font.loadFromFile("res/fonts/arcade_font.ttf")){std::cout << "geen arcade_font" << std::endl; }
     txt.setFont(font);
@@ -31,7 +32,7 @@ buttons::buttons(sf::RenderWindow &window,
     rect.setPosition(position - sf::Vector2f(float_from_double(txt.getGlobalBounds().width*0.3), 0));
     size ={ float_from_double(txt.getGlobalBounds().width*1.6), float_from_double(txt.getGlobalBounds().height*1.5)};
     rect.setSize(size);
-    rect.setFillColor(kleur);
+    rect.setFillColor(color_button);
 }
 
 
@@ -45,17 +46,12 @@ void buttons::draw(){
 void buttons::update(){
     if(rect.getGlobalBounds().contains(vector2f_from_vector2i(sf::Mouse::getPosition()))){
         rect.setFillColor(hover);
-        txt.setFillColor(kleur);
+        txt.setFillColor(color_button);
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
             function();
         }
     }else{
-        rect.setFillColor(kleur);
+        rect.setFillColor(color_button);
         txt.setFillColor(hover);
     }
-}
-
-/// Wordt volgens mij niet gebruikt.
-void buttons::update_coins(uint16_t coins){
-    txt.setString(std::to_string(coins) + " C");
 }

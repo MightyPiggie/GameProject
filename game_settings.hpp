@@ -4,6 +4,11 @@
 #include <string>
 
 /// Gamesettings basis. Wordt aangepast door init om de laatste gegevens in te laden.
+
+/**
+ * @brief The game_settings struct contains all the game settings.
+ * 
+ */
 struct game_settings{
     uint16_t score = 0;
     uint16_t highscore = 0;
