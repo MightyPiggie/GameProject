@@ -18,7 +18,7 @@ public:
     /**
      * @brief Construct a new window part object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param size 
      * @param color 
@@ -30,7 +30,7 @@ public:
     /**
      * @brief Construct a new window part object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param filename 
      */
@@ -72,7 +72,7 @@ public:
     /**
      * @brief Construct a new window part player object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param filename 
      * @param gameSettings 

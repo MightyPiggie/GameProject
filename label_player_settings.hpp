@@ -9,6 +9,19 @@ class label_player_settings_coins : public label{
 protected:
     game_settings & gameSettings;
 public:
+
+    /**
+     * @brief Construct a new label player settings coins object
+     * 
+     * @param window A reference to the window where everything is drawn on.
+     * @param position 
+     * @param text_string 
+     * @param size_char 
+     * @param background_text_color 
+     * @param gameSettings 
+     * @param rectangle_display 
+     * @param text_color 
+     */
     label_player_settings_coins(sf::RenderWindow &window,
                                 sf::Vector2f position,
                                 std::string text_string,
@@ -17,6 +30,11 @@ public:
                                 game_settings & gameSettings,
                                 bool rectangle_display = true,
                                 sf::Color text_color = sf::Color::Black);
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 
@@ -44,7 +62,7 @@ public:
     /**
      * @brief Construct a new label player settings score object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param text_string 
      * @param size_char 

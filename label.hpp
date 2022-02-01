@@ -26,7 +26,7 @@ public:
     /**
      * @brief Construct a new label object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param position 
      * @param text_string 
      * @param size_char 
