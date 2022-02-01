@@ -1,5 +1,7 @@
-MUNTEN 54
+MUNTEN 809
 HIGH 65
-EQUIPPED chicken_player
+EQUIPPED cow_player
 PLAYER chicken_player
 PLAYER pacman_player
+PLAYER beta_player
+PLAYER cow_player

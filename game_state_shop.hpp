@@ -22,7 +22,7 @@ private:
     //state van game
     state & state_t;
     /// Lijst players die er zijn om hiermee de sprites ervan op te halen
-    std::vector<std::string> all_players = {"chicken_player", "slime_player", "pacman_player"};
+    std::vector<std::string> all_players = {"chicken_player", "cow_player", "pig_player", "slime_player", "pacman_player" , "beta_player"};
 
     ///Lijst players die gekocht zijn, uit player.txt gehaald in game_screen.cpp
     std::vector<std::string> & unlocked_players;

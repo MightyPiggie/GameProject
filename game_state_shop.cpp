@@ -98,18 +98,20 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                             ///Steeds players toevoegen aan deze lijst. Deze komen in een vector. Door deze loop je steeds
                                     sf::Vector2f player_layout_position = vector2f_from_unsigned_ints(width/3 - 180,  400);
                                     std::shared_ptr<window_part> chicken = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[0]+"_shop"]);
-                                    std::shared_ptr<window_part> slime = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[1]+"_shop"]);
-                                    std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[2]+"_shop"]);
+                                    std::shared_ptr<window_part> cow = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[1]+"_shop"]);
+                                    std::shared_ptr<window_part> pig = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[2]+"_shop"]);
+                                    std::shared_ptr<window_part> slime = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[3]+"_shop"]);
+                                    std::shared_ptr<window_part> pacman = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[4]+"_shop"]);
+                                    std::shared_ptr<window_part> beta_player = std::make_shared<window_part>(window, player_layout_position, sprite_reader.filenames[all_players[5]+"_shop"]);
 
                                     objects = {shop_window,quit_gamewindow,back_to_menu_from_gamewindow, previeus_player_button, next_player_button, display_coins_shop};
-                                    players = {chicken, slime, pacman};
+                                    players = {chicken, cow, pig, slime, pacman , beta_player};
 
                                     /// Wou het wat aanpassen dat de buy button vervangen wordt door de equip button indien die gekocht is.
                                     equip_button = equip;
                                     buy_button = buy;
 
                                     /// Deze wordt niet gebruikt
-                                    //unlocked_players = {chicken};
                                     equiped_label = equipped;
                                 }
 
