@@ -24,12 +24,12 @@ public:
      * @brief Construct a new buttons object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param char_size 
-     * @param position 
-     * @param function 
-     * @param name 
-     * @param color_button 
-     * @param hover 
+     * @param char_size The size of the chars of the created button.
+     * @param position The position where the button will be placed on the screen.
+     * @param function A std::function of what the button should do when pressed.
+     * @param name The text which is shown on the button.
+     * @param color_button The color of the button.
+     * @param hover The color of the button when the mouse is ontop of the button.
      */
     buttons(sf::RenderWindow &window,
              int char_size,
@@ -39,23 +39,16 @@ public:
             sf::Color color_button,
             sf::Color hover = sf::Color::Black);
     /**
-     * @brief 
+     * @brief The draw function will draw the button on the screen. And it will draw the text ontop of the button.
      * 
      */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will check if the mouse is ontop of the button and if its pressed. If it is it will call the function given by the constructor.
      * 
      */
     void update() override;
-
-    /**
-     * @brief 
-     * 
-     * @param coins 
-     */
-    void update_coins(uint16_t coins);
 };
 
 #endif

@@ -55,8 +55,3 @@ void buttons::update(){
         txt.setFillColor(hover);
     }
 }
-
-/// Wordt volgens mij niet gebruikt.
-void buttons::update_coins(uint16_t coins){
-    txt.setString(std::to_string(coins) + " C");
-}
