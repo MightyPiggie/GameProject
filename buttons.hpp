@@ -13,7 +13,7 @@ protected:
     std::function<void(void)> function;
     std::string name;
     sf::RectangleShape rect;
-    sf::Color kleur;
+    sf::Color color_button;
     sf::Color hover;
     int char_size;
     sf::Font font;
@@ -23,12 +23,12 @@ public:
     /**
      * @brief Construct a new buttons object
      * 
-     * @param window 
+     * @param window A reference to the window where everything is drawn on.
      * @param char_size 
      * @param position 
      * @param function 
      * @param name 
-     * @param kleur 
+     * @param color_button 
      * @param hover 
      */
     buttons(sf::RenderWindow &window,
@@ -36,7 +36,7 @@ public:
             sf::Vector2f position,
             std::function<void(void)> function,
             std::string name,
-            sf::Color kleur,
+            sf::Color color_button,
             sf::Color hover = sf::Color::Black);
     /**
      * @brief 
