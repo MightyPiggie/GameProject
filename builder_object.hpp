@@ -19,31 +19,31 @@ private:
     std::vector<std::string> sprites_log = {"tree_trunk_2t_sprite", "tree_trunk_3t_sprite"};
 
     /**
-     * @brief 
+     * @brief The generate_coin function will have a certain change to generate a coin on the line when called.
      * 
      */
     void generate_coins();
 
     /**
-     * @brief 
+     * @brief The generate_obstacle_car will generate a certain amount of differaint types of cars when called.
      * 
      */
     void generate_obstacle_car();
 
     /**
-     * @brief 
+     * @brief The generate_obstacle_grass will generate a certainn amount of rocks and trees when called.
      * 
      */
     void generate_obstacle_grass();
 
     /**
-     * @brief 
+     * @brief The generate_obstacle_train will generate a train when called.
      * 
      */
     void generate_obstacle_train();
 
     /**
-     * @brief 
+     * @brief The generate_obstacle_logs will generate a certain amount of logs when called.
      * 
      */
     void generate_obstacle_logs();
@@ -70,16 +70,21 @@ public:
 
     std::vector<std::shared_ptr<object>> objects_for_level;
 
+
+    /**
+     * @brief The draw function will call all objects draw function and update the position of itself.
+     * 
+     */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will call all the objects update function.
      * 
      */
     void update() override;
 
     /**
-     * @brief 
+     * @brief The lower function will call all objects lower function and lower the position of itself.
      * 
      */
     void lower() override;

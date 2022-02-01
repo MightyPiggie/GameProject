@@ -45,7 +45,7 @@ public:
                   sound_class & the_sound_class_builder_biome);
 
     /**
-     * @brief The draw function calls the draw function of all players and all lines.
+     * @brief The draw function calls the draw function of all players and all objects.
      *
      */
     void draw();
