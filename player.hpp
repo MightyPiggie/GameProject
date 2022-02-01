@@ -26,6 +26,8 @@ protected:
     std::vector<std::string> unlocked_players = read_values(game_setting);
     bool overlap = false;
     sf::Sound dead;
+    sf::Sound move_sound;
+    sf::Sound pick_up_coin_sound;
 
 public:
     player(sf::RenderWindow & window,

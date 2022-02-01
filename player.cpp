@@ -14,7 +14,9 @@ player::player(sf::RenderWindow & window,
     state_t(state_t),
     the_sound_class_player(the_sound_class_player)
 {
-    dead.setBuffer(the_sound_class_player.get_sound_buffer("dead"));
+//    dead.setBuffer(the_sound_class_player.get_sound_buffer("dead"));
+    move_sound.setBuffer(the_sound_class_player.get_sound_buffer("move_sound"));
+    pick_up_coin_sound.setBuffer(the_sound_class_player.get_sound_buffer("pick_up_coin"));
 }
 /// Player draw, dit is in een sprite
 void player::draw() {
@@ -54,7 +56,7 @@ void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
         restore_position();
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
-        function_for_move_score(gameobjects, sf::Vector2f{0, movement_speed}, score, false);
+        function_for_move_score(gameobjects, sf::Vector2f{0, -movement_speed}, score, false);
     }
 }
 
@@ -75,16 +77,16 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 //    std::cout << window.getSize().x << "W" << std::endl;
     if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){
         state_t = DEAD;
+//        if(game_setting.sound){dead.play();}
         return;
     }
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             for (auto &object1: gameobjects) {
                 if (object1->object_state == DEADLY) {
-
                     if (this->overlaps(object1)) {
                         state_t = DEAD;
-                        dead.play();
+//                        if(game_setting.sound){dead.play();}
                         if(game_setting.score > game_setting.highscore) {
                             game_setting.highscore = game_setting.score;
                             save(unlocked_players, game_setting);
@@ -113,7 +115,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
         }
         if (overlap == false && this->overlaps(lineobjects)) {
             state_t = DEAD;
-            dead.play();
+//            if(game_setting.sound){dead.play();}
             if(game_setting.score > game_setting.highscore) {
                 game_setting.highscore = game_setting.score;
                 save(unlocked_players, game_setting);
@@ -150,11 +152,13 @@ void player::function_for_move(std::vector<std::shared_ptr<builder_object>>& gam
             if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == COIN) {
                 if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
                     game_setting.coins ++;
+                    if(game_setting.sound){pick_up_coin_sound.play();}
                     gameobjects[index]->objects_for_level.erase (gameobjects[index]->objects_for_level.begin() + index_line_objects);
                 }
             }
         }
     }
+    if(game_setting.sound){move_sound.play();}
 }
 
 
@@ -171,9 +175,11 @@ void player::function_for_move_score(std::vector<std::shared_ptr<builder_object>
             if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == COIN) {
                 if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
                     game_setting.coins ++;
+                    if(game_setting.sound){pick_up_coin_sound.play();}
                     gameobjects[index]->objects_for_level.erase (gameobjects[index]->objects_for_level.begin() + index_line_objects);
                 }
             }
         }
     }
+    if(game_setting.sound){move_sound.play();}
 }

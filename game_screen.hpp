@@ -22,9 +22,8 @@ private:
 
     sound_class the_sound_class;
 
-
-    sf::Sound start_sound;
     sf::Sound window_close;
+    sf::Sound start_sound;
 
 public:
     void run();

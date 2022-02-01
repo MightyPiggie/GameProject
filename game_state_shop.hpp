@@ -36,6 +36,7 @@ private:
     std::shared_ptr<buttons> buy_button;
     std::shared_ptr<label> equiped_label;
 
+    sf::Sound player_equip_sound;
 
     /// Waarde waar mee ik door de shop heen kan scrollen van players.
     unsigned int player_scrolling_int = 0;

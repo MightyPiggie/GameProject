@@ -1,7 +1,7 @@
 #ifndef GAME_STATES_HPP
 #define GAME_STATES_HPP
 
-enum state {MENU, GAME, DEAD, RESTART,SHOP};
+enum state {MENU, GAME, DEAD, RESTART,SHOP, LOADING};
 enum object_states {DEADLY, OBSTACLE, NON_OBSTACLE, FLOATING , COIN};
 
 #endif

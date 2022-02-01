@@ -8,6 +8,7 @@
 #include "buttons.hpp"
 #include "window_part.hpp"
 #include "sprite_factory.hpp"
+#include "game_state_loading_screen.hpp"
 
 /// Constructur van game_state_menu. Alle objecten worden er ook bij gemaakt.
 game_state_menu::game_state_menu(sf::RenderWindow & window,
@@ -24,7 +25,10 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 {
                                 sprite_factory sprite_reader = sprite_factory::get_instance();
 
+                                background_music_menu.setBuffer(the_sound_class_menu.get_sound_buffer("menu_background"));
+                                background_music_menu.setVolume(25.f);
                                 click_sound.setBuffer(the_sound_class_menu.get_sound_buffer("click_sound"));
+                                start_button_sound.setBuffer(the_sound_class_menu.get_sound_buffer("start_game"));
 
                                 std::shared_ptr<window_part> background_menu_window = std::make_shared<window_part>(window,
                                                                                      vector2f_from_unsigned_ints(0, 0),
@@ -32,22 +36,32 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 std::shared_ptr<buttons> quit_in_menu_window = std::make_shared<buttons>(window,
                                                                                                          50,
                                                                                                          vector2f_from_unsigned_ints(width/2 - 550,height/2 + 350),
-                                                                                                         [&](){click_sound.play(); window.close();},
+                                                                                                         [&](){if(gameSettings.sound){background_music_menu.stop(); click_sound.play();} window.close();},
                                                                                                          "Quit",
                                                                                                          sf::Color(163 , 235 , 177));
                                 std::shared_ptr<buttons> start_game = std::make_shared<buttons>(window,
                                                                                                 50,
                                                                                                 vector2f_from_unsigned_ints(width/2 - 140, height/2 + 350),
-                                                                                                [&](){click_sound.play();state_t = RESTART;},
+                                                                                                [&](){if(gameSettings.sound){background_music_menu.stop(); click_sound.play(); start_button_sound.play();} state_t = RESTART;},
                                                                                                 "Start",
                                                                                                 sf::Color(163 , 235 , 177));
                                 std::shared_ptr<buttons> shop_button_in_menu_window = std::make_shared<buttons>(window,
                                                                                                                 50,
                                                                                                                 vector2f_from_unsigned_ints(width/2 + 350, height/2 + 350),
-                                                                                                                [&](){click_sound.play(); state_t = SHOP;},
+                                                                                                                [&](){if(gameSettings.sound){background_music_menu.stop(); click_sound.play();} state_t = SHOP;},
                                                                                                                 "Shop",
                                                                                                                 sf::Color(163 , 235 , 177));
-                                std::shared_ptr<label> title_in_menu_window = std::make_shared<label>(window,
+
+                                std::shared_ptr<buttons> sound_button_in_menu_window = std::make_shared<buttons>(window,
+                                                                                                                 50,
+                                                                                                                 vector2f_from_unsigned_ints(25, 25),
+                                                                                                                 [&](){if(!gameSettings.sound){click_sound.play(); gameSettings.sound = true;}else{gameSettings.sound = false;}sf::sleep(sf::milliseconds(100));},
+                                                                                                                 "Sound",
+                                                                                                                 sf::Color(163 , 235 , 177));
+
+
+
+                                    std::shared_ptr<label> title_in_menu_window = std::make_shared<label>(window,
                                                                                                       vector2f_from_unsigned_ints(width/2-500, height/2 - 300),
                                                                                                       "Levensmoedige vogel",
                                                                                                       60,
@@ -76,7 +90,8 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                         title_in_menu_window,
                                         player_icon_menu_window,
                                         display_coins_menu,
-                                        display_score_menu
+                                        display_score_menu,
+                                        sound_button_in_menu_window
                                     };
                                 }
 
@@ -89,6 +104,16 @@ void game_state_menu::draw(){
 
 /// update de objecten in game_state_menu
 void game_state_menu::update(){
+    if(state_t == MENU){
+        if(gameSettings.sound){
+            if (background_music_menu.getStatus() != sf::SoundSource::Playing) {
+                background_music_menu.play();
+            }
+        }
+        if(!gameSettings.sound){
+            background_music_menu.stop();
+        }
+    }
     for(auto &object : objects){
         object->update();
     }

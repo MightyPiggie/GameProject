@@ -10,13 +10,16 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  state & state_t,
+                                 game_settings & gameSettings,
                                  sound_class & the_sound_class_dead
 ):
         drawable(window,{0,0},{0,0}),
         state_t(state_t),
+        gameSettings(gameSettings),
         the_sound_class_dead(the_sound_class_dead){
 
         click_sound.setBuffer(the_sound_class_dead.get_sound_buffer("click_sound"));
+        dead_sound.setBuffer(the_sound_class_dead.get_sound_buffer("dead"));
         sprite_factory sprite_reader = sprite_factory::get_instance();
         std::shared_ptr<window_part> dead_window = std::make_shared<window_part>(window, vector2f_from_unsigned_ints(0,0),
                                                                                  sprite_reader.filenames["game_over_background"]);
@@ -24,19 +27,19 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
         std::shared_ptr<buttons> quit_game_button = std::make_shared<buttons>(window,
                                                                               50,
                                                                               vector2f_from_unsigned_ints(40, 30),
-                                                                              [&](){click_sound.play();window.close();},
+                                                                              [&](){if(gameSettings.sound){click_sound.play();dead_sound.stop();}window.close();},
                                                                               "Quit",
                                                                               sf::Color(81, 81 ,81));
         std::shared_ptr<buttons> back_to_menu_button = std::make_shared<buttons>(window,
                                                                                  50,
                                                                                  vector2f_from_unsigned_ints(40, 120),
-                                                                                 [&](){click_sound.play();state_t = MENU;},
+                                                                                 [&](){if(gameSettings.sound){click_sound.play();dead_sound.stop();}state_t = MENU;},
                                                                                  "Menu",
                                                                                  sf::Color(81, 81 ,81));
         std::shared_ptr<buttons> restart_button = std::make_shared<buttons>(window,
                                                                             30,
                                                                             vector2f_from_unsigned_ints(width/2 - 100, height*3/4 ),
-                                                                            [&](){click_sound.play();state_t = RESTART;},
+                                                                            [&](){if(gameSettings.sound){click_sound.play();}state_t = RESTART;},
                                                                             "Restart",
                                                                             sf::Color(81, 81 ,81));
 //        std::shared_ptr<label> dead_message = std::make_shared<label>(window,
@@ -54,8 +57,14 @@ void game_state_dead::draw(){
         object->draw();
     }
 }
+
 /// update de game_state_dead
 void game_state_dead::update() {
+    if(state_t == DEAD){
+        if(dead_sound.getStatus() != sf::SoundSource::Playing){
+            if(gameSettings.sound){dead_sound.play();}
+        }
+    }
     for(auto &object : objects){
         object->update();
     }

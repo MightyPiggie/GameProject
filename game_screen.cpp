@@ -8,6 +8,7 @@
 #include "game_state_menu.hpp"
 #include "game_state_dead.hpp"
 #include "game_state_shop.hpp"
+#include "game_state_loading_screen.hpp"
 
 /// Laad de game_settings in van player.txt
 std::vector<std::string> game_screen::init(){
@@ -23,21 +24,15 @@ void game_screen::run(){
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader = sprite_factory::get_instance();
 
-    /// Zet een icon neer voor in de taakbalk.
-    auto image = sf::Image{};
-    image.loadFromFile(sprite_reader.filenames["icon"]);
-    window.setIcon(image.getSize().x, image.getSize().y, image.getPixelsPtr());
-
-    the_sound_class.set_sound_buffer("test_sound", "res/sounds/menu-window-title.wav");
-    the_sound_class.set_sound_buffer("window_close", "res/sounds/windows_xp_shutdown.wav");
-    the_sound_class.set_sound_buffer("click_sound","res/sounds/mouse_click.wav");
-    the_sound_class.set_sound_buffer("dead","res/sounds/gtaWasted.wav");
-
-    start_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
-    window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
-
     //start state
-    state_t = MENU;
+    state_t = LOADING;
+
+//    Loading screen
+    game_state_loading_screen loading_screen(window, state_t, the_sound_class);
+    loading_screen.loading();
+
+    window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
+    start_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
     //Game State
 //    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
     std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t,the_sound_class);
@@ -45,12 +40,10 @@ void game_screen::run(){
     game_state_menu menu_state(window, width, height,state_t, game_setting, the_sound_class);
 
     //Dead State
-    game_state_dead dead_state(window, width, height,  state_t, the_sound_class);
+    game_state_dead dead_state(window, width, height,  state_t, game_setting,the_sound_class);
 
     //Shop State
     game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting, the_sound_class);
-
-    start_sound.play();
 
     while (window.isOpen()) {
         window.clear();
@@ -61,6 +54,8 @@ void game_screen::run(){
                 break;
             }
             case MENU: {
+                while(start_sound.getStatus() != sf::SoundSource::Stopped){
+                }
                 menu_state.update();
                 menu_state.draw();
                 break;
@@ -82,11 +77,19 @@ void game_screen::run(){
                 shop_state.draw();
                 break;
             }
+            case LOADING: {
+                start_sound.play();
+                loading_screen.draw();
+                loading_screen.update();
+                state_t = MENU;
+                break;
+            }
         }
         window.display();
         sf::sleep(sf::milliseconds(20));
     }
     save(unlocked_players,game_setting);
     window_close.play();
+
     sf::sleep(sf::seconds(2));
 }

@@ -21,6 +21,8 @@ private:
     std::vector<std::shared_ptr<drawable>> objects = {};
 
     sf::Sound click_sound;
+    sf::Sound background_music_menu;
+    sf::Sound start_button_sound;
 
 public:
     game_state_menu(sf::RenderWindow& window,

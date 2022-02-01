@@ -26,13 +26,13 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> quit_gamewindow = std::make_shared<buttons>(window,
                                                                                                          50,
                                                                                                          vector2f_from_unsigned_ints(60,30),
-                                                                                                         [&](){ click_sound.play(); save(unlocked_players, gameSettings) ;window.close();},
+                                                                                                         [&](){if(gameSettings.sound){click_sound.play();} save(unlocked_players, gameSettings) ;window.close();},
                                                                                                          "Quit",
                                                                                                          sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> back_to_menu_from_gamewindow = std::make_shared<buttons>(window,
                                                                                                                       50,
                                                                                                                       vector2f_from_unsigned_ints(60, 120),
-                                                                                                                      [&](){click_sound.play(); save(unlocked_players, gameSettings); state_t = MENU;},
+                                                                                                                      [&](){if(gameSettings.sound){click_sound.play();} save(unlocked_players, gameSettings); state_t = MENU;},
                                                                                                                       "Menu",
                                                                                                                       sf::Color(163 , 235 , 177));
                                     std::shared_ptr<label_player_settings_coins> display_coins_shop = std::make_shared<label_player_settings_coins>(window,
@@ -46,7 +46,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> previeus_player_button = std::make_shared<buttons>(window,
                                                                                                                 50,
                                                                                                                 vector2f_from_unsigned_ints(width/10.f, height - 200.f),
-                                                                                                                [&](){click_sound.play();if(player_scrolling_int <= 0){
+                                                                                                                [&](){if(gameSettings.sound){click_sound.play();}if(player_scrolling_int <= 0){
                                                                                                                     player_scrolling_int = players.size()-1;
                                                                                                                 }
                                                                                                                 else{player_scrolling_int--;
@@ -57,19 +57,22 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                                                                                                 sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> buy = std::make_shared<buttons>(window,
                                                                                                     50,
-                                                                                                    vector2f_from_unsigned_ints(width/3 - 50, height - 200),
-                                                                                                    [&](){click_sound.play(); if(gameSettings.coins >= 100){
+                                                                                                    vector2f_from_unsigned_ints(width/3 - 110, height - 200),
+                                                                                                    [&](){if(gameSettings.sound){click_sound.play();} if(gameSettings.coins >= 100){
                                                                                                         unlocked_players.push_back(all_players[player_scrolling_int]);
                                                                                                         gameSettings.coins -= 100;
                                                                                                     }
                                                                                                         sf::sleep(sf::milliseconds(200));
                                                                                                         },
-                                                                                                        "Buy",
+                                                                                                        "Buy 100",
                                                                                                         sf::Color(163 , 235 , 177));
                                     std::shared_ptr<buttons> equip = std::make_shared<buttons>(window,
                                                                                                       50,
-                                                                                                      vector2f_from_unsigned_ints(width/3 - 50, height - 200),
-                                                                                                      [&](){click_sound.play(); gameSettings.player = all_players[player_scrolling_int];
+                                                                                                      vector2f_from_unsigned_ints(width/3 - 80, height - 200),
+                                                                                                      [&](){if(gameSettings.sound){click_sound.play();
+                                        player_equip_sound.setBuffer(the_sound_class_shop.get_sound_buffer(all_players[player_scrolling_int]));
+                                        player_equip_sound.play();}
+                                        gameSettings.player = all_players[player_scrolling_int];
                                                                                                         sf::sleep(sf::milliseconds(200));
                                                                                                         },
                                                                                                         "Equip",
@@ -82,7 +85,7 @@ game_state_shop::game_state_shop(sf::RenderWindow& window,
                                     std::shared_ptr<buttons> next_player_button = std::make_shared<buttons>(window,
                                                                                                             50,
                                                                                                             vector2f_from_unsigned_ints(width/2,height - 200),
-                                                                                                            [&](){click_sound.play(); if(player_scrolling_int >= players.size()-1){
+                                                                                                            [&](){if(gameSettings.sound){click_sound.play();} if(player_scrolling_int >= players.size()-1){
                                                                                                                 player_scrolling_int = 0;
                                                                                                             }
                                                                                                             else{player_scrolling_int++;

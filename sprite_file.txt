@@ -28,6 +28,7 @@ background_sprite       res/sprites/game_background.png
 game_bg_forrest_left    res/sprites/game_background_left_forest.png
 game_bg_forrest_right   res/sprites/game_background_right_forest.png
 menu_background_river   res/sprites/menu_background_river.png
+loading_screen          res/sprites/Hogeschool_Utrech_loading_screen.png
 
 icon                    res/sprites/chicken_icon.png
 
