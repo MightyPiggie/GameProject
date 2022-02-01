@@ -18,6 +18,12 @@ private:
     state state_t;
     game_settings game_setting;
     std::vector<std::string> unlocked_players = {};
+
+    /**
+     * @brief 
+     * 
+     * @return std::vector<std::string> 
+     */
     std::vector<std::string> init();
 
     sound_class the_sound_class;
@@ -27,6 +33,10 @@ private:
     sf::Sound window_close;
 
 public:
+    /**
+     * @brief 
+     * 
+     */
     void run();
 };
 

@@ -17,8 +17,27 @@ private:
 
     sf::Sound click_sound;
 public:
+    /**
+     * @brief Construct a new game state dead object
+     * 
+     * @param window 
+     * @param width 
+     * @param height 
+     * @param state_t 
+     * @param the_sound_class 
+     */
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, sound_class & the_sound_class);
+    
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 #endif

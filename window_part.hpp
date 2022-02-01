@@ -15,18 +15,50 @@ protected:
     sf::Sprite sprite;
 
 public:
+    /**
+     * @brief Construct a new window part object
+     * 
+     * @param window 
+     * @param position 
+     * @param size 
+     * @param color 
+     */
     window_part(sf::RenderWindow& window,
                 sf::Vector2f position,
                 sf::Vector2f size,
                 sf::Color color = sf::Color::Green);
-
+    /**
+     * @brief Construct a new window part object
+     * 
+     * @param window 
+     * @param position 
+     * @param filename 
+     */
     window_part(sf::RenderWindow& window,
                 sf::Vector2f position,
                 std::string filename);
-
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     * @param new_scale 
+     */
     void rescale(sf::Vector2f new_scale);
+    /**
+     * @brief 
+     * 
+     * @param path 
+     */
     void new_sprite(std::string path);
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 
@@ -37,12 +69,28 @@ protected:
     std::string filename;
     game_settings & gameSettings;
 public:
+    /**
+     * @brief Construct a new window part player object
+     * 
+     * @param window 
+     * @param position 
+     * @param filename 
+     * @param gameSettings 
+     */
     window_part_player(sf::RenderWindow& window,
                        sf::Vector2f position,
                        std::string filename,
                        game_settings & gameSettings);
-
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+    
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 

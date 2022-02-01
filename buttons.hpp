@@ -20,6 +20,17 @@ protected:
     sf::Text txt;
 
 public:
+    /**
+     * @brief Construct a new buttons object
+     * 
+     * @param window 
+     * @param char_size 
+     * @param position 
+     * @param function 
+     * @param name 
+     * @param kleur 
+     * @param hover 
+     */
     buttons(sf::RenderWindow &window,
              int char_size,
             sf::Vector2f position,
@@ -27,11 +38,23 @@ public:
             std::string name,
             sf::Color kleur,
             sf::Color hover = sf::Color::Black);
-
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
 
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 
+    /**
+     * @brief 
+     * 
+     * @param coins 
+     */
     void update_coins(uint16_t coins);
 };
 

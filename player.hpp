@@ -28,6 +28,15 @@ protected:
     sf::Sound dead;
 
 public:
+    /**
+     * @brief Construct a new player object
+     * 
+     * @param window A reference to the window where everything is drawn on.
+     * @param position 
+     * @param size 
+     * @param game_setting A reference to all game settings of the game.
+     * @param state_t 
+     */
     player(sf::RenderWindow & window,
             sf::Vector2f position,
             sf::Vector2f size,
@@ -35,15 +44,63 @@ public:
             state & state_t,
             sound_class & the_sound_class_player);
 
-
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param new_position 
+     */
     void function_for_move(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position);
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param new_position 
+     * @param score 
+     * @param new_score_bool 
+     */
     void function_for_move_score(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position, bool & score, bool new_score_bool);
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     */
     void move(std::vector<std::shared_ptr<builder_object>>& gameobjects);
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param lineobjects 
+     */
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
 //    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
+
+    /**
+     * @brief 
+     * 
+     * @return sf::FloatRect 
+     */
     sf::FloatRect getbounds() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void restore_position();
 };
 

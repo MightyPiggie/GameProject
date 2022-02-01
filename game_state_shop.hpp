@@ -42,6 +42,17 @@ private:
     sf::Sound click_sound;
 
 public:
+    /**
+     * @brief Construct a new game state shop object
+     * 
+     * @param window 
+     * @param state_t 
+     * @param width 
+     * @param height 
+     * @param unlocked_players 
+     * @param gameSettings 
+     * @param the_sound_class_shop 
+     */
     game_state_shop(sf::RenderWindow& window,
                     state & state_t,
                     unsigned int width,
@@ -49,8 +60,25 @@ public:
                     std::vector<std::string> & unlocked_players,
                     game_settings & gameSettings,
                     sound_class & the_sound_class_shop);
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
+
+    /**
+     * @brief 
+     * 
+     * @return true 
+     * @return false 
+     */
     bool check_functie_unlocked();
 
 

@@ -26,6 +26,15 @@ private:
     std::shared_ptr<drawable> background;
     sf::Sound click_sound;
 public:
+    /**
+     * @brief Construct a new game state game object
+     * 
+     * @param window 
+     * @param width 
+     * @param height 
+     * @param gameSettings 
+     * @param state_t 
+     */
     game_state_game(sf::RenderWindow & window,
                     unsigned int width,
                     unsigned int height,
@@ -33,8 +42,25 @@ public:
                     state & state_t,
                     sound_class & the_sound_class_ingame);
 //    ~game_state_game();
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
+
+    /**
+     * @brief 
+     * 
+     * @param rhs 
+     * @return std::shared_ptr<game_state_game> 
+     */
     std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
         return rhs;
     }

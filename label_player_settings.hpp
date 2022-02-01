@@ -41,6 +41,18 @@ class label_player_settings_score : public label{
 protected:
     game_settings & gameSettings;
 public:
+    /**
+     * @brief Construct a new label player settings score object
+     * 
+     * @param window 
+     * @param position 
+     * @param text_string 
+     * @param size_char 
+     * @param background_text_color 
+     * @param gameSettings 
+     * @param rectangle_display 
+     * @param text_color 
+     */
     label_player_settings_score(sf::RenderWindow &window,
                                     sf::Vector2f position,
                                     std::string text_string,
@@ -49,6 +61,11 @@ public:
                                     game_settings & gameSettings,
                                     bool rectangle_display = true,
                                     sf::Color text_color = sf::Color::Black);
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 

@@ -23,13 +23,33 @@ private:
     sf::Sound click_sound;
 
 public:
+    /**
+     * @brief Construct a new game state menu object
+     * 
+     * @param window 
+     * @param width 
+     * @param height 
+     * @param state_t 
+     * @param gameSettings 
+     * @param the_sound_class_menu 
+     */
     game_state_menu(sf::RenderWindow& window,
                     unsigned int width,
                     unsigned int height,
                     state & state_t,
                     game_settings & gameSettings,
                     sound_class & the_sound_class_menu);
+
+    /**
+     * @brief 
+     * 
+     */
     void draw() override;
+
+    /**
+     * @brief 
+     * 
+     */
     void update() override;
 };
 
