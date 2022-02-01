@@ -1,6 +1,6 @@
-MUNTEN 617
-HIGH 65
-EQUIPPED slime_player
+MUNTEN 621
+HIGH 78
+EQUIPPED chicken_player
 PLAYER chicken_player
 PLAYER pacman_player
 PLAYER beta_player
