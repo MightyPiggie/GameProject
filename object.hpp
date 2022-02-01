@@ -2,7 +2,6 @@
 #define OBJECT_HPP
 
 #include <SFML/Graphics.hpp>
-#include <random>
 
 #include "drawable.hpp"
 #include "game_screen.hpp"
@@ -46,6 +45,8 @@ public:
      */
     virtual void lower();
     object_states object_state;
+    virtual unsigned int get_speed(){return 0;}
+    virtual bool get_direction(){return 0;}
 };
 
 /// moving_object class, heritage van object
@@ -85,6 +86,8 @@ public:
      * 
      */
     void update() override;
+    unsigned int get_speed() override {return speed;}
+    bool get_direction() override {return direction;}
 };
 
 #endif

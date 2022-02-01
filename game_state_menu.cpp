@@ -1,44 +1,50 @@
-//
-// Created by Isaak van Luijk on 17/01/2022.
-//
-
 #include "game_state_menu.hpp"
+
 #include <SFML/Audio.hpp>
 #include <iostream>
-#include "label_player_settings.hpp"
 
+#include "label_player_settings.hpp"
+#include "label.hpp"
+#include "buttons.hpp"
+#include "window_part.hpp"
+#include "sprite_factory.hpp"
 
 /// Constructur van game_state_menu. Alle objecten worden er ook bij gemaakt.
 game_state_menu::game_state_menu(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
                                  state & state_t,
-                                 game_settings & gameSettings
+                                 game_settings & gameSettings,
+                                 sound_class & the_sound_class_menu
                                 ):
                                 drawable(window, {0,0}, vector2f_from_unsigned_ints(width,height)),
                                 state_t(state_t),
-                                gameSettings(gameSettings)
+                                gameSettings(gameSettings),
+                                the_sound_class_menu(the_sound_class_menu)
                                 {
                                 sprite_factory sprite_reader = sprite_factory::get_instance();
+
+                                click_sound.setBuffer(the_sound_class_menu.get_sound_buffer("click_sound"));
+
                                 std::shared_ptr<window_part> background_menu_window = std::make_shared<window_part>(window,
                                                                                      vector2f_from_unsigned_ints(0, 0),
                                                                                      sprite_reader.filenames["menu_background_river"]);
                                 std::shared_ptr<buttons> quit_in_menu_window = std::make_shared<buttons>(window,
                                                                                                          50,
                                                                                                          vector2f_from_unsigned_ints(width/2 - 550,height/2 + 350),
-                                                                                                         [&](){window.close();},
+                                                                                                         [&](){click_sound.play(); window.close();},
                                                                                                          "Quit",
                                                                                                          sf::Color(163 , 235 , 177));
                                 std::shared_ptr<buttons> start_game = std::make_shared<buttons>(window,
                                                                                                 50,
                                                                                                 vector2f_from_unsigned_ints(width/2 - 140, height/2 + 350),
-                                                                                                [&](){state_t = RESTART;},
+                                                                                                [&](){click_sound.play();state_t = RESTART;},
                                                                                                 "Start",
                                                                                                 sf::Color(163 , 235 , 177));
                                 std::shared_ptr<buttons> shop_button_in_menu_window = std::make_shared<buttons>(window,
                                                                                                                 50,
                                                                                                                 vector2f_from_unsigned_ints(width/2 + 350, height/2 + 350),
-                                                                                                                [&](){state_t = SHOP;},
+                                                                                                                [&](){click_sound.play(); state_t = SHOP;},
                                                                                                                 "Shop",
                                                                                                                 sf::Color(163 , 235 , 177));
                                 std::shared_ptr<label> title_in_menu_window = std::make_shared<label>(window,

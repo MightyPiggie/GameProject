@@ -6,12 +6,8 @@
 #include "drawable.hpp"
 #include "simple_functions.hpp"
 #include "game_states.hpp"
-#include "label.hpp"
-#include "buttons.hpp"
-#include "window_part.hpp"
-#include "sprite_factory.hpp"
 #include "game_settings.hpp"
-
+#include "sound_class.hpp"
 
 /// game_state_menu class, heritage van drawable
 class game_state_menu : public drawable{
@@ -21,7 +17,10 @@ private:
     unsigned int height;
     state & state_t;
     game_settings & gameSettings;
+    sound_class & the_sound_class_menu;
     std::vector<std::shared_ptr<drawable>> objects = {};
+
+    sf::Sound click_sound;
 
 public:
     /**
@@ -32,12 +31,14 @@ public:
      * @param height 
      * @param state_t 
      * @param gameSettings 
+     * @param the_sound_class_menu 
      */
     game_state_menu(sf::RenderWindow& window,
                     unsigned int width,
                     unsigned int height,
                     state & state_t,
-                    game_settings & gameSettings);
+                    game_settings & gameSettings,
+                    sound_class & the_sound_class_menu);
 
     /**
      * @brief 

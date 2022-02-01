@@ -7,11 +7,15 @@ player::player(sf::RenderWindow & window,
         sf::Vector2f position,
         sf::Vector2f size,
         game_settings & game_setting,
-        state & state_t):
+        state & state_t,
+        sound_class & the_sound_class_player):
     object(window, position, size, NON_OBSTACLE, "chicken_player"),
     game_setting(game_setting),
-    state_t(state_t)
-{}
+    state_t(state_t),
+    the_sound_class_player(the_sound_class_player)
+{
+    dead.setBuffer(the_sound_class_player.get_sound_buffer("dead"));
+}
 /// Player draw, dit is in een sprite
 void player::draw() {
     sprite.setPosition(position);
@@ -28,83 +32,51 @@ void player::update() {
 }
 
 /// Player move. Wordt gekeken naar keys en welk object dat dan is/van welke state. Op elk object een andere reactie.
-void player::move(std::vector<std::shared_ptr<object>>& gameobjects) {
-    if (position.x != float(window.getSize().x)/4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
+    if (position.x != float(window.getSize().x) / 4 && sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+        restore_position();
         position += sf::Vector2f{-movement_speed, 0};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
-                if (this->overlaps(gameobjects[index])) {
-                    position += sf::Vector2f{movement_speed, 0};
-                }
-            }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
-        }
-    }
-    else if (position.x != float(window.getSize().x)*3/4 - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        function_for_move(gameobjects, sf::Vector2f{movement_speed, 0});
+    } else if (position.x != float(window.getSize().x) * 3 / 4 - movement_speed &&
+               sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+        restore_position();
         position += sf::Vector2f{movement_speed, 0};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
-                if (this->overlaps(gameobjects[index])) {
-                    position += sf::Vector2f{-movement_speed, 0};
-                }
-            }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
-        }
-    }
-    else if(position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        function_for_move(gameobjects, sf::Vector2f{-movement_speed, 0});
+    } else if (position.y != 0 && sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        restore_position();
         game_setting.started = true;
         bool score = true;
         position += sf::Vector2f{0, -movement_speed};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
-                if (this->overlaps(gameobjects[index])) {
-                    position += sf::Vector2f{0, movement_speed};
-                    score = false;
-                }
-            }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
-        }
+        function_for_move_score(gameobjects, sf::Vector2f{0, movement_speed}, score, false);
         //todo score ivm met objecten moet elke keer maar 1 omhoog gaan en niet hoevaak er objecten zijn
-        if(score){game_setting.score++;}
-    }
-    else if(position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        if (score) { game_setting.score++; }
+    } else if (position.y != float(window_height) - movement_speed && sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+        restore_position();
         bool score = true;
         position += sf::Vector2f{0, +movement_speed};
-        for(unsigned int index = 0; index < gameobjects.size(); index++) {
-            if(gameobjects[index]->object_state == OBSTACLE){
-                if (this->overlaps(gameobjects[index])) {
-                    position += sf::Vector2f{0, -movement_speed};
-                    score = false;
-                }
-            }
-            if(gameobjects[index]->object_state == COIN) {
-                if (this->overlaps(gameobjects[index])) {
-                    game_setting.coins ++;
-                    gameobjects.erase (gameobjects.begin() + index);
-                }
-            }
-        }
-        if(game_setting.score >= 1 && score){game_setting.score--; }
+        function_for_move_score(gameobjects, sf::Vector2f{0, movement_speed}, score, false);
     }
 }
 
+//void player::check_coin(std::vector<std::shared_ptr<object>> &gameobjects) {
+//    for (unsigned int index = 0; index < gameobjects.size(); index++) {
+//        if (gameobjects[index]->object_state == COIN) {
+//            if (this->overlaps(gameobjects[index])) {
+//                game_setting.coins++;
+//                gameobjects.erase(gameobjects.begin() + index);
+//            }
+//        }
+//    }
+//}
+
 /// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
-void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects) {
+void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects) {
+//    std::cout << position.x << "X" << std::endl;
+//    std::cout << window.getSize().x << "W" << std::endl;
+    if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){
+        state_t = DEAD;
+        return;
+    }
     for (auto &object: gameobjects) {
         if (object->object_state == DEADLY) {
             for (auto &object1: gameobjects) {
@@ -112,6 +84,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 
                     if (this->overlaps(object1)) {
                         state_t = DEAD;
+                        dead.play();
                         if(game_setting.score > game_setting.highscore) {
                             game_setting.highscore = game_setting.score;
                             save(unlocked_players, game_setting);
@@ -122,11 +95,17 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
             break;
         }
     }
-    bool overlap = false;
+
+    overlap = false;
     if (lineobjects->object_state == DEADLY) {
         for (auto &object1: gameobjects) {
             if (object1->object_state == FLOATING && this->overlaps(lineobjects)) {
                 if(this->overlaps(object1)) {
+                    if(object1->get_speed() != 0){
+                        bool dir = object1->get_direction(); // 1 is naar rechts, 0 naar links;
+                        dir ? position.x += object1->get_speed() : position.x -= object1->get_speed();
+
+                    }
                     overlap = true;
                     break;
                 }
@@ -134,6 +113,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
         }
         if (overlap == false && this->overlaps(lineobjects)) {
             state_t = DEAD;
+            dead.play();
             if(game_setting.score > game_setting.highscore) {
                 game_setting.highscore = game_setting.score;
                 save(unlocked_players, game_setting);
@@ -144,6 +124,56 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 
 
 /// Krijg player global bounds.
-sf::FloatRect player::getbounds() {
+sf::FloatRect player::getbounds(){
     return sprite.getGlobalBounds();
+}
+
+void player::restore_position(){
+    if(int(position.x) % 60 == 0){
+        return;
+    }else if(int(position.x) % 60 <= 30){
+        position.x -= int(position.x) % 60;
+    }else{
+        position.x += 60 - (int(position.x) % 60);
+    }
+}
+
+void player::function_for_move(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position){
+    for(unsigned int index = 0; index < gameobjects.size(); index++) {
+        for(unsigned int index_line_objects = 0; index_line_objects < gameobjects[index]->objects_for_level.size(); index_line_objects++){
+            if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == OBSTACLE){
+                if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
+                    position += new_position;
+                    return;
+                }
+            }
+            if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == COIN) {
+                if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
+                    game_setting.coins ++;
+                    gameobjects[index]->objects_for_level.erase (gameobjects[index]->objects_for_level.begin() + index_line_objects);
+                }
+            }
+        }
+    }
+}
+
+
+void player::function_for_move_score(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position, bool & score, bool new_score_bool){
+    for(unsigned int index = 0; index < gameobjects.size(); index++) {
+        for(unsigned int index_line_objects = 0; index_line_objects < gameobjects[index]->objects_for_level.size(); index_line_objects++){
+            if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == OBSTACLE){
+                if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
+                    position += new_position;
+                    score = new_score_bool;
+                    return;
+                }
+            }
+            if(gameobjects[index]->objects_for_level[index_line_objects]->object_state == COIN) {
+                if (this->overlaps(gameobjects[index]->objects_for_level[index_line_objects])) {
+                    game_setting.coins ++;
+                    gameobjects[index]->objects_for_level.erase (gameobjects[index]->objects_for_level.begin() + index_line_objects);
+                }
+            }
+        }
+    }
 }

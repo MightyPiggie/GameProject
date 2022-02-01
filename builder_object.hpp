@@ -9,8 +9,8 @@
 
 enum line_type {GRASS, RAILS, WATER, ROAD};
 
-/// line class, heritage van object
-class line : public object {
+/// builder_object class, heritage van object
+class builder_object : public object {
 private:
     line_type type;
     /// Wegems refrence niet nodig.
@@ -49,11 +49,10 @@ private:
     void generate_obstacle_logs();
 
     const unsigned int max_amount_obstacles_per_tile;
-    std::vector<std::shared_ptr<object>> & objects_for_level;
 
 public:
     /**
-     * @brief Construct a new line object
+     * @brief Construct a new builder object object
      * 
      * @param window A reference to the window where everything is drawn on.
      * @param position The position on which the line will be placed on.
@@ -61,20 +60,16 @@ public:
      * @param type The type a line could be.
      * @param object_state The state a is in.
      * @param sprite_name The name of the sprite.
-     * @param objects_for_level All the objects of the level.
      */
-    line(sf::RenderWindow& window,
-            sf::Vector2f position,
-            sf::Vector2f size,
-            line_type type,
-            object_states object_state,
-            std::string sprite_name,
-         std::vector<std::shared_ptr<object>> & objects_for_level);
+    builder_object(sf::RenderWindow& window,
+                   sf::Vector2f position,
+                   sf::Vector2f size,
+                   line_type type,
+                   object_states object_state,
+                   std::string sprite_name);
 
-    /**
-     * @brief 
-     * 
-     */
+    std::vector<std::shared_ptr<object>> objects_for_level;
+
     void draw() override;
 
     /**
@@ -87,20 +82,8 @@ public:
      * @brief 
      * 
      */
-    void lower_obstakels();
-
-    /**
-     * @brief 
-     * 
-     */
     void lower() override;
-
-    /**
-     * @brief Get the objects object
-     * 
-     * @return std::vector<std::shared_ptr<object>>& 
-     */
-    std::vector<std::shared_ptr<object>> & get_objects();
+//    std::vector<std::shared_ptr<object>> & get_objects();
 };
 
 #endif

@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 26/01/2022.
-//
-
 #ifndef LABEL_PLAYER_SETTINGS_HPP
 #define LABEL_PLAYER_SETTINGS_HPP
 

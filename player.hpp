@@ -11,7 +11,7 @@
 #include "game_states.hpp"
 #include "sprite_factory.hpp"
 #include "object.hpp"
-#include "line.hpp"
+#include "builder_object.hpp"
 
 
 /// player class, heritage van object
@@ -22,7 +22,10 @@ protected:
     unsigned int window_height;
     game_settings & game_setting;
     state & state_t;
+    sound_class & the_sound_class_player;
     std::vector<std::string> unlocked_players = read_values(game_setting);
+    bool overlap = false;
+    sf::Sound dead;
 
 public:
     /**
@@ -38,7 +41,26 @@ public:
             sf::Vector2f position,
             sf::Vector2f size,
             game_settings & game_setting,
-            state & state_t);
+            state & state_t,
+            sound_class & the_sound_class_player);
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param new_position 
+     */
+    void function_for_move(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position);
+
+    /**
+     * @brief 
+     * 
+     * @param gameobjects 
+     * @param new_position 
+     * @param score 
+     * @param new_score_bool 
+     */
+    void function_for_move_score(std::vector<std::shared_ptr<builder_object>>& gameobjects, sf::Vector2f new_position, bool & score, bool new_score_bool);
 
     /**
      * @brief 
@@ -51,7 +73,7 @@ public:
      * 
      * @param gameobjects 
      */
-    void move(std::vector<std::shared_ptr<object>>& gameobjects);
+    void move(std::vector<std::shared_ptr<builder_object>>& gameobjects);
 
     /**
      * @brief 
@@ -59,7 +81,8 @@ public:
      * @param gameobjects 
      * @param lineobjects 
      */
-    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<line>& lineobjects);
+    void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
+//    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
 
     /**
      * @brief 
@@ -74,6 +97,11 @@ public:
      */
     void update() override;
 
+    /**
+     * @brief 
+     * 
+     */
+    void restore_position();
 };
 
 #endif

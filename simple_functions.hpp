@@ -1,5 +1,5 @@
-#ifndef SIMPLEFUNCTIONS_HPP
-#define SIMPLEFUNCTIONS_HPP
+#ifndef SIMPLE_FUNCTIONS_HPP
+#define SIMPLE_FUNCTIONS_HPP
 
 #include <SFML/Graphics.hpp>
 
@@ -62,7 +62,5 @@ unsigned int random_int_between_range(int min, int max);
  * @return std::vector<unsigned int> 
  */
 std::vector<unsigned int> random_int_between_range_multiple(int min, int max, unsigned int amount);
-
-
 
 #endif

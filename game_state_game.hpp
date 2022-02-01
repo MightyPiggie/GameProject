@@ -4,17 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <memory>
-#include <map>
 #include <string>
 
 #include "drawable.hpp"
-#include "window_part.hpp"
-#include "label.hpp"
-#include "sprite_factory.hpp"
-#include "buttons.hpp"
 #include "game_settings.hpp"
-#include "level.hpp"
-
+#include "sprite_factory.hpp"
+#include "builder_biome.hpp"
+#include "sound_class.hpp"
 
 /// game_state_game class, heritage van drawable
 class game_state_game : public drawable{
@@ -23,10 +19,12 @@ private:
     state & state_t;
     unsigned int width;
     unsigned int height;
-    std::vector<std::shared_ptr<label>> labels;
+
     std::vector<std::shared_ptr<drawable>> drawables;
-    std::vector<std::shared_ptr<drawable>> drawables1;
-    level level1;
+    builder_biome level1;
+    sound_class & the_sound_class_ingame;
+    std::shared_ptr<drawable> background;
+    sf::Sound click_sound;
 
 public:
     /**
@@ -42,9 +40,9 @@ public:
                     unsigned int width,
                     unsigned int height,
                     game_settings & gameSettings,
-                    state & state_t);
+                    state & state_t,
+                    sound_class & the_sound_class_ingame);
 //    ~game_state_game();
-    sf::Texture screenshot_gamescreen;
 
     /**
      * @brief 
@@ -57,12 +55,6 @@ public:
      * 
      */
     void update() override;
-
-    /**
-     * @brief 
-     * 
-     */
-    void destructor();
 
     /**
      * @brief 
