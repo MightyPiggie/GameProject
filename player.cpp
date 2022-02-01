@@ -71,28 +71,21 @@ void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
 
 /// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
 void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects) {
-//    std::cout << position.x << "X" << std::endl;
-//    std::cout << window.getSize().x << "W" << std::endl;
     if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){
         state_t = DEAD;
         return;
     }
     for (auto &object: gameobjects) {
-        if (object->object_state == DEADLY) {
-            for (auto &object1: gameobjects) {
-                if (object1->object_state == DEADLY) {
-
-                    if (this->overlaps(object1)) {
-                        state_t = DEAD;
-                        dead.play();
-                        if(game_setting.score > game_setting.highscore) {
-                            game_setting.highscore = game_setting.score;
-                            save(unlocked_players, game_setting);
-                        }
-                        break;
-                    }
-                }}
-            break;
+    if (object->object_state == DEADLY) {
+            if (this->overlaps(object)) {
+                state_t = DEAD;
+                dead.play();
+                if(game_setting.score > game_setting.highscore) {
+                    game_setting.highscore = game_setting.score;
+                    save(unlocked_players, game_setting);
+                }
+                break;
+            }
         }
     }
 
