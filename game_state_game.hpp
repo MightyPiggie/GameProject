@@ -42,7 +42,6 @@ public:
                     game_settings & gameSettings,
                     state & state_t,
                     sound_class & the_sound_class_ingame);
-//    ~game_state_game();
 
     /**
      * @brief The draw function will call all objects draw function. It will also call the levels draw function.
@@ -51,20 +50,10 @@ public:
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will call all the objects update function.
      * 
      */
     void update() override;
-
-    /**
-     * @brief 
-     * 
-     * @param rhs 
-     * @return std::shared_ptr<game_state_game> 
-     */
-    std::shared_ptr<game_state_game> operator= (std::shared_ptr<game_state_game> rhs){
-        return rhs;
-    }
 };
 
 #endif

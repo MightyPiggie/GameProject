@@ -39,10 +39,7 @@ game_state_game::game_state_game(sf::RenderWindow & window,
     std::shared_ptr<buttons> pauze_button = std::make_shared<buttons>(window, 40,  vector2f_from_unsigned_ints(float(width) - 300.f,float(height)-200.f),  [&](){click_sound.play(); gameSettings.started = !gameSettings.started; sf::sleep(sf::milliseconds(100));},"Pauze", sf::Color(163 , 235 , 177));
     background = game_window;
     drawables = {left, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow, pauze_button};
-//    screenshot_gamescreen.update(window);
 }
-
-//game_state_game::~game_state_game() {delete[] ;}
 
 /// tekent de objecten in game_state_game
 /// Roept ook aan welke objecten daar bij horen van level

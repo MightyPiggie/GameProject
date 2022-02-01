@@ -47,7 +47,7 @@ public:
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will call all the objects update function and it will poll for SFML events.
      * 
      */
     void update() override;

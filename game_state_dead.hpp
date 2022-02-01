@@ -29,13 +29,13 @@ public:
     game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, sound_class & the_sound_class);
     
     /**
-     * @brief The draw function will call all objects draw function
+     * @brief The draw function will call all objects draw function.
      * 
      */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will call all the objects update function and it will poll for SFML events.
      * 
      */
     void update() override;

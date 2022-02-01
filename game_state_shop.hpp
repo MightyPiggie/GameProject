@@ -68,16 +68,16 @@ public:
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update function will call all the objects update function and it will poll for SFML events.
      * 
      */
     void update() override;
 
     /**
-     * @brief 
+     * @brief The function checks if the selected character is unlocked by player.
      * 
-     * @return true 
-     * @return false 
+     * @return true The selected character is unlocked by the player.
+     * @return false The selected character is not unlocked by the player.
      */
     bool check_functie_unlocked();
 
