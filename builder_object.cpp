@@ -78,22 +78,14 @@ void builder_object::generate_obstacle_car() {
         for(unsigned int i = 0; i <= amount_cars; i++) {
             int car_type = random_int_between_range(0, 4);
             bool side = random_int_between_range(0, 1);
-<<<<<<< HEAD
             objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction, speed_car));
-=======
-            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction , 5));
->>>>>>> 7d930aaf8059d35e3b8a329ae986fc2a6e7a5aac
         }
     }
     else if(direction == 1) {
         for(unsigned int i = 0; i <= amount_cars; i++) {
             int car_type = random_int_between_range(0, 4);
             bool side = random_int_between_range(0, 1);
-<<<<<<< HEAD
             objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction, speed_car));
-=======
-            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction , 5));
->>>>>>> 7d930aaf8059d35e3b8a329ae986fc2a6e7a5aac
         }
     }
 }
