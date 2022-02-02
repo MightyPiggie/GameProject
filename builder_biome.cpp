@@ -81,7 +81,7 @@ void builder_biome::build_line(float height, bool force_grass_line) {
     }
     // Roads
     else if(line_type == 2 && force_grass_line == false) {
-        std::shared_ptr<builder_object> create_roads_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, ROAD, NON_OBSTACLE, "roads_sprite");
+        std::shared_ptr<builder_object> create_roads_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, ROAD, NON_OBSTACLE, "roads_sprite", ticks);
         lines.emplace_back(create_roads_line);
     }
     // Water

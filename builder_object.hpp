@@ -12,6 +12,8 @@ enum line_type {GRASS, RAILS, WATER, ROAD};
 /// builder_object class, heritage van object
 class builder_object : public object {
 private:
+    unsigned int ticks;
+    unsigned int speed_car = 2;
     line_type type;
     /// Wegems refrence niet nodig.
 //    std::vector<std::shared_ptr<object>> objects;
@@ -60,13 +62,15 @@ public:
      * @param type The type a line could be.
      * @param object_state The state a is in.
      * @param sprite_name The name of the sprite.
+     * @param ticks The amount of ticks that has passed.
      */
     builder_object(sf::RenderWindow& window,
                    sf::Vector2f position,
                    sf::Vector2f size,
                    line_type type,
                    object_states object_state,
-                   std::string sprite_name);
+                   std::string sprite_name,
+                   unsigned int ticks = 0);
 
     std::vector<std::shared_ptr<object>> objects_for_level;
 
@@ -81,7 +85,7 @@ public:
      * @brief The update function will call all the objects update function.
      * 
      */
-    void update() override;
+    void update();
 
     /**
      * @brief The lower function will call all objects lower function and lower the position of itself.

@@ -4,8 +4,9 @@
 
 #include <iostream>
 
-builder_object::builder_object(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, line_type type, object_states object_state, std::string sprite_name):
+builder_object::builder_object(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, line_type type, object_states object_state, std::string sprite_name, unsigned int ticks):
     object(window, position, size, object_state, sprite_name),
+    ticks(ticks),
     type(type),
     max_amount_obstacles_per_tile(window.getSize().x/60/4)
 {
@@ -64,20 +65,27 @@ void builder_object::generate_coins(){
 }
 
 void builder_object::generate_obstacle_car() {
+    if(ticks <= 60*10*4 ) {
+        speed_car = 3 + ticks/(60*10);
+        }
+    else if(ticks > 60*10*4) {
+        speed_car = 8;
+    }
+
     bool direction = random_int_between_range(0, 1);
     auto amount_cars = random_int_between_range(3, 5);
     if(direction == 0) {
         for(unsigned int i = 0; i <= amount_cars; i++) {
             int car_type = random_int_between_range(0, 4);
             bool side = random_int_between_range(0, 1);
-            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction));
+            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4*3.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2], 200, direction, speed_car));
         }
     }
     else if(direction == 1) {
         for(unsigned int i = 0; i <= amount_cars; i++) {
             int car_type = random_int_between_range(0, 4);
             bool side = random_int_between_range(0, 1);
-            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction));
+            objects_for_level.emplace_back(std::make_shared<moving_object>(window, side == 0 ? sf::Vector2f{window.getSize().x/4.f+60, position.y} : sf::Vector2f{float(random_int_between_range(window.getSize().x/4.f, window.getSize().x/4.f*3)) , position.y}, sf::Vector2f{59.0, 59.0}, DEADLY, sprites_car[car_type*2+1], 200, direction, speed_car));
         }
     }
 }
