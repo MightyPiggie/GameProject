@@ -4,7 +4,6 @@
 
 std::vector<std::string> read_values(game_settings & game){
     std::vector<std::string> list;
-    //read file
     std::ifstream input("player.txt");
 
     if (input.is_open()) {

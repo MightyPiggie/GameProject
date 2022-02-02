@@ -31,7 +31,7 @@ void game_state_loading_screen::draw() {
 void game_state_loading_screen::loading() {
 
     /// Start and close window sounds
-    the_sound_class_loading_screen.set_sound_buffer("test_sound", "res/sounds/menu-window-title.wav");
+    the_sound_class_loading_screen.set_sound_buffer("window_start", "res/sounds/menu-window-title.wav");
     the_sound_class_loading_screen.set_sound_buffer("window_close", "res/sounds/windows_xp_shutdown.wav");
 
     /// In game sounds

@@ -27,15 +27,15 @@ void game_screen::run(){
     //start state
     state_t = LOADING;
 
-//    Loading screen
+    //Loading screen
     game_state_loading_screen loading_screen(window, state_t, the_sound_class);
     loading_screen.loading();
 
+    window_start.setBuffer(the_sound_class.get_sound_buffer("window_start"));
     window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
-    start_sound.setBuffer(the_sound_class.get_sound_buffer("test_sound"));
+
     //Game State
-//    game_state_game game_state(window, width, height, sprite_files_map, game_setting,  state_t);
-    std::shared_ptr<game_state_game> game_state;// = std::make_shared<game_state_game>(window, width, height, game_setting,  state_t,the_sound_class);
+    std::shared_ptr<game_state_game> game_state;
     //Menu State
     game_state_menu menu_state(window, width, height,state_t, game_setting, the_sound_class);
 
@@ -54,7 +54,7 @@ void game_screen::run(){
                 break;
             }
             case MENU: {
-                while(start_sound.getStatus() != sf::SoundSource::Stopped){
+                while(window_start.getStatus() != sf::SoundSource::Stopped){
                 }
                 menu_state.update();
                 menu_state.draw();
@@ -78,7 +78,7 @@ void game_screen::run(){
                 break;
             }
             case LOADING: {
-                start_sound.play();
+                window_start.play();
                 loading_screen.draw();
                 loading_screen.update();
                 state_t = MENU;

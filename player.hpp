@@ -89,7 +89,6 @@ public:
      * @param lineobjects A reference to a shared pointer which has a builder_object with all the lines.
      */
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
-//    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
 
     /**
      * @brief This function returns the global bounds of this player

@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 19/01/2022.
-//
-
 #ifndef LABEL_HPP
 #define LABEL_HPP
 
