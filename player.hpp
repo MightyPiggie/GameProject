@@ -84,7 +84,6 @@ public:
      * @param lineobjects 
      */
     void check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects);
-//    void check_coin(std::vector<std::shared_ptr<object>>& gameobjects);
 
     /**
      * @brief 

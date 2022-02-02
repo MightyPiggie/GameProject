@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 28/01/2022.
-//
-
 #ifndef SOUND_CLASS_HPP
 #define SOUND_CLASS_HPP
 

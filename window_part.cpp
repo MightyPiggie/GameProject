@@ -36,7 +36,6 @@ void window_part::new_sprite(std::string path) {
 }
 
 void window_part::update() {
-//    std::cout << "Update waardes" << std::endl;
     if(rect.getSize() == sf::Vector2f(0,0)) {
         window.draw(sprite);
     }
