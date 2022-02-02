@@ -19,9 +19,9 @@ public:
      * @brief Construct a new window part object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param position 
-     * @param size 
-     * @param color 
+     * @param position Is a x and y coordinate for the top left corner
+     * @param size Is a x and y coordinate for the bottom right corner. relative to position
+     * @param color The background color. This is of a sf::Color class
      */
     window_part(sf::RenderWindow& window,
                 sf::Vector2f position,
@@ -31,39 +31,34 @@ public:
      * @brief Construct a new window part object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param position 
-     * @param filename 
+     * @param position The x and y coordinate for the top left corner
+     * @param filename the filename for the background
      */
     window_part(sf::RenderWindow& window,
                 sf::Vector2f position,
                 std::string filename);
     /**
-     * @brief 
+     * @brief This draws the windowpart with a rectangle shape or an image.
      * 
      */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief This function rescales the image.
      * 
-     * @param new_scale 
+     * @param new_scale are a x and y scale.
      */
     void rescale(sf::Vector2f new_scale);
     /**
-     * @brief 
+     * @brief This function loads a new sprite as background.
      * 
-     * @param path 
+     * @param path is the filename
      */
     void new_sprite(std::string path);
-    /**
-     * @brief 
-     * 
-     */
-    void update() override;
+
 };
 
-/// window_part_player class, heritage van window_part
-/// Gamaakt om de game settings over te sturen/ te delen/up to date houden tijdens de game.
+
 class window_part_player : public window_part{
 protected:
     std::string filename;
@@ -73,22 +68,22 @@ public:
      * @brief Construct a new window part player object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param position 
-     * @param filename 
-     * @param gameSettings 
+     * @param position A x and y for the top left corner
+     * @param filename A filename for the background image
+     * @param gameSettings A reference to the gamesettings
      */
     window_part_player(sf::RenderWindow& window,
                        sf::Vector2f position,
                        std::string filename,
                        game_settings & gameSettings);
     /**
-     * @brief 
+     * @brief This function draws the window_part
      * 
      */
     void draw() override;
     
     /**
-     * @brief 
+     * @brief This function loads a new image as background if the image has changed
      * 
      */
     void update() override;
