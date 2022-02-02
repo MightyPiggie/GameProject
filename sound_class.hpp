@@ -1,7 +1,3 @@
-//
-// Created by Isaak van Luijk on 28/01/2022.
-//
-
 #ifndef SOUND_CLASS_HPP
 #define SOUND_CLASS_HPP
 
@@ -16,16 +12,16 @@ public:
     /**
      * @brief Set the sound buffer object
      * 
-     * @param name_sound 
-     * @param filename 
+     * @param name_sound name of the sound
+     * @param filename name of the file
      */
     void set_sound_buffer(const std::string & name_sound, const std::string & filename);
 
     /**
      * @brief Get the sound buffer object
      * 
-     * @param name_sound 
-     * @return sf::SoundBuffer& 
+     * @param name_sound name of the sound
+     * @return sf::SoundBuffer& name of the file
      */
     sf::SoundBuffer &get_sound_buffer(const std::string & name_sound);
 };

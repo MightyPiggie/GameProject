@@ -9,7 +9,7 @@
 class sprite_factory{
 private:
     /**
-     * @brief Construct a new sprite factory object
+     * @brief Construct a sprite factory object
      * 
      */
     sprite_factory();
@@ -18,7 +18,7 @@ public:
     /**
      * @brief Get the instance object
      * 
-     * @return sprite_factory& 
+     * @return sprite_factory& This returns a static spritefactory instance.
      */
     static sprite_factory& get_instance(){
         static sprite_factory instance;

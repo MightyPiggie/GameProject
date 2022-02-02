@@ -39,16 +39,11 @@ game_state_dead::game_state_dead(sf::RenderWindow & window,
         std::shared_ptr<buttons> restart_button = std::make_shared<buttons>(window,
                                                                             30,
                                                                             vector2f_from_unsigned_ints(width/2 - 100, height*3/4 ),
-                                                                            [&](){if(gameSettings.sound){click_sound.play();}state_t = RESTART;},
+                                                                            [&](){if(gameSettings.sound){click_sound.play(); dead_sound.stop();}state_t = RESTART;},
                                                                             "Restart",
                                                                             sf::Color(81, 81 ,81));
-//        std::shared_ptr<label> dead_message = std::make_shared<label>(window,
-//                                                                      vector2f_from_unsigned_ints(width/2 - 250, height/2 ),
-//                                                                      "GAME OVER",
-//                                                                      60,
-//                                                                      sf::Color(81, 81 ,81));
 
-    objects = {dead_window , quit_game_button , back_to_menu_button ,restart_button};//, dead_message};
+    objects = {dead_window , quit_game_button , back_to_menu_button ,restart_button};
 }
 
 /// Tekent de game_state_dead

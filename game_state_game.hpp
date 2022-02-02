@@ -25,6 +25,7 @@ private:
     sound_class & the_sound_class_ingame;
     std::shared_ptr<drawable> background;
     sf::Sound click_sound;
+    sf::Sound background_music_game;
 public:
     /**
      * @brief Construct a new game state game object

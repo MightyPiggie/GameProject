@@ -35,13 +35,6 @@ void window_part::new_sprite(std::string path) {
     sprite.setTexture(texture);
 }
 
-void window_part::update() {
-//    std::cout << "Update waardes" << std::endl;
-    if(rect.getSize() == sf::Vector2f(0,0)) {
-        window.draw(sprite);
-    }
-}
-
 
 
 window_part_player::window_part_player(sf::RenderWindow &window,

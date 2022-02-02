@@ -19,33 +19,46 @@ public:
      * @brief Construct a new object object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param position 
-     * @param size 
-     * @param object_state 
-     * @param spritename 
+     * @param position The position where the object will the drawn on the display.
+     * @param size The size of the object.
+     * @param object_state The state in which the object is in.
+     * @param spritename The name of the sprite that will be displayed on the screen.
      */
     object(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string spritename);
 
     /**
-     * @brief 
+     * @brief The draw function will set the position and draw the object.
      * 
      */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The getbounds function will get the global bounds of the object.
      * 
-     * @return sf::FloatRect 
+     * @return sf::FloatRect The returned FloatRect are the global bounds of the object.
      */
     sf::FloatRect getbounds() override;
 
     /**
-     * @brief 
+     * @brief The lower function will lower the object by 1 pixel.
      * 
      */
     virtual void lower();
     object_states object_state;
+
+    /**
+     * @brief Get the speed object
+     * 
+     * @return unsigned int The speed a object is moving with.
+     */
     virtual unsigned int get_speed(){return 0;}
+
+    /**
+     * @brief Get the direction object
+     * 
+     * @return true 
+     * @return false 
+     */
     virtual bool get_direction(){return 0;}
 };
 

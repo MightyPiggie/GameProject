@@ -28,8 +28,8 @@ private:
 
     sound_class the_sound_class;
 
+    sf::Sound window_start;
     sf::Sound window_close;
-    sf::Sound start_sound;
 
 public:
     /**

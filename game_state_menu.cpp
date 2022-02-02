@@ -55,7 +55,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
                                 std::shared_ptr<buttons> sound_button_in_menu_window = std::make_shared<buttons>(window,
                                                                                                                  50,
                                                                                                                  vector2f_from_unsigned_ints(25, 25),
-                                                                                                                 [&](){click_sound.play(); gameSettings.sound = !gameSettings.sound;  sf::sleep(sf::milliseconds(100));},
+                                                                                                                 [&](){click_sound.play(); gameSettings.sound = !gameSettings.sound;  sf::sleep(sf::milliseconds(200));},
                                                                                                                  "Sound",
                                                                                                                  sf::Color(163 , 235 , 177));
 
