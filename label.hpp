@@ -27,12 +27,12 @@ public:
      * @brief Construct a new label object
      * 
      * @param window A reference to the window where everything is drawn on.
-     * @param position 
-     * @param text_string 
-     * @param size_char 
-     * @param background_text_color 
-     * @param rectangle_display 
-     * @param text_color 
+     * @param position The position where the label will be placed on the screen.
+     * @param text_string The string that will be placed ontop of the label.
+     * @param size_char The size of the text.
+     * @param background_text_color The color behind the text.
+     * @param rectangle_display If this is true there will be a solid rectangle behind the text.
+     * @param text_color The color of the displayed text.
      */
     label(sf::RenderWindow &window,
         sf::Vector2f position,
@@ -43,15 +43,15 @@ public:
         sf::Color text_color = sf::Color::Black);
 
     /**
-     * @brief 
+     * @brief The draw function will draw the labels and update the position and size.
      * 
      */
     void draw() override;
 
     /**
-     * @brief 
+     * @brief The update_text function will update the text displayed on the label when called.
      * 
-     * @param new_value 
+     * @param new_value The new text that will be displayed ontop of the label.
      */
     void update_text(std::string new_value);
 };
