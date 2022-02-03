@@ -20,7 +20,7 @@ Naam|Studentnummer|GitHub username|
 |Daan Smienk|1777127|MightyPiggie|
 |Rick Nuhaan|1787435|rick2003|
 |Isaak van Luijk|1776211|SjaakyNewton|
-|Rogier|1786347|RogiervR|
+|Rogier van Rooijen|1786347|RogiervR|
 
 # Install information:
 
