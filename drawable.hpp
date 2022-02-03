@@ -6,7 +6,7 @@
 
 #include "game_states.hpp"
 
-/// Drawable class. Superclass voor elk object?
+// Drawable class. Superclass voor bijna alle objecten.
 class drawable {
 protected:
     sf::RenderWindow & window;

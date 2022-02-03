@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 
-/// sprite_factory class
+// sprite_factory class
 class sprite_factory{
 private:
     /**

@@ -7,7 +7,7 @@
 #include "drawable.hpp"
 #include "game_settings.hpp"
 
-/// window_part class, heritage van drawable
+// window_part class, heritage van drawable
 class window_part : public drawable{
 protected:
     sf::RectangleShape rect;

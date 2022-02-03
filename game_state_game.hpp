@@ -12,7 +12,7 @@
 #include "builder_biome.hpp"
 #include "sound_class.hpp"
 
-/// game_state_game class, heritage van drawable
+// game_state_game class, heritage van drawable
 class game_state_game : public drawable{
 private:
     game_settings & gameSettings;

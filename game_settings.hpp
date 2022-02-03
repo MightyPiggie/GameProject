@@ -3,7 +3,7 @@
 
 #include <string>
 
-/// Gamesettings basis. Wordt aangepast door init om de laatste gegevens in te laden.
+// Gamesettings basis. Wordt aangepast door init om de laatste gegevens in te laden.
 
 /**
  * @brief The game_settings struct contains all the game settings.

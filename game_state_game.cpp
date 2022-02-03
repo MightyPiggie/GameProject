@@ -6,8 +6,8 @@
 #include "label_player_settings.hpp"
 #include "buttons.hpp"
 
-/// game_state_game constructor. Maakt ook direct de objecten neer voor het scherm. Dit gaat alleen om de standaard objecten.
-/// Objecten van de game worden gemaakt in builder_biome.
+// game_state_game constructor. Maakt ook direct de objecten neer voor het scherm. Dit gaat alleen om de standaard objecten.
+// Objecten van de game worden gemaakt in builder_biome.
 game_state_game::game_state_game(sf::RenderWindow & window,
                                  unsigned int width,
                                  unsigned int height,
@@ -43,8 +43,8 @@ game_state_game::game_state_game(sf::RenderWindow & window,
     drawables = {left, right, display_coins, display_score, display_highscore, quit_gamewindow, back_to_menu_gamewindow, pauze_button , sound_button_in_game_window};
 }
 
-/// tekent de objecten in game_state_game
-/// Roept ook aan welke objecten daar bij horen van level
+// tekent de objecten in game_state_game
+// Roept ook aan welke objecten daar bij horen van level
 void game_state_game::draw(){
     background->draw();
 
@@ -55,8 +55,8 @@ void game_state_game::draw(){
     }
 }
 
-/// Update de objecten in game_state_game
-/// Roept ook aan welke objecten daar bij horen van builder_biome
+// Update de objecten in game_state_game
+// Roept ook aan welke objecten daar bij horen van builder_biome
 void game_state_game::update() {
     if(state_t == GAME){
         if(gameSettings.sound){

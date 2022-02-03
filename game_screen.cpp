@@ -10,17 +10,17 @@
 #include "game_state_shop.hpp"
 #include "game_state_loading_screen.hpp"
 
-/// Laad de game_settings in van player.txt
+// Laad de game_settings in van player.txt
 std::vector<std::string> game_screen::init(){
     return read_values(game_setting);
 }
 
-/// Hoofd run voor de game. Vanuit de run wordt al het andere aangeroepen.
+// Hoofd run voor de game. Vanuit de run wordt al het andere aangeroepen.
 void game_screen::run(){
     window.setKeyRepeatEnabled(false);
     window.setFramerateLimit(60);
     unlocked_players = init();
-    /// Sprite factory
+    // Sprite factory
     std::ifstream sprite_file("sprite_file.txt");
     sprite_factory sprite_reader = sprite_factory::get_instance();
 
