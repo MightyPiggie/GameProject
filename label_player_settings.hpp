@@ -4,7 +4,7 @@
 #include "label.hpp"
 #include "game_settings.hpp"
 
-/// label_player_settings_coins class, heritage van label
+// label_player_settings_coins class, heritage van label
 class label_player_settings_coins : public label{
 protected:
     game_settings & gameSettings;
@@ -38,7 +38,7 @@ public:
     void update() override;
 };
 
-/// label_player_settings_highscore class, heritage van label
+// label_player_settings_highscore class, heritage van label
 class label_player_settings_highscore : public label{
 protected:
     game_settings & gameSettings;
@@ -72,7 +72,7 @@ public:
     void update() override;
 };
 
-/// label_player_settings_score class, heritage van label
+// label_player_settings_score class, heritage van label
 class label_player_settings_score : public label{
 protected:
     game_settings & gameSettings;

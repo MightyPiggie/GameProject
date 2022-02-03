@@ -8,7 +8,7 @@
 #include "simple_functions.hpp"
 #include "game_state_game.hpp"
 
-/// game_state_dead class, heritage van drawable
+// game_state_dead class, heritage van drawable
 class game_state_dead : public drawable{
 private:
     state & state_t;

@@ -9,7 +9,7 @@
 #include "sound_class.hpp"
 
 
-/// Game_screen class. Build om alles van te maken.
+// Game_screen class. Build om alles van te maken.
 class game_screen{
 private:
     unsigned int width = sf::VideoMode::getDesktopMode().width;

@@ -9,13 +9,13 @@
 
 enum line_type {GRASS, RAILS, WATER, ROAD};
 
-/// builder_object class, heritage van object
+// builder_object class, heritage van object
 class builder_object : public object {
 private:
     unsigned int ticks;
     unsigned int speed_car = 2;
     line_type type;
-    /// Wegems refrence niet nodig.
+    // Wegems refrence niet nodig.
     std::vector<std::string> sprites_car = {"car_cool_left_sprite", "car_cool_right_sprite", "car_camper_left_sprite", "car_camper_right_sprite", "car_orange_left_sprite", "car_orange_right_sprite", "car_pink_left_sprite", "car_pink_right_sprite", "car_police_left_sprite", "car_police_right_sprite"};
     std::vector<std::string> sprites_log = {"tree_trunk_2t_sprite", "tree_trunk_3t_sprite"};
 

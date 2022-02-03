@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-/// Player constructor. maakt de player aan en heeft basis informatie om mee te beginnen. Dit wordt geupdate wanneer je speelt.
+// Player constructor. maakt de player aan en heeft basis informatie om mee te beginnen. Dit wordt geupdate wanneer je speelt.
 player::player(sf::RenderWindow & window,
         sf::Vector2f position,
         sf::Vector2f size,
@@ -18,13 +18,13 @@ player::player(sf::RenderWindow & window,
     move_sound.setBuffer(the_sound_class_player.get_sound_buffer("move_sound"));
     pick_up_coin_sound.setBuffer(the_sound_class_player.get_sound_buffer("pick_up_coin"));
 }
-/// Player draw, dit is in een sprite
+// Player draw, dit is in een sprite
 void player::draw() {
     sprite.setPosition(position);
     window.draw(sprite);
 }
 
-/// Player update. check of het nog steeds de juiste sprite is en deze dan inladen indien niet.
+// Player update. check of het nog steeds de juiste sprite is en deze dan inladen indien niet.
 void player::update() {
     if(spritename != sprite_factory::get_instance().filenames[game_setting.player]){
         spritename = sprite_factory::get_instance().filenames[game_setting.player];
@@ -33,7 +33,7 @@ void player::update() {
     }
 }
 
-/// Player move. Wordt gekeken naar keys en welk object dat dan is/van welke state. Op elk object een andere reactie.
+// Player move. Wordt gekeken naar keys en welk object dat dan is/van welke state. Op elk object een andere reactie.
 void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
     if (position.x != float(window.getSize().x) / 4 && (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::A))){
         restore_position();
@@ -62,10 +62,14 @@ void player::move(std::vector<std::shared_ptr<builder_object>>& gameobjects) {
     }
 }
 
-/// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
+// Checkt of de player tegen iets dodelijks is aangelopen. Dit zijn autos, trainen en water.
 void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects, const std::shared_ptr<builder_object>& lineobjects) {
     if(position.y >= window.getSize().y || position.x + size.x < window.getSize().x/4 || position.x >= window.getSize().x*3/4){
         state_t = DEAD;
+        if(game_setting.score > game_setting.highscore) {
+            game_setting.highscore = game_setting.score;
+            save(unlocked_players, game_setting);
+        }
         return;
     }
     for (auto &object: gameobjects) {
@@ -110,7 +114,7 @@ void player::check_dead(const std::vector<std::shared_ptr<object>>& gameobjects,
 }
 
 
-/// Krijg player global bounds.
+// Krijg player global bounds.
 sf::FloatRect player::getbounds(){
     return sprite.getGlobalBounds();
 }

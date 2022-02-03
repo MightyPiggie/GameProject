@@ -14,22 +14,22 @@
 #include "init_game.hpp"
 #include "sound_class.hpp"
 
-/// game_state_shop class, heritage van drawable
+// game_state_shop class, heritage van drawable
 class game_state_shop : public drawable{
 private:
-    /// Game settings die erzijn
+    // Game settings die erzijn
     game_settings & gameSettings;
     //state van game
     state & state_t;
-    /// Lijst players die er zijn om hiermee de sprites ervan op te halen
+    // Lijst players die er zijn om hiermee de sprites ervan op te halen
     std::vector<std::string> all_players = {"chicken_player", "cow_player", "pig_player", "slime_player", "pacman_player" , "beta_player"};
 
-    ///Lijst players die gekocht zijn, uit player.txt gehaald in game_screen.cpp
+    // Lijst players die gekocht zijn, uit player.txt gehaald in game_screen.cpp
     std::vector<std::string> & unlocked_players;
 
     sound_class & the_sound_class_shop;
 
-    /// Lijst players die er zijn. Alles dus maar dan window_part. Met all_players kun je de juiste sprite pakken.
+    // Lijst players die er zijn. Alles dus maar dan window_part. Met all_players kun je de juiste sprite pakken.
     std::vector<std::shared_ptr<window_part>> players;
     std::vector<std::shared_ptr<drawable>> objects;
     std::shared_ptr<buttons> equip_button;
@@ -38,7 +38,7 @@ private:
 
     sf::Sound player_equip_sound;
 
-    /// Waarde waar mee ik door de shop heen kan scrollen van players.
+    // Waarde waar mee ik door de shop heen kan scrollen van players.
     unsigned int player_scrolling_int = 0;
     sf::Sound click_sound;
 

@@ -10,7 +10,7 @@
 #include "player.hpp"
 #include "builder_object.hpp"
 
-/// builder_biome class
+// builder_biome class
 class builder_biome {
 private:
     sf::RenderWindow& window;
