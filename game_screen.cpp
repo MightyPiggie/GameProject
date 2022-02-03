@@ -34,13 +34,17 @@ void game_screen::run(){
     window_start.setBuffer(the_sound_class.get_sound_buffer("window_start"));
     window_close.setBuffer(the_sound_class.get_sound_buffer("window_close"));
 
+    background_music_game.setBuffer(the_sound_class.get_sound_buffer("menu_background"));
+    background_music_game.setVolume(10.f);
+
+
     //Game State
     std::shared_ptr<game_state_game> game_state;
     //Menu State
     game_state_menu menu_state(window, width, height,state_t, game_setting, the_sound_class);
 
     //Dead State
-    game_state_dead dead_state(window, width, height,  state_t, game_setting,the_sound_class);
+    game_state_dead dead_state(window, width, height,  state_t, game_setting, the_sound_class);
 
     //Shop State
     game_state_shop shop_state(window, state_t, width, height , unlocked_players, game_setting, the_sound_class);
@@ -49,6 +53,16 @@ void game_screen::run(){
         window.clear();
         switch (state_t) {
             case GAME: {
+                if(state_t == GAME){
+                    if(game_setting.sound){
+                        if(background_music_game.getStatus() != sf::SoundSource::Playing){
+                            background_music_game.play();
+                        }
+                    }
+                    else{
+                        background_music_game.stop();
+                    }
+                }
                 game_state->update();
                 game_state->draw();
                 break;
@@ -56,11 +70,17 @@ void game_screen::run(){
             case MENU: {
                 while(window_start.getStatus() != sf::SoundSource::Stopped){
                 }
+                if(background_music_game.getStatus() == sf::SoundSource::Playing){
+                    background_music_game.stop();
+                }
                 menu_state.update();
                 menu_state.draw();
                 break;
             }
             case DEAD: {
+                if(background_music_game.getStatus() == sf::SoundSource::Playing){
+                    background_music_game.stop();
+                }
                 dead_state.update();
                 dead_state.draw();
                 break;

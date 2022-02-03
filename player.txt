@@ -1,4 +1,4 @@
-MUNTEN 303
+MUNTEN 306
 HIGH 42
 EQUIPPED slime_player
 PLAYER chicken_player

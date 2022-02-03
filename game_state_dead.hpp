@@ -19,7 +19,7 @@ private:
     sf::Sound click_sound;
     sf::Sound dead_sound;
 public:
-    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, game_settings & gameSettings,sound_class & the_sound_class);
+    game_state_dead(sf::RenderWindow & window, unsigned int width, unsigned int height, state & state_t, game_settings & gameSettings, sound_class & the_sound_class);
     void draw() override;
 
     /**

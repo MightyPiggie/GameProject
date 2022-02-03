@@ -30,6 +30,7 @@ private:
 
     sf::Sound window_start;
     sf::Sound window_close;
+    sf::Sound background_music_game;
 
 public:
     /**

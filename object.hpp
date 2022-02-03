@@ -56,8 +56,8 @@ public:
     /**
      * @brief Get the direction object
      * 
-     * @return true 
-     * @return false 
+     * @return true, The direction will be left.
+     * @return false, The direction will be right.
      */
     virtual bool get_direction(){return 0;}
 };
@@ -74,32 +74,45 @@ public:
     /**
      * @brief Construct a new moving object object
      * 
-     * @param window 
-     * @param position 
-     * @param size 
-     * @param object_state 
-     * @param filename 
-     * @param change 
-     * @param direction 
-     * @param speed 
+     * @param window A reference to the window where everything is drawn on.
+     * @param position The position where the object will the drawn on the display.
+     * @param size The size of the object.
+     * @param object_state The state in which the object is in.
+     * @param filename The name of the sprite that will be displayed on the screen.
+     * @param change The change a moving object has to start moving.
+     * @param direction The direction a moving object will move in.
+     * @param speed The speed a moving object will move in.
      */
     moving_object(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size, object_states object_state, std::string filename, int change, bool direction , unsigned int speed = 2);
     
     /**
-     * @brief 
+     * @brief The random_int_between_range function will give you a random integer.
      * 
-     * @param min 
-     * @param max 
-     * @return unsigned int 
+     * @param min The minimum value the function can return.
+     * @param max The maximum value the function can return.
+     * @return unsigned int A random integeger between the minimum and maximum value.
      */
     unsigned int random_int_between_range(int min, int max);
 
     /**
-     * @brief 
+     * @brief The update function will move the object. And if its not moving it will generate a random number between 0 and change. If its 0 the object will start moving.
      * 
      */
     void update() override;
+    
+    /**
+    * @brief Get the speed of the object.
+    *
+    * @return unsigned int The speed of the object.
+    */
     unsigned int get_speed() override {return speed;}
+    
+    /**
+    * @brief Get the direction of the object.
+    *
+    * @return true, The direction will be left.
+    * @return false, The direction will be right.
+    */
     bool get_direction() override {return direction;}
 };
 
