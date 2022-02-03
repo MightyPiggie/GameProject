@@ -91,7 +91,6 @@ void builder_biome::build_line(float height, bool force_grass_line) {
     }
     // Grass
     else if((line_type == 1 || 4) || force_grass_line == true) {
-        // TODO No coins first 5
         std::shared_ptr<builder_object> create_grass_line = std::make_shared<builder_object>(window, sf::Vector2f{window.getSize().x/4.f, height},  sf::Vector2f{window.getSize().x/2.f, 59.0}, GRASS, NON_OBSTACLE, "grass_sprite");
         lines.emplace_back(create_grass_line);
     }
