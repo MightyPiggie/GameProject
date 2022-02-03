@@ -16,21 +16,21 @@ The next students have worked on this project:
 
 Naam|Studentnummer|GitHub username|
 | ------------- |:-------------:| ---------:|
-|Ray |1787534|Rayax10|
+|Ray de Kruif|1787534|Rayax10|
 |Daan Smienk|1777127|MightyPiggie|
-|Rick|1787435|rick2003|
+|Rick Nuhaan|1787435|rick2003|
 |Isaak van Luijk|1776211|SjaakyNewton|
-|Rogier|1786347|RogiervR|
+|Rogier van Rooijen|1786347|RogiervR|
 
 # Install information:
 
-If you wanne use this code you need the SFML libaray's.
+If you want to use this code you need the SFML libaray's.
 In our school program environment you need to add a few lines in the make files of hwlib.
 If you work with your own SFML you need to check if the Audio libary is in tact. I have no further information if this has a problem.
 
 # School enviroment changes:
 
-In the code there is a fill openal32.dll
+In the code there is a file openal32.dll
 This file must be in the same place as the main.
 
 In the root map you need to go to the hwlib map. Here you have to edit the makefile.inc
