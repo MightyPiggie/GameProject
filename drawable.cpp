@@ -7,7 +7,6 @@ drawable::drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2
     size(size)
 {}
 
-//TODO Try without the =
 /// Kijkt wat er in de drawable is.
 bool drawable::within( int x, int a, int b ){
    return ( x >= a ) && ( x <= b );
