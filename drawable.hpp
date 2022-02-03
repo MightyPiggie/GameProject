@@ -22,15 +22,14 @@ public:
      */
     drawable(sf::RenderWindow & window, sf::Vector2f position, sf::Vector2f size);
 
-    //TODO doxygen this
     /**
      * @brief The within function checks of the given integers are within each other
      * 
-     * @param x 
-     * @param a 
-     * @param b 
-     * @return true 
-     * @return false 
+     * @param x The first integer to check with if its within.
+     * @param a The second integer to check with if its within.
+     * @param b The third integer to check with if its within.
+     * @return true The other object overlaps with the this object.
+     * @return false The other object does not overlap with the this object.
      */
     bool within( int x, int a, int b );
 
