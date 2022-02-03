@@ -63,7 +63,7 @@ game_state_menu::game_state_menu(sf::RenderWindow & window,
 
                                     std::shared_ptr<label> title_in_menu_window = std::make_shared<label>(window,
                                                                                                       vector2f_from_unsigned_ints(width/2-500, height/2 - 300),
-                                                                                                      "Levensmoedige vogel",
+                                                                                                      "Levensmoedige vogels",
                                                                                                       60,
                                                                                                       sf::Color(163 , 235 , 177));
                                 std::shared_ptr<window_part_player> player_icon_menu_window = std::make_shared<window_part_player>(window,
